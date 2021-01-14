@@ -1,16 +1,23 @@
 import React, {FC} from "react";
 import ReactDOM from "react-dom";
 import "./style.scss";
-import Img from "./images/img1.png";
+import { Home } from './components/home/home';
+import SearchAppBar from "./components/searchAppBar";
+import { HeaderBar } from "./components/headerBar";
 
-const App:FC = () => {
-  const env = process.env.NODE_ENV;
+const App: FC = () => {
+ 
   return (
     <div>
-      <h1>Hello World</h1>
-      <img src={Img} alt="test-image" />
+      <SearchAppBar />
+      <HeaderBar />
+    <Home/>
+
     </div>
+
+    
   );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
