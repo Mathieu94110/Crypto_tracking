@@ -4,14 +4,18 @@ import "./style.scss";
 import { Home } from './components/home/home';
 import SearchAppBar from "./components/searchAppBar";
 import { HeaderBar } from "./components/headerBar";
+import TopSevenTrending  from "./components/topSevenTrending";
+import NavBar from './components/Nav/Navbar';
 
 const App: FC = () => {
  
   return (
     <div>
-      <SearchAppBar />
+    <NavBar />
       <HeaderBar />
-    <Home/>
+          <Home/>
+      <TopSevenTrending />
+
 
     </div>
 
