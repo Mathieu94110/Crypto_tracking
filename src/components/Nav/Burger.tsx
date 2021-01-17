@@ -5,7 +5,6 @@ import LeftNav from './LeftNav';
 
 
 
-
 const StyledBurger = styled.div`
   width: 2rem;
   height: 2rem;
@@ -41,7 +40,7 @@ const StyledBurger = styled.div`
 
 const Burger = () => {
   const [open, setOpen] = useState(false)
-  
+
   return (
     <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -49,7 +48,7 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <LeftNav open={open}/>
+      <LeftNav open={open} />
     </>
   )
 }

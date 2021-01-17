@@ -1,25 +1,38 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import "./style.scss";
-import { Home } from './components/home/home';
-import SearchAppBar from "./components/searchAppBar";
-import { HeaderBar } from "./components/headerBar";
-import TopSevenTrending  from "./components/topSevenTrending";
-import NavBar from './components/Nav/Navbar';
+import Home from './components/home/home';
+import List from './components/list/list';
 
 const App: FC = () => {
- 
+
   return (
-    <div>
-    <NavBar />
-      <HeaderBar />
-          <Home/>
-      <TopSevenTrending />
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/home">Accueil</Link>
+            </li>
+          </ul>
+        </nav>
 
+        <Switch>
+          <Route path="/liste" component={List} />
 
-    </div>
+          <Route path="/" component={Home} />
 
-    
+        </Switch>
+
+      </div>
+    </Router>
+
   );
 };
 

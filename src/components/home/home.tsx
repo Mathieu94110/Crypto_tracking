@@ -1,37 +1,20 @@
-import React,{useState, useEffect}  from "react";
-import { findDOMNode } from "react-dom";
+import React from "react";
+import { HeaderBar } from "../headerBar";
+import TopSevenTrending from "../topSevenTrending";
+import NavBar from '../Nav/Navbar';
+import List from '../list/list';
+export default function Home() {
 
-export const Home = () => {
-    const [coins, setCoins] = useState([]);
-    let url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false";
-   /*
-    useEffect(() => {
 
-        fetch(url)
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-             setCoins(res)
-                
-        })
+  return (
+    <div>
 
-        
-    })*/
+      <NavBar />
+      <HeaderBar />
+      <TopSevenTrending />
 
-    
-    return (
-     <div>
-         <h1>Crypto</h1>
-            <div style={{display:"flex", flexDirection:"column"}}>
-                  {coins.map(coin => {
-                      return <div>{coin.symbol}</div>
-            })}
-            </div>
-          
 
     </div>
-    )   
+  )
 }
-
-
 
