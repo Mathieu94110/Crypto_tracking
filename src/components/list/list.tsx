@@ -44,6 +44,9 @@ export default function list() {
       })
   }, [])
   const classes = useStyles();
+  let bitcoinDatas = JSON.stringify(datas[0]);
+alert(bitcoinDatas)
+
   return (
 
     <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>

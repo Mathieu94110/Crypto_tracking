@@ -29,7 +29,7 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/,
+        test: /\.(gif|svg|jpg|png)$/,
         loader: "file-loader",
       },
     ],
@@ -37,7 +37,7 @@ module.exports = {
   devtool: "cheap-module-source-map",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-       historyApiFallback: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

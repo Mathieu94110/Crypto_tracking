@@ -2,7 +2,8 @@ import React from "react";
 import { HeaderBar } from "../headerBar";
 import TopSevenTrending from "../topSevenTrending";
 import NavBar from '../Nav/Navbar';
-import List from '../list/list';
+import BitCoinDatas from "../BitcoinDatas";
+
 export default function Home() {
 
 
@@ -11,9 +12,10 @@ export default function Home() {
 
       <NavBar />
       <HeaderBar />
+      <div style={{display:"flex"}}>
       <TopSevenTrending />
-
-
+<BitCoinDatas/>
+</div>
     </div>
   )
 }
