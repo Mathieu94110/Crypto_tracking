@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 
-
-
-
-
 interface ISevenTrends {
     id: string,
     large: string,
@@ -14,7 +10,6 @@ interface ISevenTrends {
     symbol: string,
     thumb: string
 }
-
 
 
 export default function TopSevenTrending() {

@@ -7,8 +7,8 @@ import {
   Link
 } from "react-router-dom";
 import "./style.scss";
-import Home from './components/home/home';
-import List from './components/list/list';
+import Home from './pages/home/home.tsx';
+import List from './pages/list/list.tsx';
 
 const App: FC = () => {
 
