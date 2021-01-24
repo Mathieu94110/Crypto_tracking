@@ -44,7 +44,6 @@ let ctx = document.getElementById('myChart').getContext('2d'); // 2d context né
     
   });
 
-
   return (
     <div>
    
@@ -52,8 +51,13 @@ let ctx = document.getElementById('myChart').getContext('2d'); // 2d context né
         <canvas  id="myChart" width={250} height={250}></canvas>
       </div>
 
-      <div>
-        <button
+      <div style={{textAlign:"center"}}>
+        <button style={{width:"50px",height:"25px",
+textAlign:"center",
+verticalAlign:"middle",
+background:"black",
+color:"white",
+textDecoration:"none", borderRadius:"5%"}}
           onClick={() => setTimeFormat("24h")}
        
         >
@@ -61,13 +65,23 @@ let ctx = document.getElementById('myChart').getContext('2d'); // 2d context né
         </button>
         <button
           onClick={() => setTimeFormat("7d")}
-          style={{margin:"0 10px"}}
+          style={{width:"50px",height:"25px",
+textAlign:"center",
+verticalAlign:"middle",
+background:"black",
+color:"white",
+textDecoration:"none", margin:"25px 25px  25px", borderRadius:"5%"}}
         >
           7d
         </button>
         <button
           onClick={() => setTimeFormat("1y")}
-      
+      style={{width:"50px",height:"25px",
+textAlign:"center",
+verticalAlign:"middle",
+background:"black",
+color:"white",
+textDecoration:"none", borderRadius:"5%"}}
         >
           1y
         </button>

@@ -39,7 +39,7 @@ const CoinsDatas = () => {
 
   return (
     <div style={{ width: '500px', height: '500px', border: "2px solid #000", borderRadius: "2%", verticalAlign: "middle", color: "#fff",    backgroundImage: `url(${bitcoin_background})`, backgroundSize: 'cover', backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat', display: "flex", flexDirection: "column", justifyContent:"space-between"
+      backgroundRepeat: 'no-repeat', display: "flex", flexDirection: "column", justifyContent:"space-evenly"
     }}>
     
 
@@ -50,7 +50,8 @@ const CoinsDatas = () => {
                 <span>Capitalisation : </span><span>{allCoinsDatas.market_cap}</span>
           </div>
 
-     <div style={{display:"flex",flexDirection:"column"}}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            
         Jeton :    <span>{allCoinsDatas.total_supply}</span>
          </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -72,7 +73,7 @@ const CoinsDatas = () => {
 
          
 
-<BitcoinDetailPage/>
+
 
       
       </div>

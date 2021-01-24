@@ -40,8 +40,12 @@ export default function LeftNav({ open }) {
       <li onClick={() =>
       (window.location =
         "/liste")
-      }>Liste des cryptos-monnaies</li>
-
+      }>100 premières cryptos-monnaies</li>
+      <li onClick={() =>
+      (window.location =
+        "/rechercher")
+      } >Rechercher une crypto-monnaie</li>
+      <li>Les cryptos que je suis</li>
     </Ul>
   )
 }

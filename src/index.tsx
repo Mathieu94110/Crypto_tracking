@@ -9,23 +9,18 @@ import {
 import "./style.scss";
 import Home from './pages/home/home.tsx';
 import List from './pages/list/list.tsx';
+import Search from './pages/search/search.tsx';
 
 const App: FC = () => {
 
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/home">Accueil</Link>
-            </li>
-          </ul>
-        </nav>
+  
 
         <Switch>
           <Route path="/liste" component={List} />
-
+          <Route path="/rechercher" component={Search}/>
           <Route path="/" component={Home} />
 
         </Switch>
@@ -38,3 +33,13 @@ const App: FC = () => {
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
+/* retirer pour ne pas géner l'affichage sur les différentes pages
+      <nav>
+          <ul>
+            <li>
+              <Link to="/home">Accueil</Link>
+            </li>
+          </ul>
+        </nav>
+
+*/
