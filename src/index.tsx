@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -7,13 +7,15 @@ import {
   Link
 } from "react-router-dom";
 import "./style.scss";
-import Home from './pages/home/home.tsx';
-import List from './pages/list/list.tsx';
-import Search from './pages/search/search.tsx';
+import Home from './pages/home/home';
+import List from './pages/list/list';
+import Search from './pages/search/search';
+import { Provider } from "react-redux";
+import store from "./Store/Store";
+import reportWebVitals from './reportWebVitals';
 
-const App: FC = () => {
-
-  return (
+ReactDOM.render(
+  <Provider store={store}>
     <Router>
       <div>
   
@@ -27,11 +29,13 @@ const App: FC = () => {
 
       </div>
     </Router>
-
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById("root"));
+</Provider>,
+document.getElementById("root")
+);
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 
 /* retirer pour ne pas géner l'affichage sur les différentes pages
       <nav>

@@ -8,7 +8,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import coinGecko from "../../Api/coinGecko";
+import {  useSelector, useDispatch } from "react-redux";
+import { RootStore } from "../../Store/Store";
+import { GetCryptoCard } from "../../Actions/SearchActions";
 
 
 //Style du champs de texte
@@ -83,67 +85,26 @@ interface ICrypto {
 
 //
 const search = () => {
+    const dispatch = useDispatch();
   const classesInput = useStyles();
 
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState("");
+  const cryptoState = useSelector((state: RootStore) => state.favorites);
+/*
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [cryptoState, setCryptoState] = useState({
-  id: "string",
-  image: "string",
-  symbol: "string",
-    current_price: "number",
-  name:"string"
-});
-
-
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inputValue)
+*/
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value.toLowerCase())
  
-    if (inputValue.length <= 1) {
-      setError(true);
-      setTimeout(() => { setInputValue(" "); setError(false) }, 2000);
-    } else {
-
-      const searchCrypto = async () => {
-        try {
-          let response = await coinGecko.get(
-            'coins/markets/', {
-            params: {
-              vs_currency: "eur",
-              ids: inputValue
-            }
-          }
-          ).then(res => {
-            response = res.data[0];
-            console.log(response);
-            setCryptoState(response)
-            console.log(cryptoState.length)
-          })
-        }
-        catch (err) {
-          
-          console.error(err);
-        
-        };
- 
-      
-      }
-        searchCrypto();
-    }
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+dispatch(GetCryptoCard(inputValue))
   }
-
-    const handleChange = (e) => {
-        
-        setInputValue(e.target.value.toLowerCase())
- 
-    }
-    
+// test pour voir le state de favorites 
+  console.log(" searchCrypto state:", cryptoState )
+  
   const classes = useStylesCard();
-    // i have to fix the issue for search.tsx:129 TypeError: Cannot read property 'id' of undefined if input value is no recognized
+  
     
     return (
         <div style={{textAlign:"center"}}>
@@ -154,7 +115,7 @@ const search = () => {
     justifyContent: "center",alignItems:"center" }}>
             <div style={{width:"400px",height:"300px",display:"flex", flexDirection:"column" ,justifyContent:"space-evenly", border:"2px solid #0063cc", borderRadius:"10%"}}>
              <form className={classesInput.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
-                <TextField id={error ? "outlined-error-helper-text" : "outlined-basic"} label={error ? "Erreur" : "Nom"} helperText={error ? "Saisie non valide !" : null } variant="outlined" value={inputValue} onChange={handleChange} />
+                <TextField id="outlined-basic" label="Nom"  variant="outlined" value={inputValue} onChange={handleChange} />
        <BootstrapButton variant="contained" color="primary" disableRipple className={classesInput.margin}  type="submit" value="Envoyer">
         Rechercher
       </BootstrapButton>
@@ -163,13 +124,11 @@ const search = () => {
                 </div>
           </div>
           
-
-
-               <div style={{ width:"50vw",height:"90vh",display: "flex",
+<div style={{ width:"50vw",height:"90vh",display: "flex",
     flexDirection: "column",
     justifyContent: "center",alignItems:"center" }}>
                     <div style={{width:"600px",height:"300px",display:"flex", flexDirection:"column" ,justifyContent:"space-evenly", alignItems:"center"}}>
-              {cryptoState.id !== "string" ? (                    
+              {cryptoState.searchCrypto && (                    
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -195,15 +154,15 @@ const search = () => {
           En savoir plus
         </Button>
       </CardActions>
-                </Card> ) : null}
-              
+                </Card> )
+              }
           </div>
                 </div>
                 </div>
         </div>
   
      
+    
     )
 }
-
 export default search;
