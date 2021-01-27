@@ -1,37 +1,38 @@
 
-import {SearchCryptoDispatchTypes,SearchCryptoType , SEARCH_CRYPTO_SUCCESS, SEARCH_CRYPTO_FAIL, SEARCH_CRYPTO_LOADING } from "../Actions/SearchActionsTypes";
+import {SearchCryptoState,SearchCryptoActions,SEARCH_CRYPTO_SUCCESS, SEARCH_CRYPTO_FAIL, SEARCH_CRYPTO_LOADING } from "../Types/searchCryptoTypes";
 
-interface DefaultStateI{
-  loading: boolean,
-  searchCryptoFavorites?:SearchCryptoType
-}
 
-const defaultState: DefaultStateI = {
-loading : false
+
+const defaultState: SearchCryptoState = {
+  data: null,
+  loading: false,
+
 };
 
-const cryptoFavoriteReducer = (state: DefaultStateI = defaultState, action: SearchCryptoDispatchTypes ): DefaultStateI => {
+const searchCryptoReducer = (state = defaultState, action: SearchCryptoActions ): SearchCryptoState => {
   switch (action.type) {
      case SEARCH_CRYPTO_FAIL:
       return {
+        ...state,
       loading:false
       }
     case SEARCH_CRYPTO_LOADING:
       return {
+        ...state,
         loading: true
       }
     case SEARCH_CRYPTO_SUCCESS:
       return {
+       data : action.payload,
         loading: false,
-        searchCryptoFavorites: action.payload
-      }
+        }
    
     default:
       return state
   }
 };
 
-export default cryptoFavoriteReducer;
+export default searchCryptoReducer;
 
 
 

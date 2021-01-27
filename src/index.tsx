@@ -6,12 +6,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import "./style.scss";
+import "./scss/style.scss";
 import Home from './pages/home/home';
 import List from './pages/list/list';
 import Search from './pages/search/search';
 import { Provider } from "react-redux";
-import store from "./Store/Store";
+import store from "./redux/Store/Store";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
