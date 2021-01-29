@@ -10,6 +10,8 @@ import "./scss/style.scss";
 import Home from './pages/home/home';
 import List from './pages/list/list';
 import Search from './pages/search/search';
+import MyFavorites from './pages/myFavorites/myFavorites';
+import Gagnants_et_perdants from './pages/gagnants_et_perdants/gagnants_et_perdants';
 import { Provider } from "react-redux";
 import store from "./redux/Store/Store";
 import reportWebVitals from './reportWebVitals';
@@ -22,7 +24,9 @@ ReactDOM.render(
 
         <Switch>
           <Route path="/liste" component={List} />
-          <Route path="/rechercher" component={Search}/>
+          <Route path="/rechercher" component={Search} />
+          <Route path="/favoris" component={MyFavorites} />
+          <Route path="/Gagnants_et_perdants" component={Gagnants_et_perdants}/>
           <Route path="/" component={Home} />
 
         </Switch>

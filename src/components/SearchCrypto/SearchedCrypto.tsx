@@ -10,6 +10,11 @@ import Typography from '@material-ui/core/Typography';
 //rajout//
 import { setAlert } from '../../redux/Actions/alertActions';
 import { SearchCryptoData  } from "../../redux/Types/searchCryptoTypes";
+import {addCrypto } from "../../redux/Actions/AddAndDeleteActions";
+import { connect } from 'react-redux';
+
+
+
 
 
 const useStyles = makeStyles({
@@ -30,8 +35,8 @@ const searchedCrypto: FC<SearchCryptoProps> = ({data}) => {
   const classes = useStyles();
 
     return (
-        <div style={{textAlign:"center"}}>
-           <header> <h1 style={{ height: "10vh", lineHeight: "10vh", verticalAlign: "middle", color: "#fff", background: "#0063cc" }}>Rechercher une crypto-monnaie</h1></header>
+        <div style={{textAlign:"center",width:"50vw"}}>
+           
             <div style={{display:"flex"}}>
           
 <div style={{ width:"50vw",height:"90vh",display: "flex",
@@ -58,7 +63,7 @@ const searchedCrypto: FC<SearchCryptoProps> = ({data}) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={()=> data.addCrypto()}>
           Ajouter à ma liste
         </Button>
         <Button size="small" color="primary">
@@ -78,4 +83,15 @@ const searchedCrypto: FC<SearchCryptoProps> = ({data}) => {
     
     )
 }
-export default searchedCrypto;
+
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addCrypto: ()=> dispatch(addCrypto())
+  }
+}
+
+
+
+export default connect(null,mapDispatchToProps)(searchedCrypto);

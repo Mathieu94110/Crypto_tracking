@@ -45,7 +45,11 @@ export default function LeftNav({ open }) {
       (window.location =
         "/rechercher")
       } >Rechercher une crypto-monnaie</li>
-      <li>Les cryptos que je suis</li>
+       <li onClick={() =>
+      (window.location =
+        "/gagnants_et_perdants")
+      } >Gagnants et perdants</li>
+      <li onClick={()=> (window.location = "/favoris")}>Les cryptos que je suis</li>
     </Ul>
   )
 }

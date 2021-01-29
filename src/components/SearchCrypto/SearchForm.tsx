@@ -72,13 +72,11 @@ const useStylesCard = makeStyles({
 
 
 
-interface SearchCryptoProps {
-  title: string;
-}
 
 
 
-const SearchForm: FC<SearchCryptoProps> = ({ title }) => {
+
+const SearchForm: FC = () => {
   const dispatch = useDispatch();
   const classesInput = useStyles();
 
@@ -111,7 +109,7 @@ const SearchForm: FC<SearchCryptoProps> = ({ title }) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <header> <h1 style={{ height: "10vh", lineHeight: "10vh", verticalAlign: "middle", color: "#fff", background: "#0063cc" }}>{title}</h1></header>
+
       <div style={{ display: "flex" }}>
         <div style={{
           width: "50vw", height: "90vh", display: "flex",

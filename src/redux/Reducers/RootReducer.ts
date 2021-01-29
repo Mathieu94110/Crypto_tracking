@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import searchCryptoReducer from "./searchCryptoReducer";
 import alertReducer from "./alertReducer";
+import favoritesCryptoReducer from "./favoritesReducer"
 const RootReducer = combineReducers({
-    favorites: searchCryptoReducer,
+    search: searchCryptoReducer,
+    favorites:favoritesCryptoReducer,
     alert: alertReducer
 });
 
