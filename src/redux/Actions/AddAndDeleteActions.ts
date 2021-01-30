@@ -1,9 +1,9 @@
-import {ADD_CRYPTO,DELETE_CRYPTO,FavoritesCryptoData,FavoritesCryptoTypes} from '../Types/searchCryptoTypes';
+import {ADD_CRYPTO,DELETE_CRYPTO,FavoritesData,FavoritesCryptoTypes} from '../Types/searchCryptoTypes';
 
-export const addCrypto = (favoriteDatas: FavoritesCryptoData): FavoritesCryptoTypes => {
+export const addCrypto = (favoriteData: FavoritesData): FavoritesCryptoTypes => {
     return {
         type: ADD_CRYPTO,
-        payload: favoriteDatas
+        payload: favoriteData
     }
 };
 

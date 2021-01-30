@@ -1,9 +1,11 @@
+import { Collapse } from "@material-ui/core";
 import React, { FC, useState, useEffect } from "react";
 import coinGecko from "../../Api/coinGecko";
+import To_the_moon from "../../images/to_the_moon.jpeg";
 
 const gagnants_et_perdants: FC = () => {
-  const [allCryptos, setAllCryptos] = useState([]);
-
+  const [winningCryptos, setWinningCryptos] = useState([]);
+  const [loosingCryptos, setLoosingCryptos] = useState([]);
   useEffect(() => {
     const fetchData = async (page: number) => {
       const response = await coinGecko.get("/coins/markets/", {
@@ -28,8 +30,9 @@ const gagnants_et_perdants: FC = () => {
     (async () => {
       let results = [];
 
-      for (let page = 0; page < 10; page++) {
+      for (let page = 0; page < 5; page++) {
         const res = await fetchData(page);
+
         results.push(...res);
       }
       const sortByMapped = (map, compareFn) => (a, b) =>
@@ -40,36 +43,188 @@ const gagnants_et_perdants: FC = () => {
 
       const formatedData = [...results].sort(byPrice);
       const topTen = formatedData.splice(0, 10);
-
-      setAllCryptos(topTen);
+      console.log(topTen);
+      setWinningCryptos(topTen);
     })();
   }, []);
+  /* styles */
+  let styles = {
+    page: {
+      width: "100%",
+      height: "100vh",
+      backgroundImage: `url(${To_the_moon})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+    },
+    mainTitle: {
+      height: "10vh",
+      lineHeight: "10vh",
+      verticalAlign: "middle",
+      color: "#fff",
+      background: "#0063cc",
+      width: "100%",
+    },
 
+    cardContainer: {
+      display: "flex",
+      flexDirection: "column",
+      height: "90vh",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    periodContainer: {
+      width: "600px",
+      height: "50px",
+      background: "rgba(0, 99, 204, 0.5)",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "#fff",
+      fontWeight: 600,
+    },
+    period_content: {
+      width: "90%",
+      display: "flex",
+      justifyContent: "space-between",
+    },
+    period_contentspan: {
+      color: "#fff",
+      fontSize: "18px",
+      alignItems: "center",
+      display: "inline-flex",
+    },
+    button: {
+      padding: "5px",
+      color: "#0063cc",
+      background: "#fff",
+      border: "1px solid #fff",
+      textShadow: "1px 1px 1px #000",
+    },
+    card: {
+      width: "600px",
+
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+      alignItems: "flex-start",
+      fontWeight: 600,
+    },
+    table: {
+      margin: "0 auto",
+      width: "600px",
+      background: "rgba(255,255,255,0.5)",
+      borderSpacing: "0px",
+      boxShadow: " 5px 8px 24px 5px #0063cc",
+      border: "1px solid #fff",
+    },
+
+    thead: {
+      color: "#000",
+      background: "rgba(255,255,255,0.2)",
+    },
+    tr: {
+      color: "#fff",
+    },
+    tdIndex: {
+      textAlign: "center",
+      fontWeight: 800,
+    },
+
+    tdImage: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    img: {
+      width: "40px",
+      height: "40px",
+      margin: "7px auto",
+    },
+    tdDetails: {
+      textAlign: "center",
+      letterSpacing: "2px",
+    },
+    tdDetailsBlue: {
+      textAlign: "center",
+      color: "#0063cc",
+      letterSpacing: "2px",
+    },
+    growing: {
+      color: "green",
+      textAlign: "center",
+    },
+    triangleUp: {
+      width: "0",
+      height: "0",
+      borderLeft: "9px solid transparent",
+      borderRight: "9px solid transparent",
+      borderBottom: "15px solid green",
+    },
+
+    decreasing: {
+      color: "red",
+      textAlign: "center",
+    },
+  };
+
+  /**/
   return (
-    <div>
+    <div style={styles.page}>
       <header>
         {" "}
-        <h1
-          style={{
-            height: "10vh",
-            lineHeight: "10vh",
-            verticalAlign: "middle",
-            color: "#fff",
-            background: "#0063cc",
-            width: "100%",
-          }}
-        >
-          Gagnants et perdants
-        </h1>
+        <h1 style={styles.mainTitle}>Gagnants et perdants</h1>
       </header>
-      {allCryptos.map((crypto, index) => (
-        <div key={"crypto" + index}>
-          {crypto.id}
-          {crypto.market_cap_change_percentage_24h}
-          {crypto.symbol}
-          <img src={crypto.image} />
+
+      <div style={styles.cardContainer}>
+        <div style={styles.periodContainer}>
+          <div style={styles.period_content}>
+            <span style={styles.period_contentspan}>Période :</span>
+
+            <button style={styles.button}>24 H</button>
+
+            <button style={styles.button}>7 J</button>
+
+            <button style={styles.button}>30 J</button>
+          </div>
         </div>
-      ))}
+        <div style={styles.card}>
+          <table style={styles.table}>
+            <thead style={styles.thead}>
+              <tr>
+                <th colSpan={1}>Position</th>
+                <th colSpan={1}>Logo</th>
+                <th colSpan={1}>Nom</th>
+                <th colSpan={1}>symbole</th>
+                <th colSpan={1}>%</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {winningCryptos.map((crypto, index) => (
+                <tr key={"crypto" + index} style={styles.tr}>
+                  <td style={styles.tdIndex}>{index + 1}</td>
+                  <td style={styles.tdImage}>
+                    <img src={crypto.image} style={styles.img} />
+                  </td>
+                  <td style={styles.tdDetailsBlue}>{crypto.id}</td>
+                  <td style={styles.tdDetails}>{crypto.symbole}</td>
+                  <td
+                    style={
+                      crypto.market_cap_change_percentage_24h > 0
+                        ? styles.growing
+                        : styles.decreasing
+                    }
+                  >
+                    {crypto.market_cap_change_percentage_24h.toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

@@ -13,13 +13,11 @@ const favoritesCryptoReducer = (state = defaultState, action: FavoritesCryptoTyp
   
     switch (action.type) {
      case ADD_CRYPTO:
+         
       return {
-          favoriteDatas: [...state.favoriteDatas, { position: ++position, ...action.payload }]
+          favoriteDatas: [...state.favoriteDatas, {...action.payload }]
       }
-    case DELETE_CRYPTO:
-      return {
-       FavoritesCryptoData:   state.favorites.filter((favorite) => favorite.position != action.payload.position )
-      }
+  
     default:
       return state
   }

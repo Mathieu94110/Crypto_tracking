@@ -39,7 +39,6 @@ export interface FavoritesData {
 /**/
 export interface FavoritesCryptoData {
   favoritesCryptoDatas: FavoritesData[];
-  position:number
 }
 
 
@@ -49,7 +48,7 @@ export interface FavoritesCryptoData {
 /*  interface ADD cRYPTO*/
 export interface AddCryptoSuccess {
   type: typeof ADD_CRYPTO,
-  payload: FavoritesCryptoData;
+  payload: FavoritesData;
 }
 /*  interface Delete cRYPTO */ 
 export interface DeleteCryptoSuccess {
@@ -58,8 +57,7 @@ export interface DeleteCryptoSuccess {
 }
 /* State */
 export interface FavoritesCryptoState {
-  favoriteDatas: FavoritesCryptoData[],
-    position:number
+  favoriteDatas: FavoritesCryptoData[]
 }
 
 export type FavoritesCryptoTypes = AddCryptoSuccess | DeleteCryptoSuccess;
