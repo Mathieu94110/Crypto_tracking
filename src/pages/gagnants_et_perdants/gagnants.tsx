@@ -1,11 +1,9 @@
-import { Collapse } from "@material-ui/core";
 import React, { FC, useState, useEffect } from "react";
 import coinGecko from "../../Api/coinGecko";
 import To_the_moon from "../../images/to_the_moon.jpeg";
 
 const gagnants: FC = () => {
   const [winningCryptos, setWinningCryptos] = useState([]);
-  const [loosingCryptos, setLoosingCryptos] = useState([]);
   useEffect(() => {
     const fetchData = async (page: number) => {
       const response = await coinGecko.get("/coins/markets/", {
@@ -174,7 +172,7 @@ const gagnants: FC = () => {
     <div style={styles.page}>
       <header>
         {" "}
-        <h1 style={styles.mainTitle}>Gagnants et perdants</h1>
+        <h1 style={styles.mainTitle}>Gagnants</h1>
       </header>
 
       <div style={styles.cardContainer}>
@@ -182,7 +180,9 @@ const gagnants: FC = () => {
           <div style={styles.period_content}>
             <span style={styles.period_contentspan}>Période :</span>
 
-            <button style={styles.button}>24 H</button>
+            <button style={styles.button} active={true}>
+              24 H
+            </button>
 
             <button style={styles.button}>7 J</button>
 

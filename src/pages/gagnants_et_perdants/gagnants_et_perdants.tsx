@@ -102,7 +102,7 @@ const gagnants_et_perdants: FC = () => {
                 className={classes.description}
               >
                 Retrouvez les 10 hausses les plus importantes sur une période de
-                24h, 7j, 1s
+                24h, 7j, 1m
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -142,7 +142,7 @@ const gagnants_et_perdants: FC = () => {
                 className={classes.description}
               >
                 Retrouvez les 10 baisses les plus importantes sur une période de
-                24h, 7j, 1s
+                24h, 7j, 1m
               </Typography>
             </CardContent>
           </CardActionArea>

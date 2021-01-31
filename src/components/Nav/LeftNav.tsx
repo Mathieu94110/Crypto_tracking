@@ -45,6 +45,7 @@ export default function LeftNav({ open }) {
       <li onClick={() => (window.location = "/gagnants_et_perdants")}>
         Gagnants et perdants
       </li>
+
       <li onClick={() => (window.location = "/favoris")}>
         Les cryptos que je suis
       </li>
