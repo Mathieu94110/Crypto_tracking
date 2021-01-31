@@ -1,11 +1,20 @@
 import React, { FC, useState, useEffect } from "react";
 import To_the_sea from "../../images/go_to_the_sea.jpg";
 import coinGecko from "../../Api/coinGecko";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
 
 const perdants: FC = () => {
   const [loosingCryptos, setLoosingCryptos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  /* progressbar*/
+
+  /**/
   useEffect(() => {
     const fetchData = async (page: number) => {
+      setIsLoading(true);
+
       const response = await coinGecko.get("/coins/markets/", {
         params: {
           vs_currency: "eur",
@@ -43,6 +52,7 @@ const perdants: FC = () => {
       const lowTen = formatedDataTwo.splice(0, 10);
       console.log(lowTen);
       setLoosingCryptos(lowTen);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -173,6 +183,53 @@ const perdants: FC = () => {
     },
   };
 
+  const useStyles = makeStyles({
+    root: {
+      height: "100%",
+      width: "50%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      margin: "auto",
+    },
+    loading: {
+      height: "100px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+    },
+  });
+  const classes = useStyles();
+
+  if (isLoading) {
+    return (
+      <div style={styles.page}>
+        <div className={classes.root}>
+          <div className={classes.loading}>
+            <div
+              style={{
+                textAlign: "center",
+                fontWeight: 900,
+                fontSize: "20px",
+                color: "#fff",
+              }}
+            >
+              <p
+                style={{
+                  marginBottom: "30px",
+                }}
+              >
+                Chargement en cours
+              </p>
+              <CircularProgress disableShrink />
+            </div>
+
+            <div />
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div style={styles.page}>
       <header>
@@ -185,11 +242,17 @@ const perdants: FC = () => {
           <div style={styles.period_content}>
             <span style={styles.period_contentspan}>Période :</span>
 
-            <button style={styles.button}>24 H</button>
+            <button style={styles.button} onClick={() => setTimeFormat("1d")}>
+              24 H
+            </button>
 
-            <button style={styles.button}>7 J</button>
+            <button style={styles.button} onClick={() => setTimeFormat("7d")}>
+              7 J
+            </button>
 
-            <button style={styles.button}>30 J</button>
+            <button style={styles.button} onClick={() => setTimeFormat("30d")}>
+              30 J
+            </button>
           </div>
         </div>
         <div style={styles.card}>

@@ -1,11 +1,15 @@
 import React, { FC, useState, useEffect } from "react";
 import coinGecko from "../../Api/coinGecko";
 import To_the_moon from "../../images/to_the_moon.jpeg";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const gagnants: FC = () => {
   const [winningCryptos, setWinningCryptos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const fetchData = async (page: number) => {
+      setIsLoading(true);
       const response = await coinGecko.get("/coins/markets/", {
         params: {
           vs_currency: "eur",
@@ -43,9 +47,11 @@ const gagnants: FC = () => {
       const topTen = formatedData.splice(0, 10);
       console.log(topTen);
       setWinningCryptos(topTen);
+      setIsLoading(false);
     })();
   }, []);
   /* styles */
+
   let styles = {
     page: {
       width: "100%",
@@ -165,28 +171,75 @@ const gagnants: FC = () => {
       color: "red",
       textAlign: "center",
     },
+    root: {
+      height: "100%",
+      width: "50%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      margin: "auto",
+    },
+    loading: {
+      height: "100px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+    },
   };
 
   /**/
+
+  if (isLoading) {
+    return (
+      <div style={styles.page}>
+        <div style={styles.root}>
+          <div style={styles.loading}>
+            <div
+              style={{
+                textAlign: "center",
+                fontWeight: 900,
+                fontSize: "20px",
+                color: "#fff",
+              }}
+            >
+              <p
+                style={{
+                  marginBottom: "30px",
+                }}
+              >
+                Chargement en cours
+              </p>
+              <CircularProgress disableShrink />
+            </div>
+
+            <div />
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div style={styles.page}>
       <header>
         {" "}
         <h1 style={styles.mainTitle}>Gagnants</h1>
       </header>
-
       <div style={styles.cardContainer}>
         <div style={styles.periodContainer}>
           <div style={styles.period_content}>
             <span style={styles.period_contentspan}>Période :</span>
 
-            <button style={styles.button} active={true}>
+            <button style={styles.button} onClick={() => setTimeFormat("1d")}>
               24 H
             </button>
 
-            <button style={styles.button}>7 J</button>
+            <button style={styles.button} onClick={() => setTimeFormat("7d")}>
+              7 J
+            </button>
 
-            <button style={styles.button}>30 J</button>
+            <button style={styles.button} onClick={() => setTimeFormat("30d")}>
+              30 J
+            </button>
           </div>
         </div>
         <div style={styles.card}>
