@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import HistoryChart from "./HistoryChart";
 import coinGecko from "../../Api/coinGecko";
 
-
 const BitcoinDetailPage = () => {
- 
-
   const [coinData, setCoinData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const formatData = (data) => {
-    return data.map(el => {
+    return data.map((el) => {
       return {
         t: el[0],
         y: el[1].toFixed(2),
@@ -40,7 +37,6 @@ const BitcoinDetailPage = () => {
             days: "365",
           },
         }),
-     
       ]);
       console.log(day);
 
@@ -48,7 +44,6 @@ const BitcoinDetailPage = () => {
         day: formatData(day.data.prices),
         week: formatData(week.data.prices),
         year: formatData(year.data.prices),
-     
       });
       setIsLoading(false);
     };
@@ -58,19 +53,20 @@ const BitcoinDetailPage = () => {
 
   const renderData = () => {
     if (isLoading) {
-      return <div style={{ textAlign:"center",fontWeight:600}}>Chargement en cours</div>;
+      return (
+        <div style={{ textAlign: "center", fontWeight: 600 }}>
+          Chargement en cours
+        </div>
+      );
     }
     return (
       <div>
-        
         <HistoryChart data={coinData} />
-     
       </div>
-    )
-  }
+    );
+  };
 
   return renderData();
-
-}
+};
 
 export default BitcoinDetailPage;

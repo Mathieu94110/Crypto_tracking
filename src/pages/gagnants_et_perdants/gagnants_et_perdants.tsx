@@ -1,229 +1,162 @@
-import { Collapse } from "@material-ui/core";
-import React, { FC, useState, useEffect } from "react";
-import coinGecko from "../../Api/coinGecko";
-import To_the_moon from "../../images/to_the_moon.jpeg";
+import React, { FC } from "react";
+import Crypto_chart from "../../images/crypto_chart.jpg";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Navbar from "../../components/Nav/Navbar";
+import Bullish from "../../images/bullish.jpg";
+import Bearish from "../../images/bearish.jpg";
+
+const useStyles = makeStyles({
+  page: {
+    width: "100%",
+    height: "100vh",
+    margin: "0",
+    padding: "0",
+    backgroundImage: `url(${Crypto_chart})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+
+  title: {
+    width: "100%",
+    height: "10vh",
+    color: "gold",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cards_parent: {
+    width: "100%",
+    height: "80vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  title_bull: {
+    color: "green",
+    marginLeft: "20px",
+  },
+  title_bear: {
+    marginLeft: "20px",
+  },
+
+  description: {
+    fontSize: "16px",
+    fontWeight: "bold",
+    color: "#000",
+    margin: "0 20px",
+  },
+  action: {
+    fontWeight: 800,
+    marginLeft: "20px",
+  },
+
+  root: {
+    maxWidth: 345,
+    maxHeight: 420,
+  },
+  media: {
+    height: 140,
+  },
+});
 
 const gagnants_et_perdants: FC = () => {
-  const [winningCryptos, setWinningCryptos] = useState([]);
-  const [loosingCryptos, setLoosingCryptos] = useState([]);
-  useEffect(() => {
-    const fetchData = async (page: number) => {
-      const response = await coinGecko.get("/coins/markets/", {
-        params: {
-          vs_currency: "eur",
-          per_page: 250,
-          page: page,
-        },
-      });
-      const responseData = response.data;
-      const targetDatas = responseData.map((data) => {
-        return {
-          id: data.id,
-          image: data.image,
-          symbole: data.symbol,
-          market_cap_change_percentage_24h:
-            data.market_cap_change_percentage_24h,
-        };
-      });
-      return targetDatas;
-    };
-    (async () => {
-      let results = [];
+  const classes = useStyles();
 
-      for (let page = 0; page < 5; page++) {
-        const res = await fetchData(page);
-
-        results.push(...res);
-      }
-      const sortByMapped = (map, compareFn) => (a, b) =>
-        compareFn(map(a), map(b));
-      const byValue = (a, b) => b - a;
-      const toPrice = (e) => e.market_cap_change_percentage_24h;
-      const byPrice = sortByMapped(toPrice, byValue);
-
-      const formatedData = [...results].sort(byPrice);
-      const topTen = formatedData.splice(0, 10);
-      console.log(topTen);
-      setWinningCryptos(topTen);
-    })();
-  }, []);
-  /* styles */
-  let styles = {
-    page: {
-      width: "100%",
-      height: "100vh",
-      backgroundImage: `url(${To_the_moon})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center center",
-      backgroundRepeat: "no-repeat",
-    },
-    mainTitle: {
-      height: "10vh",
-      lineHeight: "10vh",
-      verticalAlign: "middle",
-      color: "#fff",
-      background: "#0063cc",
-      width: "100%",
-    },
-
-    cardContainer: {
-      display: "flex",
-      flexDirection: "column",
-      height: "90vh",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    periodContainer: {
-      width: "600px",
-      height: "50px",
-      background: "rgba(0, 99, 204, 0.5)",
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "#fff",
-      fontWeight: 600,
-    },
-    period_content: {
-      width: "90%",
-      display: "flex",
-      justifyContent: "space-between",
-    },
-    period_contentspan: {
-      color: "#fff",
-      fontSize: "18px",
-      alignItems: "center",
-      display: "inline-flex",
-    },
-    button: {
-      padding: "5px",
-      color: "#0063cc",
-      background: "#fff",
-      border: "1px solid #fff",
-      textShadow: "1px 1px 1px #000",
-    },
-    card: {
-      width: "600px",
-
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-evenly",
-      alignItems: "flex-start",
-      fontWeight: 600,
-    },
-    table: {
-      margin: "0 auto",
-      width: "600px",
-      background: "rgba(255,255,255,0.5)",
-      borderSpacing: "0px",
-      boxShadow: " 5px 8px 24px 5px #0063cc",
-      border: "1px solid #fff",
-    },
-
-    thead: {
-      color: "#000",
-      background: "rgba(255,255,255,0.2)",
-    },
-    tr: {
-      color: "#fff",
-    },
-    tdIndex: {
-      textAlign: "center",
-      fontWeight: 800,
-    },
-
-    tdImage: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    img: {
-      width: "40px",
-      height: "40px",
-      margin: "7px auto",
-    },
-    tdDetails: {
-      textAlign: "center",
-      letterSpacing: "2px",
-    },
-    tdDetailsBlue: {
-      textAlign: "center",
-      color: "#0063cc",
-      letterSpacing: "2px",
-    },
-    growing: {
-      color: "green",
-      textAlign: "center",
-    },
-    triangleUp: {
-      width: "0",
-      height: "0",
-      borderLeft: "9px solid transparent",
-      borderRight: "9px solid transparent",
-      borderBottom: "15px solid green",
-    },
-
-    decreasing: {
-      color: "red",
-      textAlign: "center",
-    },
-  };
-
-  /**/
   return (
-    <div style={styles.page}>
-      <header>
-        {" "}
-        <h1 style={styles.mainTitle}>Gagnants et perdants</h1>
-      </header>
+    <div className={classes.page}>
+      <Navbar />
 
-      <div style={styles.cardContainer}>
-        <div style={styles.periodContainer}>
-          <div style={styles.period_content}>
-            <span style={styles.period_contentspan}>Période :</span>
+      <h1 className={classes.title}>Gagnants et perdants</h1>
+      <div className={classes.cards_parent}>
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={Bullish}
+              title="Bullish market "
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                className={classes.title_bull}
+              >
+                En hausse
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                className={classes.description}
+              >
+                Retrouvez les 10 hausses les plus importantes sur une période de
+                24h, 7j, 1s
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button
+              size="small"
+              color="primary"
+              className={classes.action}
+              onClick={() => (window.location = "/gagnants")}
+            >
+              En savoir plus
+            </Button>
+          </CardActions>
+        </Card>
 
-            <button style={styles.button}>24 H</button>
-
-            <button style={styles.button}>7 J</button>
-
-            <button style={styles.button}>30 J</button>
-          </div>
-        </div>
-        <div style={styles.card}>
-          <table style={styles.table}>
-            <thead style={styles.thead}>
-              <tr>
-                <th colSpan={1}>Position</th>
-                <th colSpan={1}>Logo</th>
-                <th colSpan={1}>Nom</th>
-                <th colSpan={1}>symbole</th>
-                <th colSpan={1}>%</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {winningCryptos.map((crypto, index) => (
-                <tr key={"crypto" + index} style={styles.tr}>
-                  <td style={styles.tdIndex}>{index + 1}</td>
-                  <td style={styles.tdImage}>
-                    <img src={crypto.image} style={styles.img} />
-                  </td>
-                  <td style={styles.tdDetailsBlue}>{crypto.id}</td>
-                  <td style={styles.tdDetails}>{crypto.symbole}</td>
-                  <td
-                    style={
-                      crypto.market_cap_change_percentage_24h > 0
-                        ? styles.growing
-                        : styles.decreasing
-                    }
-                  >
-                    {crypto.market_cap_change_percentage_24h.toFixed(2)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={Bearish}
+              title="Bearish market "
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                color="secondary"
+                className={classes.title_bear}
+              >
+                En baisse
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                className={classes.description}
+              >
+                Retrouvez les 10 baisses les plus importantes sur une période de
+                24h, 7j, 1s
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button
+              size="small"
+              color="primary"
+              className={classes.action}
+              onClick={() => (window.location = "/perdants")}
+            >
+              En savoir plus
+            </Button>
+          </CardActions>
+        </Card>
       </div>
     </div>
   );
