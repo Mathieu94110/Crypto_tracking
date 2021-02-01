@@ -5,12 +5,10 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
 
 const perdants: FC = () => {
-  const [loosingCryptos, setLoosingCryptos] = useState([]);
+  const [winningCryptos, setWinningCryptos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  /* progressbar*/
-
-  /**/
+  const [timeFormat, setTimeFormat] = useState("24h"); //
+  console.log(timeFormat);
   useEffect(() => {
     const fetchData = async (page: number) => {
       setIsLoading(true);
@@ -20,56 +18,68 @@ const perdants: FC = () => {
           vs_currency: "eur",
           per_page: 250,
           page: page,
+          price_change_percentage: timeFormat,
         },
       });
-      const responseDataTwo = response.data;
-      const targetDatasTwo = responseDataTwo.map((data) => {
-        return {
-          id: data.id,
-          image: data.image,
-          symbole: data.symbol,
-          market_cap_change_percentage_24h:
-            data.market_cap_change_percentage_24h,
-        };
+      const responseData = response.data;
+      const targetDatas = responseData.map((data) => {
+        if (timeFormat === "7d") {
+          return {
+            id: data.id,
+            image: data.image,
+            symbole: data.symbol,
+            pourcentage_evolution: data.price_change_percentage_7d_in_currency,
+          };
+        }
+        if (timeFormat === "30d") {
+          return {
+            id: data.id,
+            image: data.image,
+            symbole: data.symbol,
+            pourcentage_evolution: data.price_change_percentage_30d_in_currency,
+          };
+        } else {
+          return {
+            id: data.id,
+            image: data.image,
+            symbole: data.symbol,
+            pourcentage_evolution: data.price_change_percentage_24h_in_currency,
+          };
+        }
       });
-      return targetDatasTwo;
+      return targetDatas;
     };
     (async () => {
       let results = [];
 
-      for (let page = 0; page < 5; page++) {
+      for (let page = 0; page < 65; page++) {
         const res = await fetchData(page);
 
         results.push(...res);
       }
-      const sortByMappedTwo = (map, compareFn) => (a, b) =>
+      const sortByMapped = (map, compareFn) => (a, b) =>
         compareFn(map(a), map(b));
-      const byValueTwo = (a, b) => a - b;
-      const toPriceTwo = (e) => e.market_cap_change_percentage_24h;
-      const byPriceTwo = sortByMappedTwo(toPriceTwo, byValueTwo);
+      const byValue = (a, b) => a - b;
+      const toPrice = (e) => e.pourcentage_evolution;
+      const byPrice = sortByMapped(toPrice, byValue);
 
-      const formatedDataTwo = [...results].sort(byPriceTwo);
-      const lowTen = formatedDataTwo.splice(0, 10);
-      console.log(lowTen);
-      setLoosingCryptos(lowTen);
+      const formatedData = [...results].sort(byPrice);
+      const topTen = formatedData.splice(0, 10);
+      console.log(topTen);
+      setWinningCryptos(topTen);
       setIsLoading(false);
     })();
-  }, []);
+  }, [timeFormat]);
+  /* styles */
 
-  //styles//////////////////////
   let styles = {
     page: {
       width: "100%",
       height: "100vh",
-      margin: "0",
-      padding: "0",
       backgroundImage: `url(${To_the_sea})`,
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
     },
     mainTitle: {
       height: "10vh",
@@ -78,6 +88,7 @@ const perdants: FC = () => {
       color: "#fff",
       background: "#0063cc",
       width: "100%",
+      textAlign: "center",
     },
 
     cardContainer: {
@@ -181,9 +192,6 @@ const perdants: FC = () => {
       color: "red",
       textAlign: "center",
     },
-  };
-
-  const useStyles = makeStyles({
     root: {
       height: "100%",
       width: "50%",
@@ -198,20 +206,22 @@ const perdants: FC = () => {
       flexDirection: "column",
       justifyContent: "space-evenly",
     },
-  });
-  const classes = useStyles();
+  };
+
+  /**/
 
   if (isLoading) {
     return (
       <div style={styles.page}>
-        <div className={classes.root}>
-          <div className={classes.loading}>
+        <div style={styles.root}>
+          <div style={styles.loading}>
             <div
               style={{
                 textAlign: "center",
+
                 fontWeight: 900,
                 fontSize: "20px",
-                color: "#fff",
+                color: "white",
               }}
             >
               <p
@@ -236,13 +246,12 @@ const perdants: FC = () => {
         {" "}
         <h1 style={styles.mainTitle}>Perdants</h1>
       </header>
-
       <div style={styles.cardContainer}>
         <div style={styles.periodContainer}>
           <div style={styles.period_content}>
             <span style={styles.period_contentspan}>Période :</span>
 
-            <button style={styles.button} onClick={() => setTimeFormat("1d")}>
+            <button style={styles.button} onClick={() => setTimeFormat("24h")}>
               24 H
             </button>
 
@@ -268,7 +277,7 @@ const perdants: FC = () => {
             </thead>
 
             <tbody>
-              {loosingCryptos.map((crypto, index) => (
+              {winningCryptos.map((crypto, index) => (
                 <tr key={"crypto" + index} style={styles.tr}>
                   <td style={styles.tdIndex}>{index + 1}</td>
                   <td style={styles.tdImage}>
@@ -278,12 +287,12 @@ const perdants: FC = () => {
                   <td style={styles.tdDetails}>{crypto.symbole}</td>
                   <td
                     style={
-                      crypto.market_cap_change_percentage_24h > 0
+                      crypto.pourcentage_evolution > 0
                         ? styles.growing
                         : styles.decreasing
                     }
                   >
-                    {crypto.market_cap_change_percentage_24h.toFixed(2)}
+                    {crypto.pourcentage_evolution.toFixed(2)}
                   </td>
                 </tr>
               ))}

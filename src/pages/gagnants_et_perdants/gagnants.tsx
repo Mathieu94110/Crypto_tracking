@@ -6,33 +6,52 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const gagnants: FC = () => {
   const [winningCryptos, setWinningCryptos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [timeFormat, setTimeFormat] = useState("24h"); //
+  console.log(timeFormat);
   useEffect(() => {
     const fetchData = async (page: number) => {
       setIsLoading(true);
+
       const response = await coinGecko.get("/coins/markets/", {
         params: {
           vs_currency: "eur",
           per_page: 250,
           page: page,
+          price_change_percentage: timeFormat,
         },
       });
       const responseData = response.data;
       const targetDatas = responseData.map((data) => {
-        return {
-          id: data.id,
-          image: data.image,
-          symbole: data.symbol,
-          market_cap_change_percentage_24h:
-            data.market_cap_change_percentage_24h,
-        };
+        if (timeFormat === "7d") {
+          return {
+            id: data.id,
+            image: data.image,
+            symbole: data.symbol,
+            pourcentage_evolution: data.price_change_percentage_7d_in_currency,
+          };
+        }
+        if (timeFormat === "30d") {
+          return {
+            id: data.id,
+            image: data.image,
+            symbole: data.symbol,
+            pourcentage_evolution: data.price_change_percentage_30d_in_currency,
+          };
+        } else {
+          return {
+            id: data.id,
+            image: data.image,
+            symbole: data.symbol,
+            pourcentage_evolution: data.price_change_percentage_24h_in_currency,
+          };
+        }
       });
       return targetDatas;
     };
     (async () => {
       let results = [];
 
-      for (let page = 0; page < 5; page++) {
+      for (let page = 0; page < 65; page++) {
         const res = await fetchData(page);
 
         results.push(...res);
@@ -40,7 +59,7 @@ const gagnants: FC = () => {
       const sortByMapped = (map, compareFn) => (a, b) =>
         compareFn(map(a), map(b));
       const byValue = (a, b) => b - a;
-      const toPrice = (e) => e.market_cap_change_percentage_24h;
+      const toPrice = (e) => e.pourcentage_evolution;
       const byPrice = sortByMapped(toPrice, byValue);
 
       const formatedData = [...results].sort(byPrice);
@@ -49,7 +68,7 @@ const gagnants: FC = () => {
       setWinningCryptos(topTen);
       setIsLoading(false);
     })();
-  }, []);
+  }, [timeFormat]);
   /* styles */
 
   let styles = {
@@ -229,7 +248,7 @@ const gagnants: FC = () => {
           <div style={styles.period_content}>
             <span style={styles.period_contentspan}>Période :</span>
 
-            <button style={styles.button} onClick={() => setTimeFormat("1d")}>
+            <button style={styles.button} onClick={() => setTimeFormat("24h")}>
               24 H
             </button>
 
@@ -265,12 +284,12 @@ const gagnants: FC = () => {
                   <td style={styles.tdDetails}>{crypto.symbole}</td>
                   <td
                     style={
-                      crypto.market_cap_change_percentage_24h > 0
+                      crypto.pourcentage_evolution > 0
                         ? styles.growing
                         : styles.decreasing
                     }
                   >
-                    {crypto.market_cap_change_percentage_24h.toFixed(2)}
+                    {crypto.pourcentage_evolution.toFixed(2)}
                   </td>
                 </tr>
               ))}
