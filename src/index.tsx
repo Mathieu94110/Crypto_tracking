@@ -10,24 +10,30 @@ import GagnantsEtPerdants from "./pages/gagnants_et_perdants/gagnants_et_perdant
 import Gagnants from "./pages/gagnants_et_perdants/gagnants";
 import Perdants from "./pages/gagnants_et_perdants/perdants";
 import { Provider } from "react-redux";
-import store from "./redux/Store/Store";
+import { store, persistor } from "./redux/Store/Store"; //
 import reportWebVitals from "./reportWebVitals";
+import { PersistGate } from "redux-persist/integration/react"; //
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/liste" component={List} />
-          <Route path="/rechercher" component={Search} />
-          <Route path="/favoris" component={MyFavorites} />
-          <Route path="/gagnants_et_perdants" component={GagnantsEtPerdants} />
-          <Route path="/gagnants" component={Gagnants} />
-          <Route path="/perdants" component={Perdants} />
-          <Route path="/" component={Home} />
-        </Switch>
-      </div>
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router>
+        <div>
+          <Switch>
+            <Route path="/liste" component={List} />
+            <Route path="/rechercher" component={Search} />
+            <Route path="/favoris" component={MyFavorites} />
+            <Route
+              path="/gagnants_et_perdants"
+              component={GagnantsEtPerdants}
+            />
+            <Route path="/gagnants" component={Gagnants} />
+            <Route path="/perdants" component={Perdants} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
+      </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

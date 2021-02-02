@@ -18,11 +18,12 @@ const myFavorites: FC = () => {
   const Favorites = useSelector(
     (state: RootStore) => state.favorites.favoriteDatas
   );
+  console.log(Favorites);
   return (
     <div>
       <h1>Favoris</h1>
       {Favorites.map((fav, index) => (
-        <div key={index}>{fav.name}</div>
+        <div key={index}>{fav["0"].name}</div>
       ))}
     </div>
   );

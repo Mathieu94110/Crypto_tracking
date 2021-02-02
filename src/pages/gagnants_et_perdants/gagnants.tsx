@@ -2,11 +2,19 @@ import React, { FC, useState, useEffect } from "react";
 import coinGecko from "../../Api/coinGecko";
 import To_the_moon from "../../images/to_the_moon.jpeg";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const gagnants: FC = () => {
   const [winningCryptos, setWinningCryptos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [timeFormat, setTimeFormat] = useState("24h"); //
+  const [sample, setSample] = useState(1);
+
   console.log(timeFormat);
   useEffect(() => {
     const fetchData = async (page: number) => {
@@ -15,7 +23,7 @@ const gagnants: FC = () => {
       const response = await coinGecko.get("/coins/markets/", {
         params: {
           vs_currency: "eur",
-          per_page: 250,
+          per_page: 100,
           page: page,
           price_change_percentage: timeFormat,
         },
@@ -51,7 +59,7 @@ const gagnants: FC = () => {
     (async () => {
       let results = [];
 
-      for (let page = 0; page < 65; page++) {
+      for (let page = 0; page < sample; page++) {
         const res = await fetchData(page);
 
         results.push(...res);
@@ -68,8 +76,17 @@ const gagnants: FC = () => {
       setWinningCryptos(topTen);
       setIsLoading(false);
     })();
-  }, [timeFormat]);
+  }, [timeFormat, sample]);
   /* styles */
+
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+      },
+    })
+  );
 
   let styles = {
     page: {
@@ -207,7 +224,7 @@ const gagnants: FC = () => {
   };
 
   /**/
-
+  const classes = useStyles();
   if (isLoading) {
     return (
       <div style={styles.page}>
@@ -246,19 +263,46 @@ const gagnants: FC = () => {
       <div style={styles.cardContainer}>
         <div style={styles.periodContainer}>
           <div style={styles.period_content}>
+            <span style={styles.period_contentspan}>Échantillon :</span>
+
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
+
+              <Select defaultValue="" id="grouped-native-select">
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+
+                <MenuItem value={1} onClick={() => setSample(1)}>
+                  100 premières
+                </MenuItem>
+                <MenuItem value={10} onClick={() => setSample(10)}>
+                  1000 premières
+                </MenuItem>
+                <MenuItem value={100} onClick={() => setSample(65)}>
+                  Toutes
+                </MenuItem>
+              </Select>
+            </FormControl>
             <span style={styles.period_contentspan}>Période :</span>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
+              <Select defaultValue="" id="grouped-select">
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
 
-            <button style={styles.button} onClick={() => setTimeFormat("24h")}>
-              24 H
-            </button>
-
-            <button style={styles.button} onClick={() => setTimeFormat("7d")}>
-              7 J
-            </button>
-
-            <button style={styles.button} onClick={() => setTimeFormat("30d")}>
-              30 J
-            </button>
+                <MenuItem value={"24h"} onClick={() => setTimeFormat("24h")}>
+                  24 heures
+                </MenuItem>
+                <MenuItem value={"7d"} onClick={() => setTimeFormat("7d")}>
+                  7 jours
+                </MenuItem>
+                <MenuItem value={"30d"} onClick={() => setTimeFormat("30d")}>
+                  30 jours
+                </MenuItem>
+              </Select>
+            </FormControl>
           </div>
         </div>
         <div style={styles.card}>

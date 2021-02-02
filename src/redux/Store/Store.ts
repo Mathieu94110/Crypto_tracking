@@ -7,14 +7,14 @@ import storage from 'redux-persist/lib/storage';
 
 
 const persistConfig = {
-  key: 'favoritesCryptoReducer',
+  key: 'root',
   storage: storage,
-  whitelist: ['favoritesCryptoReducer'] // which reducer want to store
+  whitelist: ['favorites'] // which reducer want to store
 };
-const pReducer = persistReducer(persistConfig, RootReducer);
+const persistedReducer = persistReducer(persistConfig, RootReducer);
 
-const store = createStore(pReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk)));
 const persistor = persistStore(store);
 
-export type RootStore = ReturnType<typeof pReducer>
-export default  store ;
+export type RootStore = ReturnType<typeof persistedReducer>
+export { store, persistor } ;
