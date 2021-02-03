@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { setAlert } from "../../redux/Actions/alertActions";
 import { SearchCryptoData } from "../../redux/Types/searchCryptoTypes";
 import { addCrypto } from "../../redux/Actions/AddAndDeleteActions";
-import { connect } from "react-redux";
+
 import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles({
@@ -83,22 +83,14 @@ const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
                 >
                   Ajouter à ma liste
                 </Button>
-                <Button size="small" color="primary">
-                  En savoir plus
-                </Button>
               </CardActions>
             </Card>
           </div>
+          <div></div>
         </div>
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addCrypto: () => dispatch(addCrypto()),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(searchedCrypto);
+export default searchedCrypto;

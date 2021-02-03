@@ -79,6 +79,7 @@ export interface SearchCryptoError {
 export interface SearchCryptoState {
   data: SearchCryptoData | null;
   loading: boolean;
+
 }
 
 
@@ -93,6 +94,10 @@ export interface SearchCryptoSuccess {
   payload: SearchCryptoData;
 
 }
+
+
+
+
 export type SearchCryptoActions = SearchCryptoLoading | SearchCryptoFail | SearchCryptoSuccess;
 
 

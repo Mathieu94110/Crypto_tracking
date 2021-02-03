@@ -32,3 +32,6 @@ export const GetCryptoCard = (inputValue: string): ThunkAction<void, RootStore, 
     type: SEARCH_CRYPTO_LOADING
   }
 }
+
+
+ 
