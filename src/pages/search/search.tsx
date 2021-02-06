@@ -5,10 +5,83 @@ import AlertError from "../../components/SearchCrypto/Alert";
 import SearchedCrypto from "../../components/SearchCrypto/SearchedCrypto";
 import SearchForm from "../../components/SearchCrypto/SearchForm";
 import { setAlert } from "../../redux/Actions/alertActions";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+
 import { Alert, AlertTitle } from "@material-ui/lab";
-import { withStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
+
+//styles
+
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+    alerts: {
+      height: "100px",
+      width: "100%",
+      [theme.breakpoints.up("md")]: {
+        height: "10vh",
+      },
+    },
+    alert: {
+      justifyContent: "center",
+    },
+
+    emptyAlert: {
+      width: "100%",
+      height: "100%",
+
+      [theme.breakpoints.up("md")]: {
+        height: "10vh",
+      },
+    },
+    page: {
+      textAlign: "center",
+      display: "column",
+      width: "100%",
+      maxHeight: "650px",
+      [theme.breakpoints.up("md")]: {
+        height: "100vh",
+      },
+    },
+    homeTitle: {
+      height: "60px",
+      lineHeight: "60px",
+      color: "#fff",
+      background: "#0063cc",
+      width: "100%",
+      fontSize: "1.2em",
+      [theme.breakpoints.up("md")]: {
+        height: "10vh",
+        width: "100%",
+      },
+    },
+    title: {
+      fontWeight: 700,
+      [theme.breakpoints.up("md")]: {},
+    },
+    formAndResult: {
+      display: "block",
+      justifyContent: "space-evenly",
+      height: "700px",
+
+      alignItems: "center",
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+        height: "calc(80vh - 100px)",
+        width: "100%",
+      },
+    },
+  })
+);
+
+//
 
 const Search: FC = () => {
   const Favorites = useSelector(
@@ -28,68 +101,39 @@ var arrByID = Favorites.filter(searchById);
   const alertMsg = useSelector((state: RootStore) => state.alert.message);
 
   //console.log(SearchCryptoData)
+
   (() => {
     if (SearchCryptoData != null) {
       console.log(SearchCryptoData[0].id);
     }
   })();
 
-  const useStyles = makeStyles({
-    parent: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      position: "absolute",
-      maxHeight: "80px",
-      width: "100%",
-    },
-
-    alert: {
-      backgroundColor: "rgba(34, 139, 34,0.8)",
-      width: "100%",
-      margin: "auto",
-      display: "flex",
-      justifyContent: "center",
-    },
-    title: {
-      fontWeight: 700,
-    },
-  });
-
   const classes = useStyles();
   return (
-    <div style={{ textAlign: "center", display: "column" }}>
+    <div className={classes.page}>
       <header>
         {" "}
-        <h1
-          style={{
-            height: "10vh",
-            lineHeight: "10vh",
-            verticalAlign: "middle",
-            color: "#fff",
-            background: "#0063cc",
-            width: "100%",
-          }}
-        >
-          Rechercher une crypto-monnaie
-        </h1>
+        <h1 className={classes.homeTitle}>Rechercher une crypto-monnaie</h1>
       </header>
-      {SearchCryptoData && (
-        <div className={classes.parent}>
-          {" "}
-          <div className={classes.root}>
-            <Alert severity="success" className={classes.alert}>
-              <AlertTitle className={classes.title}>Succès</AlertTitle>
-              <strong>Cryptomonnaie </strong>
-              ajoutée à vos favoris !
-            </Alert>
-          </div>
-        </div>
-      )}
-      {alertMsg && (
-        <AlertError message={alertMsg} onClose={() => dispatch(setAlert(""))} />
-      )}
-      <div style={{ display: "flex" }}>
+
+      <div className={classes.alerts}>
+        {SearchCryptoData ? (
+          <Alert severity="success" className={classes.alert}>
+            <AlertTitle className={classes.title}>Succès</AlertTitle>
+            <strong>Cryptomonnaie </strong>
+            ajoutée à vos favoris !
+          </Alert>
+        ) : alertMsg ? (
+          <AlertError
+            message={alertMsg}
+            onClose={() => dispatch(setAlert(""))}
+          />
+        ) : (
+          <div className={classes.emptyAlert}></div>
+        )}
+      </div>
+
+      <div className={classes.formAndResult}>
         <SearchForm />
         {loading ? (
           <h2 style={{ margin: "auto" }}>Chargement...</h2>

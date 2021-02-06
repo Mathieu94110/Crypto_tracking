@@ -9,22 +9,6 @@ interface AlertProps {
 }
 
 const useStyles = makeStyles({
-  parent: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    position: "absolute",
-    maxHeight: "80px",
-    width: "100%",
-  },
-
-  alert: {
-    backgroundColor: "rgba(255, 0, 0,0.7)",
-    width: "100%",
-    margin: "auto",
-    display: "flex",
-    justifyContent: "center",
-  },
   title: {
     fontWeight: 700,
   },
@@ -36,30 +20,22 @@ const useStyles = makeStyles({
     border: " 1 px solid #fff",
     borderRadius: "0px",
   },
+  alert: {
+    justifyContent: "center",
+    margin: "auto",
+    textAlign: "center",
+    alignItems: "center",
+  },
 });
 
 const AlertError: FC<AlertProps> = ({ message, onClose }) => {
   const classes = useStyles();
   return (
-    <div style={{ textAlign: "center" }}>
-      <div onClick={onClose}>
-        <div className={classes.parent}>
-          <div className={classes.root}>
-            <Alert severity="error" className={classes.alert}>
-              <AlertTitle className={classes.title}>Erreur</AlertTitle>
-              <strong>{message}</strong>
-              <Button
-                variant="outlined"
-                color="secondary"
-                className={classes.button}
-                onClick={onClose}
-              >
-                X
-              </Button>
-            </Alert>
-          </div>
-        </div>
-      </div>
+    <div onClick={onClose}>
+      <Alert severity="warning" className={classes.alert} onClick={onClose}>
+        <AlertTitle className={classes.title}>Attention !</AlertTitle>
+        <strong>{message}</strong>
+      </Alert>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderBar } from "../../components/headerBar";
+import TextScroller from "../../components/TextScroller";
 import TopSevenTrending from "../../components/topSevenTrending";
 import NavBar from "../../components/Nav/Navbar";
 import BitCoinData from "../../components/Bitcoin/BitcoinData";
@@ -8,57 +8,95 @@ import { Grid, Paper } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
     },
+    NavBar: {
+      height: "10vh",
+    },
+    TextScroller: {
+      height: "10vh",
+    },
+    Cards: {
+      display: "block",
+      margin: " 0% 2%",
+
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+
+        alignItems: "space-between",
+        flexGrow: 1,
+        width: "100%",
+        height: "80vh",
+      },
+    },
+    paperTrendings: {
+      textAlign: "center",
+      display: "block",
+      width: "96%",
+      marginBottom: "20px",
+
+      [theme.breakpoints.up("md")]: {
+        marginBottom: "0px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        width: "47%",
+        alignItems: "space-between",
+        flexGrow: 1,
+        height: "80vh",
+      },
+    },
+    paperBitcoin: {
+      display: "block",
+      width: "96%",
+
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        width: "47%",
+        alignItems: "space-between",
+        flexGrow: 1,
+        height: "80vh",
+      },
+    },
+
     grid: {
       width: "100px",
       margin: "0px",
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-    },
-    control: {
-      padding: theme.spacing(2),
-    },
+    }, // spacing for Cards
   })
 );
 
 export default function Home() {
-  const [spacing, setSpacing] = React.useState<GridSpacing>(2);
-
   const classes = useStyles();
   return (
     <div style={{ height: "100vh" }}>
-      <NavBar />
-      <HeaderBar />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-evenly",
-          height: "80vh",
-        }}
-      >
-        <div className={classes.root}>
-          <Grid container spacing={spacing}>
-            <Grid item xs={12} sm={6}>
-              {" "}
-              <Paper className={classes.paper}>
-                <TopSevenTrending />
-              </Paper>
-            </Grid>
+      <Paper className={classes.NavBar}>
+        <NavBar />
+      </Paper>
 
-            <Grid item xs={12} sm={6}>
-              {" "}
-              <Paper className={classes.paper}>
-                <BitCoinData />
-              </Paper>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
+      <Paper className={classes.TextScroller}>
+        <TextScroller />
+      </Paper>
+
+      <Grid container xs={12} className={classes.Cards}>
+        <Paper className={classes.paperTrendings}>
+          <TopSevenTrending />
+        </Paper>{" "}
+        <Paper className={classes.paperBitcoin}>
+          <BitCoinData />
+        </Paper>
+      </Grid>
     </div>
   );
 }

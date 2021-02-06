@@ -10,6 +10,75 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
+//styles
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+    listPage: {
+      textAlign: "center",
+      fontWeight: 900,
+      fontSize: "20px",
+      color: "#fff",
+    },
+    root: {
+      maxWidth: 300,
+      margin: "auto",
+      alignItems: "center",
+      [theme.breakpoints.up("md")]: {
+        maxWidth: 200,
+      },
+    },
+    card: {
+      padding: "20px",
+    },
+    header: {
+      width: "100%",
+      height: "10vh",
+      lineHeight: "10vh",
+      backgroundColor: "#0063cc",
+      color: "#fff",
+      textAlign: "center",
+      fontWeight: 800,
+      fontSize: "1.2em",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.8em",
+        width: "100%",
+      },
+    },
+    index: {
+      background: "#fff",
+      borderRadius: "50%",
+      border: "2px solid gold",
+      width: "30px",
+      height: "30px",
+      lineHeight: "30px",
+      textAlign: "center",
+      fontWeight: 600,
+      margin: " 0 auto 10px auto",
+      [theme.breakpoints.up("md")]: {
+        margin: 0,
+        background: "gold",
+        borderRadius: "50%",
+        borderColor: "none",
+        marginBottom: "0px",
+      },
+    },
+    datas_keys: {
+      fontWeight: 600,
+    },
+  })
+);
+
+//////////
 
 interface IAllCoins {
   current_price: number;
@@ -19,36 +88,6 @@ interface IAllCoins {
   market_cap_rank: number;
   name: string;
 }
-
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 200,
-    margin: "auto",
-    alignItems: "center",
-  },
-  header: {
-    width: "100%",
-    height: "10vh",
-    lineHeight: "10vh",
-    backgroundColor: "#0063cc",
-    color: "#fff",
-    textAlign: "center",
-    fontWeight: 800,
-    fontSize: "1.8em",
-  },
-  index: {
-    width: "30px",
-    height: "30px",
-    lineHeight: "30px",
-    background: "gold",
-    borderRadius: "50%",
-    textAlign: "center",
-    fontWeight: 600,
-  },
-  datas_keys: {
-    fontWeight: 600,
-  },
-});
 
 export default function list() {
   const [datas, setDatas] = useState<IAllCoins[]>([]);
@@ -77,14 +116,7 @@ export default function list() {
       <div>
         <div>
           <div>
-            <div
-              style={{
-                textAlign: "center",
-                fontWeight: 900,
-                fontSize: "20px",
-                color: "#fff",
-              }}
-            >
+            <div className={classes.listPage}>
               <p
                 style={{
                   marginTop: "45vh",
@@ -104,7 +136,7 @@ export default function list() {
     return (
       <div style={{}}>
         <h1 className={classes.header}>100 premières crypto_monnaies</h1>
-        <Grid container spacing={10} style={{ padding: "20px" }}>
+        <Grid container spacing={10} className={classes.card}>
           {datas.map((data: IAllCoins, index) => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
@@ -139,7 +171,7 @@ export default function list() {
                           </p>
                           <p>
                             <span className={classes.datas_keys}>Valeur :</span>{" "}
-                            {data.current_price} €
+                            {data.current_price.toLocaleString()} €
                           </p>
                           <p>
                             <span className={classes.datas_keys}>Rang :</span>{" "}

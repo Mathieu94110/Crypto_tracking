@@ -43,7 +43,7 @@ const HistoryChart = ({ data }) => {
   });
 
   return (
-    <div>
+    <div style={{ margin: " 0 20px" }}>
       <div>
         <canvas id="myChart" width={250} height={250}></canvas>
       </div>

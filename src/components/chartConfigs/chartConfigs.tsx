@@ -15,6 +15,22 @@ export const historyOptions = {
       {
         type: "time",
         distribution: "linear",
+        gridLines: {
+          color: "black",
+        },
+        ticks: {
+          fontColor: "#fff",
+        },
+      },
+    ],
+    yAxes: [
+      {
+        gridLines: {
+          color: "black",
+        },
+        ticks: {
+          fontColor: "#fff",
+        },
       },
     ],
   },

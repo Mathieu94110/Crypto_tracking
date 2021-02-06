@@ -5,9 +5,68 @@ import {
   createStyles,
   makeStyles,
 } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 
-//
+import { Grid, Paper } from "@material-ui/core";
 
+//styles//
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+    topSevenTrendingCard: {
+      height: "528px",
+      border: "2px solid #000",
+
+      background: "linear-gradient(to right, #373b44, #4286f4)",
+
+      fontSize: "1em",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+    },
+    title: {
+      height: "70px",
+      lineHeight: "70px",
+      fontSize: "1.2em",
+      color: "#fff",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.7em",
+      },
+    },
+    grid: {
+      display: "grid",
+      gridTemplateColumns: "repeat(5, 1fr)",
+    },
+    gridFirstSpan: {
+      padding: "8px 4px 36px 4px",
+      fontSize: "1em",
+      fontWeight: 600,
+      color: "gold",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.3em",
+      },
+    },
+    gridLastChilds: {
+      fontWeight: 600,
+      fontSize: "0.8em",
+      color: "#fff",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1em",
+      },
+    },
+  })
+);
+
+/////////
 interface ISevenTrends {
   id: string;
   large: string;
@@ -34,77 +93,39 @@ export default function TopSevenTrending() {
   }, []);
 
   let index = 1;
-
+  const classes = useStyles();
   return (
-    <div
-      style={{
-        border: "2px solid #000",
-        borderRadius: "2%",
-        background: "linear-gradient(to bottom left, #f83600, #f9d423)",
-        color: "#fff",
-        fontSize: "1em",
-      }}
-    >
-      <h2 style={{ textAlign: "center", height: "50px", lineHeight: "50px" }}>
-        Top 7 des tendances cryptos{" "}
-      </h2>
-      <div
-        style={{
-          width: "100%",
-          padding: "0 10px",
-          height: "450px",
-        }}
-      >
-        <table
-          style={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <thead style={{}}>
-            <tr
-              style={{
-                textAlign: "left",
-                display: "flex",
-                justifyContent: "space-evenly",
-                width: "100%",
-                color: "#000",
-              }}
-            >
-              <th colSpan={1}>Position</th>
-              <th colSpan={1}>Logo</th>
-              <th colSpan={1}>Nom</th>
-              <th colSpan={1}>Symbole</th>
-              <th colSpan={1}>Position</th>
-            </tr>
-          </thead>
-          {trendDatas.map((trend: ISevenTrends, index) => (
-            <tbody style={{}}>
-              <tr
-                style={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                  width: "100%",
-                  textAlign: "left",
-                }}
-              >
-                <td>{(index += 1)} </td>
-                <td>
-                  <img
-                    src={trend.item.large}
-                    alt="logo"
-                    width="40px"
-                    height="40px"
-                  />
-                </td>
-                <td>{trend.item.name}</td> <td>{trend.item.symbol}</td>
-                <td>{trend.item.market_cap_rank}</td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
+    <div className={classes.topSevenTrendingCard}>
+      <h2 className={classes.title}>Top 7 des tendances cryptos </h2>
+      <div className={classes.grid}>
+        <span className={classes.gridFirstSpan}>Position</span>
+        <span className={classes.gridFirstSpan}>Logo</span>
+        <span className={classes.gridFirstSpan}>Nom</span>
+        <span className={classes.gridFirstSpan}>Symbole</span>
+        <span className={classes.gridFirstSpan}>Classement</span>
+
+        {trendDatas.map((trend: ISevenTrends, index) => {
+          return (
+            <>
+              <span className={classes.gridLastChilds}>{(index += 1)}</span>
+              <span className={classes.gridLastChilds}>
+                <img
+                  src={trend.item.large}
+                  alt="logo"
+                  width="40px"
+                  height="40px"
+                />
+              </span>
+              <span className={classes.gridLastChilds}>{trend.item.name}</span>{" "}
+              <span className={classes.gridLastChilds}>
+                {trend.item.symbol}
+              </span>
+              <span className={classes.gridLastChilds}>
+                {trend.item.market_cap_rank}
+              </span>
+            </>
+          );
+        })}
       </div>
     </div>
   );

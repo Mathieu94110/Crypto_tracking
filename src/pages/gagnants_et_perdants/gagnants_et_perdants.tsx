@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import Crypto_chart from "../../images/crypto_chart.jpg";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -11,64 +10,76 @@ import Typography from "@material-ui/core/Typography";
 import Navbar from "../../components/Nav/Navbar";
 import Bullish from "../../images/bullish.jpg";
 import Bearish from "../../images/bearish.jpg";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  page: {
-    width: "100%",
-    height: "100vh",
-    margin: "0",
-    padding: "0",
-    backgroundImage: `url(${Crypto_chart})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-  },
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+    page: {
+      width: "100%",
+      height: "100vh",
+      margin: "0",
+      padding: "0",
+      backgroundImage: `url(${Crypto_chart})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    },
 
-  title: {
-    width: "100%",
-    height: "10vh",
-    color: "gold",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  cards_parent: {
-    width: "100%",
-    height: "80vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  title_bull: {
-    color: "green",
-    marginLeft: "20px",
-  },
-  title_bear: {
-    marginLeft: "20px",
-  },
+    title: {
+      width: "100%",
+      height: "10vh",
+      color: "gold",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    cards_parent: {
+      width: "100%",
+      height: "80vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-evenly",
+    },
+    title_bull: {
+      color: "green",
+      marginLeft: "20px",
+    },
+    title_bear: {
+      marginLeft: "20px",
+    },
 
-  description: {
-    fontSize: "16px",
-    fontWeight: "bold",
-    color: "#000",
-    margin: "0 20px",
-  },
-  action: {
-    fontWeight: 800,
-    marginLeft: "20px",
-  },
+    description: {
+      fontSize: "16px",
+      fontWeight: "bold",
+      color: "#000",
+      margin: "0 20px",
+    },
+    action: {
+      fontWeight: 800,
+      marginLeft: "20px",
+    },
 
-  root: {
-    maxWidth: 345,
-    maxHeight: 420,
-  },
-  media: {
-    height: 140,
-  },
-});
+    root: {
+      maxWidth: 345,
+      maxHeight: 420,
+    },
+    media: {
+      height: 140,
+    },
+  })
+);
 
 const gagnants_et_perdants: FC = () => {
   const classes = useStyles();

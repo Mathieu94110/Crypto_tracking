@@ -2,6 +2,78 @@ import React, { useState, useEffect } from "react";
 import bitcoin_background from "../../images/bitcoin_background.jpg";
 import coinGecko from "../../Api/coinGecko";
 import BitcoinDetailPage from "./BitcoinDetailPage";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+
+//styles//
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+    bitcoinCard: {
+      height: "528px",
+      border: "2px solid #000",
+      verticalAlign: "middle",
+      color: "#fff",
+      backgroundImage: `url(${bitcoin_background})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+    },
+    bitcoinCardContent: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+      textAlign: "center",
+      fontSize: "1em",
+    },
+    bitcoinTitle: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      margin: "0 auto",
+      width: "200px",
+      height: "100px",
+    },
+    bitcoinH2: {
+      marginBottom: "7px",
+      fontSize: "1.2em",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.7em",
+      },
+    },
+    table: {
+      border: "1px solid #fff none",
+      borderStyle: "groove",
+    },
+    categoriesTitle: {
+      color: "gold",
+      fontSize: "0.7em",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1em",
+      },
+    },
+    categoriesDatas: {
+      fontSize: "0.7em",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1em",
+      },
+    },
+  })
+);
+
+//////////
 
 const CoinsDatas = () => {
   const [allCoinsDatas, setallCoinsDatas] = useState({
@@ -30,64 +102,42 @@ const CoinsDatas = () => {
 
     fetchData(allCoinsDatas);
   }, []);
-
+  const classes = useStyles();
   return (
-    <div
-      style={{
-        height: "500px",
-        border: "2px solid #000",
-        borderRadius: "2%",
-        verticalAlign: "middle",
-        color: "#fff",
-        backgroundImage: `url(${bitcoin_background})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-evenly",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-evenly",
-          textAlign: "center",
-        }}
-      >
-        <h2>
-          {allCoinsDatas.name} :{" "}
+    <div className={classes.bitcoinCard}>
+      <div className={classes.bitcoinCardContent}>
+        <div className={classes.bitcoinTitle}>
+          <h2 className={classes.bitcoinH2}>{allCoinsDatas.name} </h2>
           <img
             src={allCoinsDatas.image}
             width="45px"
             height="45px"
             alt="bitcoin"
           />
-        </h2>
-        <div style={{ display: "flex" }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span>Capitalisation : </span>
-            <span>{allCoinsDatas.market_cap}</span>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            Jeton : <span>{allCoinsDatas.total_supply}</span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            Volume(24H) : <span>{allCoinsDatas.total_volume}</span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            Max 24h : <span>{allCoinsDatas.high_24h}</span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            Min 24h : <span>{allCoinsDatas.low_24h}</span>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <p>En circulation : {allCoinsDatas.circulating_supply}</p>
-          </div>
         </div>
+
+        <table className={classes.table}>
+          <thead>
+            <tr className={classes.categoriesTitle}>
+              <th>Capitalisation :</th>
+              <th> Jeton :</th>
+              <th>Volume(24H)</th>
+              <th> Max 24h :</th>
+              <th> Min 24h :</th>
+              <th>En circulation :</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className={classes.categoriesDatas}>
+              <td>{allCoinsDatas.market_cap.toLocaleString()}</td>
+              <td>{allCoinsDatas.total_supply.toLocaleString()}</td>
+              <td>{allCoinsDatas.total_volume.toLocaleString()}</td>
+              <td>{allCoinsDatas.high_24h.toLocaleString()}</td>
+              <td>{allCoinsDatas.low_24h.toLocaleString()}</td>
+              <td>{allCoinsDatas.circulating_supply.toLocaleString()}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <BitcoinDetailPage />
