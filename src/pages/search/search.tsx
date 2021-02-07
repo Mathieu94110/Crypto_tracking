@@ -117,19 +117,19 @@ var arrByID = Favorites.filter(searchById);
       </header>
 
       <div className={classes.alerts}>
-        {SearchCryptoData ? (
+        {SearchCryptoData && (
           <Alert severity="success" className={classes.alert}>
             <AlertTitle className={classes.title}>Succès</AlertTitle>
             <strong>Cryptomonnaie </strong>
             ajoutée à vos favoris !
           </Alert>
-        ) : alertMsg ? (
+        )}
+
+        {alertMsg && (
           <AlertError
             message={alertMsg}
             onClose={() => dispatch(setAlert(""))}
           />
-        ) : (
-          <div className={classes.emptyAlert}></div>
         )}
       </div>
 

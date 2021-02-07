@@ -12,9 +12,24 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { RootRef } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Modal from "@material-ui/core/Modal";
+//import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import Modal from "react-modal";
+import ReactDOM from "react-dom";
+/////////////
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+//////////////////////
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,7 +77,22 @@ const myFavorites: FC = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [cryptoDatas, setCryptosDatas] = React.useState([]);
+  const [selectedFav, setSelectedFav] = React.useState(null);
+  var subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal(fav) {
+    setIsOpen(true);
+    setSelectedFav(fav);
+  }
 
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   // Récupération du redux storage
   const Favorites = useSelector(
     (state: RootStore) => state.favorites.favoriteDatas
@@ -90,9 +120,7 @@ const tentRefs = useRef<(HTMLDivElement | null)[]>([])
 const test = Favorites.map(index=> tentRefs.current.push(index) )
 console.log(test);
 console.log(tentRefs)
-
 console.log(typeof(refs))
-
 Object.keys(Favorites).map(data => console.log(Favorites[data]));
 const tentRefs = useRef<(HTMLDivElement | null)[]>([])*/
 
@@ -143,66 +171,13 @@ const tentRefs = useRef<(HTMLDivElement | null)[]>([])*/
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" color="primary" onClick={handleOpen}>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => openModal(fav)}
+                    >
                       Details
                     </Button>
-                    <Modal
-                      ref={rootRef}
-                      container={() => rootRef.current}
-                      aria-labelledby="transition-modal-title"
-                      aria-describedby="transition-modal-description"
-                      className={classes.modal}
-                      open={open}
-                      onClose={handleClose}
-                      closeAfterTransition
-                      BackdropComponent={Backdrop}
-                      BackdropProps={{
-                        timeout: 500,
-                      }}
-                    >
-                      <Fade in={open}>
-                        <div className={classes.paper}>
-                          <h2 id="transition-modal-title">Transition modal</h2>
-                          <p id="transition-modal-description">
-                            <p>{fav["0"].ath}</p>
-                            <p>{fav["0"].ath_change_percentage}</p>
-                            <p>{fav["0"].ath_date}</p>
-                            <p>{fav["0"].atl}</p>
-                            <p>{fav["0"].atl_change_percentage}</p>
-                            <p>{fav["0"].atl_date}</p>
-                            <p>{fav["0"].circulating_supply}</p>
-                            <p>{fav["0"].current_price}</p>
-                            <p>{fav["0"].fully_diluted_valuation}</p>
-                            <p>{fav["0"].high_24h}</p>
-                            <p>{fav["0"].id}</p>
-                            <p>
-                              <img
-                                src={fav["0"].image}
-                                alt="nom de cryptomonnaie"
-                              />
-                            </p>
-                            <p>{fav["0"].last_updated}</p>
-                            <p>{fav["0"].low_24h}</p>
-                            <p>{fav["0"].market_cap}</p>
-                            <p>{fav["0"].market_cap_change_24h}</p>
-                            <p>{fav["0"].market_cap_change_percentage_24h}</p>
-                            <p>{fav["0"].market_cap_rank}</p>
-                            <p>{fav["0"].max_supply}</p>
-                            <p>{fav["0"].name}</p>
-                            <p>{fav["0"].price_change_24h}</p>
-                            <p>{fav["0"].price_change_percentage_24h}</p>
-                            <p>{fav["0"].market_cap_rank}</p>
-                            <p>{fav["0"].symbol}</p>
-                            <p>{fav["0"].total_supply}</p>
-                            <p>{fav["0"].total_volume}</p>
-                            Roi :{" "}
-                            {fav["0"].roi ? (
-                              <p>{fav["0"].market_cap_rank}</p>
-                            ) : null}
-                          </p>
-                        </div>
-                      </Fade>
-                    </Modal>
 
                     <Button size="small" color="primary">
                       Retirer
@@ -214,6 +189,25 @@ const tentRefs = useRef<(HTMLDivElement | null)[]>([])*/
           );
         })}
       </Grid>
+
+      <div>
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+          <button onClick={closeModal}>close</button>
+          {selectedFav && (
+            <div>
+              <span className={classes.datas_keys}>Rang :</span>{" "}
+              {selectedFav["0"].market_cap_rank}
+            </div>
+          )}
+        </Modal>
+      </div>
     </div>
   );
 };

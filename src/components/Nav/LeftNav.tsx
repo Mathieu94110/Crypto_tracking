@@ -19,6 +19,9 @@ height:10vh;
    text-align:center;
    font-weight:600;
    color:#fff;
+   display: flex;
+   flex-direction: column;
+   justify-content:center;
   }
   li:hover {
    color: linear-gradient(to right, #fdc830, #f37335);

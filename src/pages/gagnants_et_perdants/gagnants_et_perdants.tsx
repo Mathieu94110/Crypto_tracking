@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+      [theme.breakpoints.up("md")]: {
+        height: "100%",
+      },
     },
 
     title: {
@@ -42,15 +45,21 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "10vh",
       color: "gold",
       display: "flex",
-      justifyContent: "center",
+      justifyContent: "space-evenly",
       alignItems: "center",
     },
     cards_parent: {
-      width: "100%",
-      height: "80vh",
+      height: "600px",
       display: "flex",
-      alignItems: "center",
+      flexDirection: "column",
       justifyContent: "space-evenly",
+      margin: "auto",
+
+      [theme.breakpoints.up("md")]: {
+        flexDirection: "row",
+        alignItems: "center",
+        margin: "0",
+      },
     },
     title_bull: {
       color: "green",
@@ -61,10 +70,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     description: {
-      fontSize: "16px",
       fontWeight: "bold",
       color: "#000",
-      margin: "0 20px",
+      margin: "0 10px",
+      fontSize: "0.8em",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.2em",
+        margin: "0 20px",
+      },
     },
     action: {
       fontWeight: 800,
@@ -72,12 +85,30 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     root: {
-      maxWidth: 345,
-      maxHeight: 420,
+      maxWidth: 280,
+      maxHeight: 280,
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        maxWidth: 345,
+        maxHeight: 420,
+      },
     },
     media: {
-      height: 140,
+      height: 80,
+      [theme.breakpoints.up("md")]: {
+        height: 140,
+      },
     },
+    /* cardsSpaceOnResponsive: {
+      display: "block",
+      height: "100%",
+      width: "100%",
+      justifyContent: "spaceBetween",
+      alignItems: "stretch",
+    },*/
   })
 );
 
