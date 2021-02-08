@@ -1,7 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Alert, AlertTitle } from "@material-ui/lab";
-import Button from "@material-ui/core/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { RootStore } from "../../redux/Store/Store";
+import { setAlert } from "../../redux/Actions/alertActions";
 
 interface AlertProps {
   message: string;
@@ -30,6 +32,25 @@ const useStyles = makeStyles({
 
 const AlertError: FC<AlertProps> = ({ message, onClose }) => {
   const classes = useStyles();
+  const [show, setShow] = useState(true);
+  const dispatch = useDispatch();
+  const Alerts = useSelector((state: RootStore) => state.alert);
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      setShow(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeId);
+      dispatch(setAlert(""));
+    };
+  }, [show]);
+
+  if (!show) {
+    return null;
+  }
+
   return (
     <div onClick={onClose}>
       <Alert severity="warning" className={classes.alert} onClick={onClose}>

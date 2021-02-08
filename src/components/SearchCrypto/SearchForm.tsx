@@ -121,10 +121,7 @@ const SearchForm: FC = () => {
     e.preventDefault();
     if (inputValue.trim() === "") {
       dispatch(setAlert("Vous n'avez rien renseigné !"));
-    } /*
-    if (inputValue == (undefined || null)) {
-      dispatch(setAlert("Erreur crypto-monnaie inconnue !"));
-    } */ else {
+    } else {
       dispatch(SearchCryptoLoading());
       dispatch(GetCryptoCard(inputValue));
       setInputValue("");

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../../redux/Store/Store";
 import AlertError from "../../components/SearchCrypto/Alert";
@@ -84,29 +84,48 @@ const useStyles = makeStyles((theme: Theme) =>
 //
 
 const Search: FC = () => {
-  const Favorites = useSelector(
-    (state: RootStore) => state.favorites.favoriteDatas
-  );
-  /* function searchById(obj) {
-  if (SearchCryptoData != null && obj.id === SearchCryptoData ){
-  return true
-  }
-var arrByID = Favorites.filter(searchById);
-
-}*/
-
   const dispatch = useDispatch();
   const SearchCryptoData = useSelector((state: RootStore) => state.search.data);
   const loading = useSelector((state: RootStore) => state.search.loading);
   const alertMsg = useSelector((state: RootStore) => state.alert.message);
+  //for display alert succeed for adding crypto in favorites
+  const Favorites = useSelector(
+    (state: RootStore) => state.favorites.favoriteDatas
+  ); //object
+  const alertAddedCrypto: number = Favorites.length; //number
 
-  //console.log(SearchCryptoData)
+  /////////////////////////////////////////
+  function usePrevious({ alertAddedCrypto }) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = alertAddedCrypto;
+    });
+    return ref.current;
+  }
 
-  (() => {
-    if (SearchCryptoData != null) {
-      console.log(SearchCryptoData[0].id);
-    }
-  })();
+  // the App where the hook is used
+  function Counter() {
+    const [count, setCount] = useState(0);
+    // 👇 look here
+    const prevCount = usePrevious(count);
+
+    return (
+      <h1>
+        Now: {count}, before: {prevCount}
+      </h1>
+    );
+  }
+  ///////////////////////////////////////
+  //useState
+  const [successBefore, setSuccessBefore] = useState(before);
+  const [successAfter, setSuccessAfter] = useState(before);
+  const prevCountRef: any = useRef();
+  useEffect(() => {
+    prevCountRef.current = success;
+  });
+  const prevCount = prevCountRef.current;
+
+  console.log("Avant :  " + success + "Après :  " + prevCount);
 
   const classes = useStyles();
   return (
