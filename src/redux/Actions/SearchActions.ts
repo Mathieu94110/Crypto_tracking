@@ -1,12 +1,11 @@
 import {
   SearchCryptoActions,
-  SearchCryptoData,
+  FavoritesData,
   SEARCH_CRYPTO_LOADING,
   SEARCH_CRYPTO_SUCCESS,
   SEARCH_CRYPTO_FAIL,
-  SEARCH_CRYPTO_UNDEFINED,
+  SearchCryptoState,
 } from "../Types/searchCryptoTypes";
-import coinGecko from "../../Api/coinGecko";
 import { ThunkAction } from "redux-thunk";
 import { RootStore } from "../Store/Store";
 import { setAlert } from "./alertActions";
@@ -19,7 +18,7 @@ export const GetCryptoCard = (
       const res = await fetch(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${inputValue}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
       );
-      const resData: SearchCryptoData = await res.json();
+      const resData: SearchCryptoActions = await res.json();
       if (resData.length == 0) {
         dispatch(setAlert("introuvable"));
         dispatch({

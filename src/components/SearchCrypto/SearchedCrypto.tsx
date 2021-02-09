@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 //rajout//
 import { setAlert } from "../../redux/Actions/alertActions";
-import { SearchCryptoData } from "../../redux/Types/searchCryptoTypes";
+import { FavoritesData } from "../../redux/Types/searchCryptoTypes";
 import { addCrypto } from "../../redux/Actions/AddAndDeleteActions";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface SearchCryptoProps {
-  data: SearchCryptoData;
+  data: FavoritesData;
 }
 
 const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
@@ -74,7 +74,7 @@ const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
             <CardMedia
               style={{ height: 140 }}
               image={Object.values(data)[0].image} //changement des cryptoState en data
-              title={Object.values(data)[0].id}
+              title={Object.values(data)[0].name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

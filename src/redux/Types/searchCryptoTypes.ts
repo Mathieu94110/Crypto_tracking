@@ -9,29 +9,23 @@ export const SET_ERROR = "SET_ERROR";
 export const ADD_CRYPTO = "ADD_CRYPTO";
 export const DELETE_CRYPTO = "DELETE_CRYPTO";
 
-export type SearchCryptoData = {
-  id: string;
-  image: string;
-  name: string;
-  symbol: string;
-  current_price: number;
-};
+export type SearchCryptoData = {};
+
+export interface FavoritesData {
+  id?: number;
+  image?: string;
+  name?: string;
+  symbol?: string;
+  current_price?: number;
+}
+export interface FavoritesCryptoActionTypes {
+  type: string;
+  payload: FavoritesData;
+  data: FavoritesData[];
+}
 
 /*********************** */
-/* Type of datas */
-export interface FavoritesData {
-  id: string;
-  image: string;
-  name: string;
-  symbol: string;
-  current_price: number;
-}
-
-/**/
-export interface FavoritesCryptoData {
-  favoritesCryptoDatas: FavoritesData[];
-}
-
+/* Datas typeOf 
 /*  interface ADD cRYPTO*/
 export interface AddCryptoSuccess {
   type: typeof ADD_CRYPTO;
@@ -40,11 +34,11 @@ export interface AddCryptoSuccess {
 /*  interface Delete cRYPTO */
 export interface DeleteCryptoSuccess {
   type: typeof DELETE_CRYPTO;
-  payload: FavoritesCryptoData;
+  payload: FavoritesData;
 }
 /* State */
 export interface FavoritesCryptoState {
-  favoriteDatas: FavoritesCryptoData[];
+  readonly data: FavoritesData[];
 }
 
 export type FavoritesCryptoTypes = AddCryptoSuccess | DeleteCryptoSuccess;
@@ -68,9 +62,6 @@ export interface SearchCryptoFail {
   type: typeof SEARCH_CRYPTO_FAIL;
 }
 //
-export interface SearchCryptoUndefined {
-  type: typeof SEARCH_CRYPTO_UNDEFINED;
-} //
 
 export interface SearchCryptoSuccess {
   type: typeof SEARCH_CRYPTO_SUCCESS;
@@ -80,8 +71,7 @@ export interface SearchCryptoSuccess {
 export type SearchCryptoActions =
   | SearchCryptoLoading
   | SearchCryptoFail
-  | SearchCryptoSuccess
-  | SearchCryptoUndefined;
+  | SearchCryptoSuccess;
 
 export interface AlertAction {
   type: typeof SET_ALERT;

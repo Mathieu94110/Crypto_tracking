@@ -1,5 +1,5 @@
-import React, { FC, useRef } from "react";
-import { useSelector } from "react-redux";
+import React, { FC } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../redux/Store/Store";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -10,9 +10,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { DELETE_CRYPTO } from "../../redux/Actions/AddAndDeleteActions";
 import Modal from "react-modal";
-
+import { deleteFavoriteAction } from "../../redux/Actions/AddAndDeleteActions";
+import { FavoritesCryptoState } from "../../redux/Types/searchCryptoTypes";
 ///////////// styles
 
 /////////
@@ -114,21 +114,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const myFavorites: FC = () => {
   const classes = useStyles();
-  const [selectedFav, setSelectedFav] = React.useState(null);
+  const dispatch = useDispatch();
+  const [selectedFav, setselectedFav]: FavoritesCryptoState = React.useState(
+    null
+  );
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   // Récupération du redux storage
-  const Favorites = useSelector(
-    (state: RootStore) => state.favorites.favoriteDatas
-  ); //creation d'un tableau pour y stoquer les valeurs du storage
+  const Favorites = useSelector((state: RootStore) => state.favorites.data);
   console.log(Favorites);
-  const newArray = [...Favorites];
-  console.log(newArray);
 
   //Modal
-  function openModal(fav) {
+  function openModal(fav: any) {
     setIsOpen(true);
-    setSelectedFav(fav);
+    setselectedFav(fav);
   }
 
   function closeModal() {
@@ -142,7 +141,7 @@ const myFavorites: FC = () => {
   let index = 1;
   //formatedDate
 
-  const ChangeFormateDate = (date) => {
+  const ChangeFormateDate = (date: string) => {
     return (
       date.substring(0, 10).toString().split("-").reverse().join("-") +
       " à " +
@@ -161,19 +160,19 @@ const myFavorites: FC = () => {
                 <p className={classes.index}>{index}</p>
                 <Card key={index} className={classes.root}>
                   <CardActionArea>
-                    {fav["0"].image && (
+                    {fav.image["0"].image && (
                       <CardMedia
                         component="img"
-                        alt={fav["0"].name}
+                        alt={fav.image["0"].name}
                         height="80"
-                        image={fav["0"].image}
-                        title={fav["0"].name}
+                        image={fav.image["0"].image}
+                        title={fav.image["0"].name}
                       />
                     )}
 
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {fav["0"].name}
+                        {fav.image["0"].name}
                       </Typography>
                       <Typography
                         variant="body2"
@@ -182,15 +181,15 @@ const myFavorites: FC = () => {
                       >
                         <p>
                           <span className={classes.datas_keys}>Symbole :</span>{" "}
-                          {fav["0"].symbol.toUpperCase()}
+                          {fav.image["0"].symbol.toUpperCase()}
                         </p>
                         <p>
                           <span className={classes.datas_keys}>Valeur :</span>{" "}
-                          {fav["0"].current_price} €
+                          {fav.image["0"].current_price} €
                         </p>
                         <p>
                           <span className={classes.datas_keys}>Rang :</span>{" "}
-                          {fav["0"].market_cap_rank}
+                          {fav.image["0"].market_cap_rank}
                         </p>
                       </Typography>
                     </CardContent>
@@ -204,7 +203,13 @@ const myFavorites: FC = () => {
                       Details
                     </Button>
 
-                    <Button size="small" color="primary">
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => dispatch(deleteFavoriteAction(fav.id))}
+                    >
+                      {" "}
+                      {/*fav.image["0"].*/}
                       Retirer
                     </Button>
                   </CardActions>
@@ -233,19 +238,19 @@ const myFavorites: FC = () => {
                   <h2 id="transition-modal-title">
                     <span className={classes.dataTitle}>Détails du </span>{" "}
                     <span className={classes.detailsDatas}>
-                      {selectedFav["0"].name}
+                      {selectedFav.image["0"].name}
                     </span>
                   </h2>
                   <li className={classes.dataLine}>
                     <span className={classes.datasKeys}>En date du :</span>
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {ChangeFormateDate(selectedFav["0"].last_updated)}
+                      {ChangeFormateDate(selectedFav.image["0"].last_updated)}
                     </span>
                   </li>
                   <img
                     className={classes.detailsDatasImage}
-                    src={selectedFav["0"].image}
+                    src={selectedFav.image["0"].image}
                     width={80}
                     height={80}
                     alt="nom de cryptomonnaie"
@@ -256,14 +261,14 @@ const myFavorites: FC = () => {
                     <span className={classes.datasKeys}>Symbole :</span>
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].symbol.toUpperCase()}
+                      {selectedFav.image["0"].symbol.toUpperCase()}
                     </span>
                   </li>
                   <ul>
                     <li className={classes.dataLine}>
                       <span className={classes.datasKeys}>Rang :</span>
                       <span className={classes.detailsDatas}>
-                        {selectedFav["0"].market_cap_rank}
+                        {selectedFav.image["0"].market_cap_rank}
                       </span>
                     </li>
                     <li className={classes.dataLine}>
@@ -271,7 +276,7 @@ const myFavorites: FC = () => {
                         En valeur (24h) :
                       </span>
                       <span className={classes.detailsDatas}>
-                        {selectedFav["0"].market_cap_change_24h} €
+                        {selectedFav.image["0"].market_cap_change_24h} €
                       </span>
                     </li>
                     <li className={classes.dataLine}>
@@ -279,7 +284,7 @@ const myFavorites: FC = () => {
                         En pourcentage (24h) :
                       </span>
                       <span className={classes.detailsDatas}>
-                        {selectedFav[
+                        {selectedFav.image[
                           "0"
                         ].market_cap_change_percentage_24h.toFixed(2)}{" "}
                         %
@@ -295,7 +300,7 @@ const myFavorites: FC = () => {
                         <span className={classes.datasKeys}>En valeur :</span>{" "}
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {selectedFav["0"].ath} ‎€
+                          {selectedFav.image["0"].ath} ‎€
                         </span>
                       </li>
 
@@ -305,14 +310,17 @@ const myFavorites: FC = () => {
                         </span>
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {selectedFav["0"].ath_change_percentage.toFixed(2)} %
+                          {selectedFav.image["0"].ath_change_percentage.toFixed(
+                            2
+                          )}{" "}
+                          %
                         </span>
                       </li>
                       <li style={{}} className={classes.dataLine}>
                         <span className={classes.datasKeys}>Date :</span>{" "}
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {ChangeFormateDate(selectedFav["0"].ath_date)}
+                          {ChangeFormateDate(selectedFav.image["0"].ath_date)}
                         </span>
                       </li>
                     </ul>
@@ -326,7 +334,7 @@ const myFavorites: FC = () => {
                         <span className={classes.datasKeys}>En valeur :</span>{" "}
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {selectedFav["0"].atl} ‎€
+                          {selectedFav.image["0"].atl} ‎€
                         </span>
                       </li>
 
@@ -336,14 +344,17 @@ const myFavorites: FC = () => {
                         </span>
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {selectedFav["0"].atl_change_percentage.toFixed(2)} %
+                          {selectedFav.image["0"].atl_change_percentage.toFixed(
+                            2
+                          )}{" "}
+                          %
                         </span>
                       </li>
                       <li className={classes.dataLine}>
                         <span className={classes.datasKeys}>Date :</span>{" "}
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {ChangeFormateDate(selectedFav["0"].atl_date)}
+                          {ChangeFormateDate(selectedFav.image["0"].atl_date)}
                         </span>
                       </li>
                     </ul>
@@ -353,21 +364,21 @@ const myFavorites: FC = () => {
                     <span className={classes.datasKeys}>En circulation :</span>
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].circulating_supply} tokens
+                      {selectedFav.image["0"].circulating_supply} tokens
                     </span>
                   </li>
                   <li className={classes.dataLine}>
                     <span className={classes.datasKeys}>Prix actuel :</span>{" "}
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].current_price} ‎€
+                      {selectedFav.image["0"].current_price} ‎€
                     </span>
                   </li>
                   <li className={classes.dataLine}>
                     <span className={classes.datasKeys}>Maximum en 24h :</span>{" "}
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].high_24h} ‎€
+                      {selectedFav.image["0"].high_24h} ‎€
                     </span>
                   </li>
 
@@ -375,7 +386,7 @@ const myFavorites: FC = () => {
                     <span className={classes.datasKeys}>Minimum en 24h :</span>
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].low_24h}
+                      {selectedFav.image["0"].low_24h}
                     </span>
                   </li>
                   <li>
@@ -385,14 +396,14 @@ const myFavorites: FC = () => {
                       </span>
                       <span className={classes.detailsDatas}>
                         {" "}
-                        {selectedFav["0"].market_cap}
+                        {selectedFav.image["0"].market_cap}
                       </span>
                     </li>
                   </li>
                   <li className={classes.dataLine}>
                     <span className={classes.datasKeys}>Offre maximale :</span>
                     <span className={classes.detailsDatas}>
-                      {selectedFav["0"].max_supply} tokens
+                      {selectedFav.image["0"].max_supply} tokens
                     </span>
                   </li>
                   <li>
@@ -404,7 +415,7 @@ const myFavorites: FC = () => {
                         <span className={classes.datasKeys}>En valeur :</span>{" "}
                         <span className={classes.detailsDatas}>
                           {" "}
-                          {selectedFav["0"].price_change_24h} €
+                          {selectedFav.image["0"].price_change_24h} €
                         </span>
                       </li>
                       <li className={classes.dataLine}>
@@ -412,9 +423,9 @@ const myFavorites: FC = () => {
                           En pourcentage :
                         </span>
                         <span className={classes.detailsDatas}>
-                          {selectedFav["0"].price_change_percentage_24h.toFixed(
-                            2
-                          )}{" "}
+                          {selectedFav.image[
+                            "0"
+                          ].price_change_percentage_24h.toFixed(2)}{" "}
                           %
                         </span>
                       </li>
@@ -425,22 +436,22 @@ const myFavorites: FC = () => {
                     <span className={classes.datasKeys}>Offre totale :</span>
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].total_supply} tokens
+                      {selectedFav.image["0"].total_supply} tokens
                     </span>
                   </li>
                   <li className={classes.dataLine}>
                     <span className={classes.datasKeys}>Volume total :</span>
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].total_volume}
+                      {selectedFav.image["0"].total_volume}
                     </span>
                   </li>
                   <li className={classes.dataLine}>
                     <span className={classes.datasKeys}>Roi :</span>{" "}
                     <span className={classes.detailsDatas}>
                       {" "}
-                      {selectedFav["0"].roi ? (
-                        <li>{fav["0"].market_cap_rank}</li>
+                      {selectedFav.image["0"].roi ? (
+                        <li>{fav.image["0"].market_cap_rank}</li>
                       ) : (
                         "Pas de données"
                       )}

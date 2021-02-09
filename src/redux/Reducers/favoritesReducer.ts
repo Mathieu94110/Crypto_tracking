@@ -2,26 +2,35 @@ import {
   FavoritesCryptoState,
   ADD_CRYPTO,
   DELETE_CRYPTO,
-  FavoritesCryptoData,
   FavoritesCryptoTypes,
+  FavoritesCryptoActionTypes,
 } from "../Types/searchCryptoTypes";
 
 const defaultState: FavoritesCryptoState = {
-  favoriteDatas: [],
-  position: 0,
+  data: [],
 };
 
 const favoritesCryptoReducer = (
   state = defaultState,
-  action: FavoritesCryptoTypes
+  action: FavoritesCryptoActionTypes
 ): FavoritesCryptoState => {
   switch (action.type) {
     case ADD_CRYPTO:
       return {
-        favoriteDatas: [...state.favoriteDatas, { ...action.payload }],
+        data: [
+          ...state.data,
+          {
+            id: Math.random(),
+            image: action.payload.image,
+          },
+        ],
       };
-    /*  case DELETE_CRYPTO:
-      return state.filter((favorites) => favorites.id != action.payload);*/
+    case DELETE_CRYPTO:
+      return {
+        data: state.data.filter(
+          (favorite) => favorite.id !== action.payload.id
+        ),
+      };
 
     default:
       return state;

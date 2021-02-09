@@ -89,13 +89,11 @@ const Search: FC = () => {
   const loading = useSelector((state: RootStore) => state.search.loading);
   const alertMsg = useSelector((state: RootStore) => state.alert.message);
   //for display alert succeed for adding crypto in favorites
-  const Favorites = useSelector(
-    (state: RootStore) => state.favorites.favoriteDatas
-  ); //object
+  const Favorites = useSelector((state: RootStore) => state.favorites.data); //object
   const alertAddedCrypto: number = Favorites.length; //number
 
   /////////////////////////////////////////
-  function usePrevious({ alertAddedCrypto }) {
+  /*function usePrevious({ alertAddedCrypto }) {
     const ref = useRef();
     useEffect(() => {
       ref.current = alertAddedCrypto;
@@ -126,7 +124,7 @@ const Search: FC = () => {
   const prevCount = prevCountRef.current;
 
   console.log("Avant :  " + success + "Après :  " + prevCount);
-
+*/
   const classes = useStyles();
   return (
     <div className={classes.page}>

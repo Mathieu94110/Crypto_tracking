@@ -1,17 +1,33 @@
-import {ADD_CRYPTO,DELETE_CRYPTO,FavoritesData,FavoritesCryptoTypes} from '../Types/searchCryptoTypes';
+import {
+  ADD_CRYPTO,
+  DELETE_CRYPTO,
+  FavoritesData,
+  FavoritesCryptoTypes,
+  FavoritesCryptoState,
+} from "../Types/searchCryptoTypes";
 
-export const addCrypto = (favoriteData: FavoritesData): FavoritesCryptoTypes => {
-    return {
-        type: ADD_CRYPTO,
-        payload: favoriteData
-    }
+export const addCrypto = (
+  image: string,
+  name: string,
+  symbol: string,
+  current_price: number
+): FavoritesCryptoTypes => {
+  return {
+    type: ADD_CRYPTO,
+    payload: {
+      image,
+      name,
+      symbol,
+      current_price,
+    },
+  };
 };
 
-
-export const deleteFavoriteAction = (position: number): FavoritesCryptoTypes => {
-    return{
- type: DELETE_CRYPTO,
-    position: number
-    }
-   
-}
+export const deleteFavoriteAction = (id: number): FavoritesCryptoTypes => {
+  return {
+    type: DELETE_CRYPTO,
+    payload: {
+      id,
+    },
+  };
+};
