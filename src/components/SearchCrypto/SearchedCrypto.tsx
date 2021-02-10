@@ -7,11 +7,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 //rajout//
-import { setAlert } from "../../redux/Actions/alertActions";
 import { FavoritesData } from "../../redux/Types/searchCryptoTypes";
 import { addCrypto } from "../../redux/Actions/AddAndDeleteActions";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { setAlertSuccess } from "../../redux/Actions/alertActions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -90,7 +90,12 @@ const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
             <Button
               size="small"
               color="primary"
-              onClick={() => dispatch(addCrypto(data))}
+              onClick={() => {
+                dispatch(
+                  setAlertSuccess("Crypto-monnaie ajoutée à vos favoris !")
+                );
+                dispatch(addCrypto(data));
+              }}
             >
               Ajouter à ma liste
             </Button>

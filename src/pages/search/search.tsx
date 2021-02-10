@@ -1,12 +1,11 @@
-import React, { FC, useEffect, useState, useRef } from "react";
+import React, { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../../redux/Store/Store";
 import AlertError from "../../components/SearchCrypto/Alert";
+import SuccessAlert from "../../components/SearchCrypto/SuccessAlert";
 import SearchedCrypto from "../../components/SearchCrypto/SearchedCrypto";
 import SearchForm from "../../components/SearchCrypto/SearchForm";
-import { setAlert } from "../../redux/Actions/alertActions";
-
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { setAlert, setAlertSuccess } from "../../redux/Actions/alertActions";
 
 //styles
 
@@ -88,43 +87,14 @@ const Search: FC = () => {
   const SearchCryptoData = useSelector((state: RootStore) => state.search.data);
   const loading = useSelector((state: RootStore) => state.search.loading);
   const alertMsg = useSelector((state: RootStore) => state.alert.message);
+  const SuccessAlertMessage = useSelector(
+    (state: RootStore) => state.successAlert.message
+  );
+
   //for display alert succeed for adding crypto in favorites
   const Favorites = useSelector((state: RootStore) => state.favorites.data); //object
-  const alertAddedCrypto: number = Favorites.length; //number
+  console.log(Favorites.length);
 
-  /////////////////////////////////////////
-  /*function usePrevious({ alertAddedCrypto }) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = alertAddedCrypto;
-    });
-    return ref.current;
-  }
-
-  // the App where the hook is used
-  function Counter() {
-    const [count, setCount] = useState(0);
-    // 👇 look here
-    const prevCount = usePrevious(count);
-
-    return (
-      <h1>
-        Now: {count}, before: {prevCount}
-      </h1>
-    );
-  }
-  ///////////////////////////////////////
-  //useState
-  const [successBefore, setSuccessBefore] = useState(before);
-  const [successAfter, setSuccessAfter] = useState(before);
-  const prevCountRef: any = useRef();
-  useEffect(() => {
-    prevCountRef.current = success;
-  });
-  const prevCount = prevCountRef.current;
-
-  console.log("Avant :  " + success + "Après :  " + prevCount);
-*/
   const classes = useStyles();
   return (
     <div className={classes.page}>
@@ -134,12 +104,11 @@ const Search: FC = () => {
       </header>
 
       <div className={classes.alerts}>
-        {SearchCryptoData && (
-          <Alert severity="success" className={classes.alert}>
-            <AlertTitle className={classes.title}>Succès</AlertTitle>
-            <strong>Cryptomonnaie </strong>
-            ajoutée à vos favoris !
-          </Alert>
+        {SuccessAlertMessage && (
+          <SuccessAlert
+            message={SuccessAlertMessage}
+            onClose={() => dispatch(setAlertSuccess(""))}
+          />
         )}
 
         {alertMsg && (

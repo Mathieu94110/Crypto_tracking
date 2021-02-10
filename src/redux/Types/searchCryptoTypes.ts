@@ -5,6 +5,8 @@ export const SEARCH_CRYPTO_UNDEFINED = "SEARCH_CRYPTO_UNDEFINED";
 
 export const SEARCH_CRYPTO_SUCCESS = "SEARCH_CRYPTO_SUCCESS";
 export const SET_ALERT = "SET_ALERT";
+export const SET_ALERT_SUCCESS = "SET_ALERT_SUCCESS";
+
 export const SET_ERROR = "SET_ERROR";
 export const ADD_CRYPTO = "ADD_CRYPTO";
 export const DELETE_CRYPTO = "DELETE_CRYPTO";
@@ -74,7 +76,7 @@ export type SearchCryptoActions =
   | SearchCryptoSuccess;
 
 export interface AlertAction {
-  type: typeof SET_ALERT;
+  type: typeof SET_ALERT | typeof SET_ALERT_SUCCESS;
   payload: string;
 }
 
