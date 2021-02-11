@@ -13,6 +13,7 @@ import Grid from "@material-ui/core/Grid";
 import Modal from "react-modal";
 import { deleteFavoriteAction } from "../../redux/Actions/AddAndDeleteActions";
 import { FavoritesCryptoState } from "../../redux/Types/searchCryptoTypes";
+import LeftNav from "../../components/Nav/LeftNav";
 ///////////// styles
 
 /////////
@@ -28,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     modalParent: {},
+    CardContainer: {
+      width: "100%",
+      margin: "0",
+    },
     modal: {
       width: "100%",
       height: "100%",
@@ -150,9 +155,9 @@ const myFavorites: FC = () => {
   };
   //
   return (
-    <div style={{}}>
-      <h1 className={classes.header}> Favoris</h1>
-      <Grid container spacing={10} style={{ padding: "20px" }}>
+    <div>
+      <LeftNav />
+      <Grid container spacing={10} className={classes.CardContainer}>
         {Favorites.map((fav, index) => {
           return (
             <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>

@@ -20,11 +20,11 @@ ReactDOM.render(
       <Router>
         <div>
           <Switch>
-            <Route path="/liste" component={List} />
-            <Route path="/rechercher" component={Search} />
-            <Route path="/favoris" component={MyFavorites} />
+            <Route path="/100_premières_cryptos-monnaies" component={List} />
+            <Route path="/Suivre_une_crypto-monnaie" component={Search} />
+            <Route path="/Les_cryptos_que_je_suis" component={MyFavorites} />
             <Route
-              path="/gagnants_et_perdants"
+              path="/Gagnants_et_perdants"
               component={GagnantsEtPerdants}
             />
             <Route path="/gagnants" component={Gagnants} />

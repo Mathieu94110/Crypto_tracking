@@ -1,8 +1,8 @@
 import React from "react";
 import TextScroller from "../../components/TextScroller";
 import TopSevenTrending from "../../components/topSevenTrending";
-import NavBar from "../../components/Nav/Navbar";
 import BitCoinData from "../../components/Bitcoin/BitcoinData";
+import LeftNav from "../../components/Nav/LeftNav";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Grid, Paper } from "@material-ui/core";
 
@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme: Theme) =>
         lg: 1280,
         xl: 1920,
       },
+    },
+    page: {
+      height: "100vh",
+      overflow: "hidden",
     },
     NavBar: {
       height: "10vh",
@@ -80,9 +84,9 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Home() {
   const classes = useStyles();
   return (
-    <div style={{ height: "100vh" }}>
+    <div className={classes.page}>
       <Paper className={classes.NavBar}>
-        <NavBar />
+        <LeftNav />
       </Paper>
 
       <Paper className={classes.TextScroller}>

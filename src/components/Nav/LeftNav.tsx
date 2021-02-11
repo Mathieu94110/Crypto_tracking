@@ -1,69 +1,171 @@
-import React from "react";
-import styled from "styled-components";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  makeStyles,
+  Button,
+  IconButton,
+  Drawer,
+  Link,
+  MenuItem,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import React, { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-declare module "react" {
-  interface HTMLAttributes<T> extends DOMAttributes<T> {
-    open?: any;
-  }
-}
+const headersData = [
+  {
+    label: "Page d'accueil",
+    href: "/",
+  },
+  {
+    label: "100 premières cryptos-monnaies",
+    href: "/100_premières_cryptos-monnaies",
+  },
+  {
+    label: "Suivre une crypto-monnaie",
+    href: "/Suivre_une_crypto-monnaie",
+  },
+  {
+    label: "Gagnants et perdants",
+    href: "/Gagnants_et_perdants",
+  },
+  {
+    label: "Les cryptos que je suis",
+    href: "/Les_cryptos_que_je_suis",
+  },
+];
 
-const Ul = styled.ul`
-height:10vh;
-  list-style: none;
-  display: flex;
-  justify-content:"space-evenly"
-  flex-flow: row nowrap;
-  li {
-    padding: 18px 10px;
-    width: 25%;
-   text-align:center;
-   font-weight:600;
-   color:#fff;
-   display: flex;
-   flex-direction: column;
-   justify-content:center;
-  }
-  li:hover {
-   color: linear-gradient(to right, #fdc830, #f37335);
-   background::#fff;
-  }
-  background: linear-gradient(to right, #fdc830, #f37335);
-  width: 100%;
-  @media (max-width: 768px) {
-    flex-flow: column nowrap;
-    background-color: #263238;
-    opacity: 0.8;
-    position: fixed;
-    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 300px;
-    padding-top: 3.5rem;
-    transition: transform 0.3s ease-in-out;
-    li {
-      color: #fff;
-      width: 100%;
-    }
-  }
-`;
+const useStyles = makeStyles(() => ({
+  header: {
+    backgroundColor: "#400CCC",
 
-export default function LeftNav({ open }) {
+    height: "10vh",
+    "@media (max-width: 900px)": {},
+  },
+
+  menuButton: {
+    fontFamily: "Open Sans, sans-serif",
+    fontWeight: 700,
+    size: "18px",
+    marginLeft: "38px",
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+    height: "100%",
+    width: "100%",
+  },
+  drawerContainer: {
+    padding: "20px 30px",
+    width: "100%",
+  },
+}));
+
+export default function Header() {
+  const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+
+  const [state, setState] = useState({
+    mobileView: false,
+    drawerOpen: false,
+  });
+
+  const { mobileView, drawerOpen } = state;
+
+  useEffect(() => {
+    const setResponsiveness = () => {
+      return window.innerWidth < 900
+        ? setState((prevState) => ({ ...prevState, mobileView: true }))
+        : setState((prevState) => ({ ...prevState, mobileView: false }));
+    };
+
+    setResponsiveness();
+
+    window.addEventListener("resize", () => setResponsiveness());
+  }, []);
+
+  const displayDesktop = () => {
+    return (
+      <Toolbar className={toolbar}>
+        <div>{getMenuButtons()}</div>
+      </Toolbar>
+    );
+  };
+
+  const displayMobile = () => {
+    const handleDrawerOpen = () =>
+      setState((prevState) => ({ ...prevState, drawerOpen: true }));
+    const handleDrawerClose = () =>
+      setState((prevState) => ({ ...prevState, drawerOpen: false }));
+
+    return (
+      <Toolbar>
+        <IconButton
+          {...{
+            edge: "start",
+            color: "inherit",
+            "aria-label": "menu",
+            "aria-haspopup": "true",
+            onClick: handleDrawerOpen,
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+
+        <Drawer
+          {...{
+            anchor: "left",
+            open: drawerOpen,
+            onClose: handleDrawerClose,
+          }}
+        >
+          <div className={drawerContainer}>{getDrawerChoices()}</div>
+        </Drawer>
+      </Toolbar>
+    );
+  };
+
+  const getDrawerChoices = () => {
+    return headersData.map(({ label, href }) => {
+      return (
+        <Link
+          {...{
+            component: RouterLink,
+            to: href,
+            color: "inherit",
+            style: { textDecoration: "none" },
+            key: label,
+          }}
+        >
+          <MenuItem>{label}</MenuItem>
+        </Link>
+      );
+    });
+  };
+
+  const getMenuButtons = () => {
+    return headersData.map(({ label, href }) => {
+      return (
+        <Button
+          {...{
+            key: label,
+            color: "inherit",
+            to: href,
+            component: RouterLink,
+            className: menuButton,
+          }}
+        >
+          {label}
+        </Button>
+      );
+    });
+  };
+
   return (
-    <Ul open={open}>
-      <li onClick={() => (window.location = "/liste")}>
-        100 premières cryptos-monnaies
-      </li>
-      <li onClick={() => (window.location = "/rechercher")}>
-        Suivre une crypto-monnaie
-      </li>
-      <li onClick={() => (window.location = "/gagnants_et_perdants")}>
-        Gagnants et perdants
-      </li>
-
-      <li onClick={() => (window.location = "/favoris")}>
-        Les cryptos que je suis
-      </li>
-    </Ul>
+    <header>
+      <AppBar className={header}>
+        {mobileView ? displayMobile() : displayDesktop()}
+      </AppBar>
+    </header>
   );
 }

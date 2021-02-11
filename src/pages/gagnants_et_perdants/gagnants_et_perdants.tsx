@@ -7,11 +7,10 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Navbar from "../../components/Nav/Navbar";
 import Bullish from "../../images/bullish.jpg";
 import Bearish from "../../images/bearish.jpg";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
+import LeftNav from "../../components/Nav/LeftNav";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     breakpoints: {
@@ -35,19 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      [theme.breakpoints.up("md")]: {
-        height: "100%",
-      },
     },
 
-    title: {
-      width: "100%",
-      height: "10vh",
-      color: "gold",
-      display: "flex",
-      justifyContent: "space-evenly",
-      alignItems: "center",
-    },
     cards_parent: {
       height: "600px",
       display: "flex",
@@ -56,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "auto",
 
       [theme.breakpoints.up("md")]: {
+        height: "90vh",
         flexDirection: "row",
         alignItems: "center",
         margin: "0",
@@ -102,13 +91,6 @@ const useStyles = makeStyles((theme: Theme) =>
         height: 140,
       },
     },
-    /* cardsSpaceOnResponsive: {
-      display: "block",
-      height: "100%",
-      width: "100%",
-      justifyContent: "spaceBetween",
-      alignItems: "stretch",
-    },*/
   })
 );
 
@@ -117,9 +99,8 @@ const gagnants_et_perdants: FC = () => {
 
   return (
     <div className={classes.page}>
-      <Navbar />
+      <LeftNav />
 
-      <h1 className={classes.title}>Gagnants et perdants</h1>
       <div className={classes.cards_parent}>
         <Card className={classes.root}>
           <CardActionArea>

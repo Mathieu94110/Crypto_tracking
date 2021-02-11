@@ -119,6 +119,7 @@ const SearchForm: FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (inputValue.trim() === "") {
       dispatch(setAlert("Vous n'avez rien renseigné !"));
     } else {

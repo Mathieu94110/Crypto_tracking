@@ -52,7 +52,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     card: {
-      maxWidth: 345,
+      width: 250,
+    },
+    textButton: {
+      margin: "auto",
     },
   })
 );
@@ -81,8 +84,8 @@ const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
                 {Object.values(data)[0].name}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <span>Symbole : {Object.values(data)[0].symbol} </span>
-                <span>Prix : {Object.values(data)[0].current_price} €</span>
+                <p>Symbole : {Object.values(data)[0].symbol.toUpperCase()} </p>
+                <p>Prix : {Object.values(data)[0].current_price} €</p>
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -90,6 +93,7 @@ const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
             <Button
               size="small"
               color="primary"
+              className={classes.textButton}
               onClick={() => {
                 dispatch(
                   setAlertSuccess("Crypto-monnaie ajoutée à vos favoris !")

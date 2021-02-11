@@ -10,6 +10,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import LeftNav from "../../components/Nav/LeftNav";
 //styles
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -37,8 +38,11 @@ const useStyles = makeStyles((theme: Theme) =>
         maxWidth: 200,
       },
     },
+
     card: {
       padding: "20px",
+      margin: "0",
+      width: "100%",
     },
     header: {
       width: "100%",
@@ -134,12 +138,20 @@ export default function list() {
     );
   } else {
     return (
-      <div style={{}}>
-        <h1 className={classes.header}>100 premières crypto_monnaies</h1>
+      <div>
+        <LeftNav />
         <Grid container spacing={10} className={classes.card}>
           {datas.map((data: IAllCoins, index) => {
             return (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                xl={2}
+                className={classes.cardContainer}
+              >
                 <>
                   <p className={classes.index}>{(index += 1)}</p>
                   <Card key={index} className={classes.root}>

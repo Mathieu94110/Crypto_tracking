@@ -6,6 +6,7 @@ import SuccessAlert from "../../components/SearchCrypto/SuccessAlert";
 import SearchedCrypto from "../../components/SearchCrypto/SearchedCrypto";
 import SearchForm from "../../components/SearchCrypto/SearchForm";
 import { setAlert, setAlertSuccess } from "../../redux/Actions/alertActions";
+import LeftNav from "../../components/Nav/LeftNav";
 
 //styles
 
@@ -20,7 +21,20 @@ const useStyles = makeStyles((theme: Theme) =>
         lg: 1280,
         xl: 1920,
       },
-    },
+    } /*
+    header: {
+      height: "60px",
+      lineHeight: "60px",
+      color: "#fff",
+      background: "#0063cc",
+      width: "100%",
+      fontSize: "1.2em",
+      [theme.breakpoints.up("md")]: {
+        height: "10vh",
+        lineHeight: "10vh",
+        width: "100%",
+      },
+    },*/,
     alerts: {
       height: "100px",
       width: "100%",
@@ -44,23 +58,12 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       display: "column",
       width: "100%",
-      maxHeight: "650px",
+
       [theme.breakpoints.up("md")]: {
         height: "100vh",
       },
     },
-    homeTitle: {
-      height: "60px",
-      lineHeight: "60px",
-      color: "#fff",
-      background: "#0063cc",
-      width: "100%",
-      fontSize: "1.2em",
-      [theme.breakpoints.up("md")]: {
-        height: "10vh",
-        width: "100%",
-      },
-    },
+
     title: {
       fontWeight: 700,
       [theme.breakpoints.up("md")]: {},
@@ -68,12 +71,11 @@ const useStyles = makeStyles((theme: Theme) =>
     formAndResult: {
       display: "block",
       justifyContent: "space-evenly",
-      height: "700px",
-
       alignItems: "center",
+      height: "700px",
       [theme.breakpoints.up("md")]: {
         display: "flex",
-        height: "calc(80vh - 100px)",
+        height: "calc(80vh - 80px)",
         width: "100%",
       },
     },
@@ -98,10 +100,7 @@ const Search: FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.page}>
-      <header>
-        {" "}
-        <h1 className={classes.homeTitle}>Rechercher une crypto-monnaie</h1>
-      </header>
+      <LeftNav />
 
       <div className={classes.alerts}>
         {SuccessAlertMessage && (
@@ -120,12 +119,16 @@ const Search: FC = () => {
       </div>
 
       <div className={classes.formAndResult}>
-        <SearchForm />
-        {loading ? (
-          <h2 style={{ margin: "auto" }}>Chargement...</h2>
-        ) : (
-          SearchCryptoData && <SearchedCrypto data={SearchCryptoData} />
-        )}
+        <>
+          <SearchForm />
+        </>
+        <>
+          {loading ? (
+            <h2 style={{ margin: "auto" }}>Chargement...</h2>
+          ) : (
+            SearchCryptoData && <SearchedCrypto data={SearchCryptoData} />
+          )}
+        </>
       </div>
     </div>
   );
