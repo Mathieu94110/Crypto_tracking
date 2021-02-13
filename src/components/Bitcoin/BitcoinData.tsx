@@ -18,10 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     bitcoinCard: {
-      height: "528px",
+      height: "100%", //  height: "528px",
       border: "2px solid #000",
       verticalAlign: "middle",
       color: "#fff",
+      backgroundColor: "#191970",
       backgroundImage: `url(${bitcoin_background})`,
       backgroundSize: "cover",
       backgroundPosition: "center center",

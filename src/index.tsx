@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./scss/style.scss";
 import Home from "./pages/home/home";
 import List from "./pages/list/list";
 import Search from "./pages/search/search";
@@ -13,6 +12,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./redux/Store/Store"; //
 import reportWebVitals from "./reportWebVitals";
 import { PersistGate } from "redux-persist/integration/react"; //
+import "./index.css";
 
 ReactDOM.render(
   <Provider store={store}>

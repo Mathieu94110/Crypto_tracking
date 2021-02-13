@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     page: {
       height: "100vh",
       overflow: "hidden",
+      backgroundColor: "#191970",
     },
     NavBar: {
       height: "10vh",
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     Cards: {
       display: "block",
       margin: " 0% 2%",
-
+      height: "500px",
       [theme.breakpoints.up("md")]: {
         display: "flex",
         flexDirection: "column",
@@ -39,7 +40,8 @@ const useStyles = makeStyles((theme: Theme) =>
         alignItems: "space-between",
         flexGrow: 1,
         width: "100%",
-        height: "80vh",
+        height: "72vh",
+        margin: "3vh 2vh 1vh 2vh",
       },
     },
     paperTrendings: {
@@ -89,15 +91,15 @@ export default function Home() {
         <LeftNav />
       </Paper>
 
-      <Paper className={classes.TextScroller}>
+      <Paper elevation={0} className={classes.TextScroller}>
         <TextScroller />
       </Paper>
 
       <Grid container xs={12} className={classes.Cards}>
-        <Paper className={classes.paperTrendings}>
+        <Paper elevation={0} className={classes.paperTrendings}>
           <TopSevenTrending />
         </Paper>{" "}
-        <Paper className={classes.paperBitcoin}>
+        <Paper elevation={0} className={classes.paperBitcoin}>
           <BitCoinData />
         </Paper>
       </Grid>

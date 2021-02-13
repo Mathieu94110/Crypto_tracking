@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     topSevenTrendingCard: {
-      height: "528px",
+      height: "100%", //   height: "528px",
       border: "2px solid #000",
 
-      background: "linear-gradient(to right, #373b44, #4286f4)",
+      background: "#4E5052",
 
       fontSize: "1em",
       display: "flex",
@@ -48,16 +48,21 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     gridFirstSpan: {
       padding: "8px 4px 36px 4px",
-      fontSize: "1em",
+      fontSize: "0.9em",
       fontWeight: 600,
       color: "gold",
       [theme.breakpoints.up("md")]: {
-        fontSize: "1.3em",
+        fontSize: "1.2em",
       },
     },
     gridLastChilds: {
+      height: "45px",
       fontWeight: 600,
       fontSize: "0.8em",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
       color: "#fff",
       [theme.breakpoints.up("md")]: {
         fontSize: "1em",

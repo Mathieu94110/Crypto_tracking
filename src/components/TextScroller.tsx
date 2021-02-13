@@ -22,7 +22,26 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
       justifyContent: "center",
       fontWeight: 600,
-      fontSize: "1.6em",
+      backgroundColor: "#191970",
+    },
+    textScrolled: {
+      display: "flex",
+      justifyContent: "space-evenly",
+      fontSize: "1em",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.3em",
+      },
+    },
+    onColumn: {
+      display: "flex",
+      flexDirection: "column",
+      textAlign: "center",
+    },
+    whitesDatas: {
+      color: "#fff",
+    },
+    colored_datas: {
+      color: "gold",
     },
   })
 );
@@ -32,14 +51,13 @@ const TextScroller = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       const response = await coinGecko.get("/global");
       const responseData = response.data.data;
       console.log(responseData);
       setData(responseData);
-    };
-    fetchData();
-  });
+    })();
+  }, []);
 
   //scrolling
   const scrolling = useSpring({
@@ -53,12 +71,46 @@ const TextScroller = () => {
     },
   });
   //scrolling datas // Bc data volume percentage and total request failed i dont know why !
-  const text = `Crypto-monnaie existantes :   ${data.active_cryptocurrencies}  Évolution sur 24h (%) : ${data.market_cap_change_percentage_24h_usd} marchés : ${data.markets} `;
+
   return (
     <div key={key} className={classes.scrollingContainer}>
-      <animated.div style={scrolling}>{text}</animated.div>
+      <animated.div style={scrolling}>
+        {
+          <div className={classes.textScrolled}>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>
+                Crypto-monnaie existantes :
+              </span>
+              <span className={classes.colored_datas}>
+                {data.active_cryptocurrencies}{" "}
+              </span>
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>
+                Évolution sur 24h (%) :
+              </span>
+              <span className={classes.colored_datas}>
+                {data.market_cap_change_percentage_24h_usd}
+              </span>
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Marchés : </span>
+              <span className={classes.colored_datas}>{data.markets}</span>
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Icos en cours :</span>
+              <span className={classes.colored_datas}>{data.ongoing_icos}</span>
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Icos à venir :</span>
+              <span className={classes.colored_datas}>
+                {data.upcoming_icos}
+              </span>
+            </div>
+          </div>
+        }
+      </animated.div>
     </div>
   );
 };
-
 export default TextScroller;

@@ -12,7 +12,7 @@ import { addCrypto } from "../../redux/Actions/AddAndDeleteActions";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { setAlertSuccess } from "../../redux/Actions/alertActions";
-
+import { Paper } from "@material-ui/core";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     breakpoints: {
@@ -24,8 +24,44 @@ const useStyles = makeStyles((theme: Theme) =>
         xl: 1920,
       },
     },
-    media: {
-      height: 140,
+    card: {
+      width: 200, //
+      height: 220, //
+      [theme.breakpoints.up("md")]: {
+        width: 250,
+        height: 304,
+      },
+    },
+    card_content: {
+      height: 80, //
+
+      [theme.breakpoints.up("md")]: {
+        height: 120,
+        padding: 10,
+      },
+    },
+
+    card_media: {
+      height: 70, //
+      [theme.breakpoints.up("md")]: {
+        height: 120,
+      },
+    },
+    textButton: {
+      margin: "auto", //
+      height: 30, //
+      fontWeight: 600,
+      [theme.breakpoints.up("md")]: {
+        height: "auto",
+      },
+    },
+    textContent: {
+      color: "#000",
+      margin: "auto",
+      width: "60%",
+      display: "flex",
+      justifyContent: "space-between",
+      fontWeight: 600,
     },
     page: {
       width: "100vw",
@@ -51,12 +87,6 @@ const useStyles = makeStyles((theme: Theme) =>
         width: "50vw",
       },
     },
-    card: {
-      width: 250,
-    },
-    textButton: {
-      margin: "auto",
-    },
   })
 );
 
@@ -72,39 +102,51 @@ const searchedCrypto: FC<SearchCryptoProps> = ({ data }) => {
   return (
     <div className={classes.page}>
       <div className={classes.pageContent}>
-        <Card className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              style={{ height: 140 }}
-              image={Object.values(data)[0].image} //changement des cryptoState en data
-              title={Object.values(data)[0].name}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {Object.values(data)[0].name}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <p>Symbole : {Object.values(data)[0].symbol.toUpperCase()} </p>
-                <p>Prix : {Object.values(data)[0].current_price} €</p>
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              className={classes.textButton}
-              onClick={() => {
-                dispatch(
-                  setAlertSuccess("Crypto-monnaie ajoutée à vos favoris !")
-                );
-                dispatch(addCrypto(data));
-              }}
-            >
-              Ajouter à ma liste
-            </Button>
-          </CardActions>
-        </Card>
+        <Paper elevation={4}>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.card_media}
+                image={Object.values(data)[0].image} //changement des cryptoState en data
+                title={Object.values(data)[0].name}
+              />
+              <CardContent className={classes.card_content}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {Object.values(data)[0].name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <p className={classes.textContent}>
+                    <span>Rang :</span>{" "}
+                    <span>{Object.values(data)[0].market_cap_rank}</span>
+                  </p>
+                  <p className={classes.textContent}>
+                    <span>Symbole :</span>{" "}
+                    <span>{Object.values(data)[0].symbol.toUpperCase()}</span>
+                  </p>
+                  <p className={classes.textContent}>
+                    <span>Prix :</span>{" "}
+                    <span>{Object.values(data)[0].current_price} €</span>
+                  </p>
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                className={classes.textButton}
+                onClick={() => {
+                  dispatch(
+                    setAlertSuccess("Crypto-monnaie ajoutée à vos favoris !")
+                  );
+                  dispatch(addCrypto(data));
+                }}
+              >
+                Ajouter à ma liste
+              </Button>
+            </CardActions>
+          </Card>
+        </Paper>
       </div>
     </div>
   );

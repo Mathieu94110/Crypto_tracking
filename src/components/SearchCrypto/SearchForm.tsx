@@ -37,75 +37,60 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
     },
     form: {
-      width: "300px",
-      height: "220px",
+      width: "260px",
+      height: "200px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center", //center the form at the beginning on the page
       margin: "auto",
+
       [theme.breakpoints.up("md")]: {
         width: "50vw",
         height: "100%",
       },
     },
     formContent: {
-      width: "100%",
-      height: "100%",
+      borderRadius: "50%",
+      width: "250px",
+      height: "250px",
+      border: "2px solid #fff",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-evenly",
-      border: "2px solid #0063cc",
-      borderRadius: "10%",
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
       [theme.breakpoints.up("md")]: {
-        width: "400px",
+        border: "2px solid #000",
+        borderRadius: "200px",
+        width: "300px",
         height: "300px",
+      },
+    },
+    button: {
+      boxShadow: "none",
+      textTransform: "none",
+      fontSize: 16,
+      padding: "3px 6px",
+      border: "2px solid #fff",
+      lineHeight: 1.5,
+      backgroundColor: "#F79C5A",
+      borderRadius: "30px",
+      fontWeight: 600,
+      width: "180px",
+      color: "#fff",
+      [theme.breakpoints.up("md")]: {
+        padding: "6px 12px",
+        border: "2px solid #000",
+      },
+    },
+    textfield: {
+      backgroundColor: "rgba(255,255,255,0.8)",
+      [theme.breakpoints.up("md")]: {
+        width: "200px",
       },
     },
   })
 );
-
-//
-
-//Style du champs de texte
-const BootstrapButton = withStyles({
-  root: {
-    boxShadow: "none",
-    textTransform: "none",
-    fontSize: 16,
-    padding: "6px 12px",
-    border: "1px solid",
-    lineHeight: 1.5,
-    backgroundColor: "#0063cc",
-    borderColor: "#0063cc",
-
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-    "&:hover": {
-      backgroundColor: "#0069d9",
-      borderColor: "#0062cc",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#0062cc",
-      borderColor: "#005cbf",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
-  },
-})(Button);
 
 const SearchForm: FC = () => {
   const dispatch = useDispatch();
@@ -147,19 +132,13 @@ const SearchForm: FC = () => {
               id="outlined-basic"
               label="Nom"
               variant="outlined"
+              className={classes.textfield}
               value={inputValue}
               onChange={handleChange}
             />
-            <BootstrapButton
-              variant="contained"
-              color="primary"
-              disableRipple
-              className={classesInput.margin}
-              type="submit"
-              value="Envoyer"
-            >
+            <button className={classes.button} type="submit" value="Envoyer">
               Rechercher
-            </BootstrapButton>
+            </button>
           </form>
         </div>
       </div>

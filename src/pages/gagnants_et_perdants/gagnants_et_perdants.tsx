@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Crypto_chart from "../../images/crypto_chart.jpg";
+import bulishvsbearish from "../../images/bulishvsbearish.jpg";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -9,8 +9,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Bullish from "../../images/bullish.jpg";
 import Bearish from "../../images/bearish.jpg";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, createStyles, Theme, Paper } from "@material-ui/core";
 import LeftNav from "../../components/Nav/LeftNav";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     breakpoints: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "100vh",
       margin: "0",
       padding: "0",
-      backgroundImage: `url(${Crypto_chart})`,
+      backgroundImage: `url(${bulishvsbearish})`,
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
@@ -35,7 +36,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
       justifyContent: "center",
     },
-
+    NavBar: {
+      height: "10vh",
+    },
     cards_parent: {
       height: "600px",
       display: "flex",
@@ -99,8 +102,9 @@ const gagnants_et_perdants: FC = () => {
 
   return (
     <div className={classes.page}>
-      <LeftNav />
-
+      <Paper className={classes.NavBar}>
+        <LeftNav />
+      </Paper>
       <div className={classes.cards_parent}>
         <Card className={classes.root}>
           <CardActionArea>
@@ -124,8 +128,8 @@ const gagnants_et_perdants: FC = () => {
                 component="p"
                 className={classes.description}
               >
-                Retrouvez les 10 hausses les plus importantes sur une période de
-                24h, 7j, 1m
+                <p>10 hausses les plus importantes</p>
+                <p>Période au choix : 24 heures, 7 jours ou 30 jours</p>
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -164,8 +168,8 @@ const gagnants_et_perdants: FC = () => {
                 component="p"
                 className={classes.description}
               >
-                Retrouvez les 10 baisses les plus importantes sur une période de
-                24h, 7j, 1m
+                <p>10 baisses les plus importantes</p>
+                <p>Période au choix : 24heures, 7 jours ou 30 jours</p>
               </Typography>
             </CardContent>
           </CardActionArea>

@@ -7,10 +7,11 @@ import SearchedCrypto from "../../components/SearchCrypto/SearchedCrypto";
 import SearchForm from "../../components/SearchCrypto/SearchForm";
 import { setAlert, setAlertSuccess } from "../../redux/Actions/alertActions";
 import LeftNav from "../../components/Nav/LeftNav";
+import search_crypto from "../../images/crypto_search.jpg";
 
 //styles
 
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, createStyles, Theme, Paper } from "@material-ui/core/";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     breakpoints: {
@@ -21,20 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
         lg: 1280,
         xl: 1920,
       },
-    } /*
-    header: {
-      height: "60px",
-      lineHeight: "60px",
-      color: "#fff",
-      background: "#0063cc",
-      width: "100%",
-      fontSize: "1.2em",
-      [theme.breakpoints.up("md")]: {
-        height: "10vh",
-        lineHeight: "10vh",
-        width: "100%",
-      },
-    },*/,
+    },
+    NavBar: {
+      height: "10vh",
+    },
+
     alerts: {
       height: "100px",
       width: "100%",
@@ -58,10 +50,11 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       display: "column",
       width: "100%",
-
-      [theme.breakpoints.up("md")]: {
-        height: "100vh",
-      },
+      height: "100vh",
+      backgroundImage: `url(${search_crypto})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
     },
 
     title: {
@@ -71,11 +64,10 @@ const useStyles = makeStyles((theme: Theme) =>
     formAndResult: {
       display: "block",
       justifyContent: "space-evenly",
-      alignItems: "center",
-      height: "700px",
       [theme.breakpoints.up("md")]: {
+        alignItems: "center",
         display: "flex",
-        height: "calc(80vh - 80px)",
+        height: "calc(80vh - 10vh)",
         width: "100%",
       },
     },
@@ -100,7 +92,9 @@ const Search: FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.page}>
-      <LeftNav />
+      <Paper className={classes.NavBar}>
+        <LeftNav />
+      </Paper>
 
       <div className={classes.alerts}>
         {SuccessAlertMessage && (

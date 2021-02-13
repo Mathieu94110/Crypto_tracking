@@ -38,17 +38,19 @@ const headersData = [
 
 const useStyles = makeStyles(() => ({
   header: {
-    backgroundColor: "#400CCC",
-
+    backgroundColor: "#F79C5A",
     height: "10vh",
-    "@media (max-width: 900px)": {},
+    width: "100%",
   },
 
   menuButton: {
     fontFamily: "Open Sans, sans-serif",
-    fontWeight: 700,
+    fontWeight: 900,
     size: "18px",
-    marginLeft: "38px",
+    height: "100%",
+    "&:hover": {
+      color: "gold",
+    },
   },
   toolbar: {
     display: "flex",
@@ -60,10 +62,19 @@ const useStyles = makeStyles(() => ({
     padding: "20px 30px",
     width: "100%",
   },
+  toolBarHeight: {
+    height: "100%",
+  },
 }));
 
 export default function Header() {
-  const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+  const {
+    header,
+    menuButton,
+    toolbar,
+    drawerContainer,
+    toolBarHeight,
+  } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
@@ -99,7 +110,7 @@ export default function Header() {
       setState((prevState) => ({ ...prevState, drawerOpen: false }));
 
     return (
-      <Toolbar>
+      <Toolbar className={toolBarHeight}>
         <IconButton
           {...{
             edge: "start",

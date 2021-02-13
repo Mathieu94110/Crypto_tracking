@@ -6,8 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import { makeStyles, createStyles, Theme, Paper } from "@material-ui/core/";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import LeftNav from "../../components/Nav/LeftNav";
@@ -25,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     listPage: {
+      height: "90vh",
       textAlign: "center",
       fontWeight: 900,
       fontSize: "20px",
@@ -38,28 +38,16 @@ const useStyles = makeStyles((theme: Theme) =>
         maxWidth: 200,
       },
     },
-
+    NavBar: {
+      height: "10vh",
+    },
     card: {
       padding: "20px",
       margin: "0",
       width: "100%",
-    },
-    header: {
-      width: "100%",
-      height: "10vh",
-      lineHeight: "10vh",
-      backgroundColor: "#0063cc",
-      color: "#fff",
-      textAlign: "center",
-      fontWeight: 800,
-      fontSize: "1.2em",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "1.8em",
-        width: "100%",
-      },
+      backgroundColor: "#191970",
     },
     index: {
-      background: "#fff",
       borderRadius: "50%",
       border: "2px solid gold",
       width: "30px",
@@ -139,7 +127,9 @@ export default function list() {
   } else {
     return (
       <div>
-        <LeftNav />
+        <Paper className={classes.NavBar}>
+          <LeftNav />
+        </Paper>
         <Grid container spacing={10} className={classes.card}>
           {datas.map((data: IAllCoins, index) => {
             return (
