@@ -7,7 +7,7 @@ module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "build"),
     filename: "bundle.js",
   },
   resolve: {
@@ -37,7 +37,7 @@ module.exports = {
   },
   devtool: "cheap-module-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "build"),
     historyApiFallback: true,
   },
   plugins: [
