@@ -14,9 +14,11 @@ import Modal from "react-modal";
 import { deleteFavoriteAction } from "../../redux/Actions/AddAndDeleteActions";
 import { FavoritesCryptoState } from "../../redux/Types/searchCryptoTypes";
 import LeftNav from "../../components/Nav/LeftNav";
+
+interface favDatas {}
+
 ///////////// styles
 
-/////////
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     breakpoints: {
@@ -175,7 +177,7 @@ const myFavorites: FC = () => {
                   <p className={classes.index}>{index}</p>
                   <Card key={index} className={classes.root}>
                     <CardActionArea>
-                      {fav.image["0"].image && (
+                      {fav != undefined && fav.image["0"].image && (
                         <CardMedia
                           component="img"
                           alt={fav.image["0"].name}
@@ -237,7 +239,6 @@ const myFavorites: FC = () => {
           })}
         </Grid>
       </Paper>
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

@@ -2,11 +2,21 @@ import React, { useEffect, useState } from "react";
 import HistoryChart from "./HistoryChart";
 import coinGecko from "../../Api/coinGecko";
 
-const BitcoinDetailPage = () => {
-  const [coinData, setCoinData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+interface CoinDataDetails {
+  market_caps: Array<Array<number>> | null;
+  prices: Array<Array<number>> | null;
+  total_volumes: Array<Array<number>> | null;
+}
 
-  const formatData = (data) => {
+const BitcoinDetailPage = () => {
+  const [coinData, setCoinData] = useState<CoinDataDetails>({
+    market_caps: null,
+    prices: null,
+    total_volumes: null,
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const formatData = (data: CoinDataDetails[]) => {
     return data.map((el) => {
       return {
         t: el[0],
@@ -49,6 +59,7 @@ const BitcoinDetailPage = () => {
     };
 
     fetchData();
+    console.log(coinData);
   }, []);
 
   const renderData = () => {

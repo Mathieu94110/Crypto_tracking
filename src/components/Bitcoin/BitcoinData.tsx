@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import bitcoin_background from "../../images/bitcoin_background.jpg";
 import coinGecko from "../../Api/coinGecko";
 import BitcoinDetailPage from "./BitcoinDetailPage";
@@ -75,17 +75,41 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 //////////
+interface dataTypes {
+  name: string;
+  image: string;
+  circulating_supply: number;
+  market_cap: number;
+  total_supply: number;
+  total_volume: number;
+  low_24h: number;
+  high_24h: number;
+}
 
-const CoinsDatas = () => {
-  const [allCoinsDatas, setallCoinsDatas] = useState({
-    name: "string",
-    image: "string",
-    circulating_supply: "number",
-    market_cap: "number",
-    total_supply: "number",
-    total_volume: "number",
-    low_24h: "number",
-    high_24h: "number",
+interface ScoreObject {
+  score: number;
+  usersId: number[];
+  winner: string;
+  date: Date;
+}
+
+const CoinsDatas: FC = () => {
+  const [allCoinsDatas, setallCoinsDatas] = useState<dataTypes>({
+    name: "",
+    image: "",
+    circulating_supply: 0,
+    market_cap: 0,
+    total_supply: 0,
+    total_volume: 0,
+    low_24h: 0,
+    high_24h: 0,
+  });
+
+  const [myScore, setMyScore] = useState<ScoreObject>({
+    score: 0,
+    usersId: [1, 2, 3, 4],
+    winner: "The boss",
+    date: new Date(),
   });
 
   useEffect(() => {

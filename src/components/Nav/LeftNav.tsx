@@ -2,9 +2,9 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  makeStyles,
   Button,
   IconButton,
+  makeStyles,
   Drawer,
   Link,
   MenuItem,
@@ -48,6 +48,7 @@ const useStyles = makeStyles(() => ({
     fontWeight: 900,
     size: "18px",
     height: "100%",
+    width: "20%",
     "&:hover": {
       color: "gold",
     },
@@ -60,10 +61,13 @@ const useStyles = makeStyles(() => ({
   },
   drawerContainer: {
     padding: "20px 30px",
-    width: "100%",
   },
   toolBarHeight: {
     height: "100%",
+  },
+  drawer: {
+    display: "flex",
+    justifyContent: "space-between",
   },
 }));
 
@@ -73,6 +77,7 @@ export default function Header() {
     menuButton,
     toolbar,
     drawerContainer,
+    drawer,
     toolBarHeight,
   } = useStyles();
 
@@ -129,6 +134,7 @@ export default function Header() {
             open: drawerOpen,
             onClose: handleDrawerClose,
           }}
+          className={drawer}
         >
           <div className={drawerContainer}>{getDrawerChoices()}</div>
         </Drawer>

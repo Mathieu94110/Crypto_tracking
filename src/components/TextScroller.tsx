@@ -107,6 +107,16 @@ const TextScroller = () => {
                 {data.upcoming_icos}
               </span>
             </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>
+                Capitalisation globale Btc :
+              </span>
+              {data.market_cap_percentage && (
+                <span className={classes.colored_datas}>
+                  {data.market_cap_percentage.btc}
+                </span>
+              )}
+            </div>
           </div>
         }
       </animated.div>
