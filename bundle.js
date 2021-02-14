@@ -98767,15 +98767,14 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ma
       border: "2px solid #000",
       verticalAlign: "middle",
       color: "#fff",
+      backgroundColor: "#191970",
       backgroundImage: "url(".concat(_images_bitcoin_background_jpg__WEBPACK_IMPORTED_MODULE_1__["default"], ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-evenly",
-      marginBottom: "10%" // rien avant
-
+      justifyContent: "space-evenly"
     },
     bitcoinCardContent: {
       display: "flex",
@@ -98819,18 +98818,28 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ma
 
 var CoinsDatas = function CoinsDatas() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    name: "string",
-    image: "string",
-    circulating_supply: "number",
-    market_cap: "number",
-    total_supply: "number",
-    total_volume: "number",
-    low_24h: "number",
-    high_24h: "number"
+    name: "",
+    image: "",
+    circulating_supply: 0,
+    market_cap: 0,
+    total_supply: 0,
+    total_volume: 0,
+    low_24h: 0,
+    high_24h: 0
   }),
       _useState2 = _slicedToArray(_useState, 2),
       allCoinsDatas = _useState2[0],
       setallCoinsDatas = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    score: 0,
+    usersId: [1, 2, 3, 4],
+    winner: "The boss",
+    date: new Date()
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      myScore = _useState4[0],
+      setMyScore = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var fetchData = /*#__PURE__*/function () {
@@ -98930,7 +98939,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var BitcoinDetailPage = function BitcoinDetailPage() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    market_caps: null,
+    prices: null,
+    total_volumes: null
+  }),
       _useState2 = _slicedToArray(_useState, 2),
       coinData = _useState2[0],
       setCoinData = _useState2[1];
@@ -99005,6 +99018,7 @@ var BitcoinDetailPage = function BitcoinDetailPage() {
     }();
 
     fetchData();
+    console.log(coinData);
   }, []);
 
   var renderData = function renderData() {
@@ -99189,6 +99203,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -99239,6 +99255,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_0__["makeStyle
       fontWeight: 900,
       size: "18px",
       height: "100%",
+      width: "20%",
       "&:hover": {
         color: "gold"
       }
@@ -99250,11 +99267,14 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_0__["makeStyle
       width: "100%"
     },
     drawerContainer: {
-      padding: "20px 30px",
-      width: "100%"
+      padding: "20px 30px"
     },
     toolBarHeight: {
       height: "100%"
+    },
+    drawer: {
+      display: "flex",
+      justifyContent: "space-between"
     }
   };
 });
@@ -99264,6 +99284,7 @@ function Header() {
       menuButton = _useStyles.menuButton,
       toolbar = _useStyles.toolbar,
       drawerContainer = _useStyles.drawerContainer,
+      drawer = _useStyles.drawer,
       toolBarHeight = _useStyles.toolBarHeight;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])({
@@ -99326,11 +99347,13 @@ function Header() {
       "aria-label": "menu",
       "aria-haspopup": "true",
       onClick: handleDrawerOpen
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_1___default.a, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_0__["Drawer"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_1___default.a, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_0__["Drawer"], _extends({
       anchor: "left",
       open: drawerOpen,
       onClose: handleDrawerClose
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    }, {
+      className: drawer
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: drawerContainer
     }, getDrawerChoices())));
   };
@@ -99990,7 +100013,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["ma
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      fontWeight: 600
+      fontWeight: 600,
+      backgroundColor: "#191970"
     },
     textScrolled: _defineProperty({
       display: "flex",
@@ -100003,6 +100027,9 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["ma
       display: "flex",
       flexDirection: "column",
       textAlign: "center"
+    },
+    whitesDatas: {
+      color: "#fff"
     },
     colored_datas: {
       color: "gold"
@@ -100073,25 +100100,41 @@ var TextScroller = function TextScroller() {
     className: classes.textScrolled
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Crypto-monnaie existantes :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Crypto-monnaie existantes :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.active_cryptocurrencies, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xC9volution sur 24h (%) :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "\xC9volution sur 24h (%) :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.market_cap_change_percentage_24h_usd)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "March\xE9s : "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "March\xE9s : "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.markets)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Icos en cours :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Icos en cours :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.ongoing_icos)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Icos \xE0 venir :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Icos \xE0 venir :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
-  }, data.upcoming_icos)))));
+  }, data.upcoming_icos)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.onColumn
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Capitalisation globale Btc :"), data.market_cap_percentage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.colored_datas
+  }, data.market_cap_percentage.btc)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TextScroller);
@@ -100193,9 +100236,7 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
       fontSize: "1em",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-evenly",
-      marginBottom: "10%" //avant rien
-
+      justifyContent: "space-evenly"
     },
     title: _defineProperty({
       height: "70px",
@@ -100314,6 +100355,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/images/bulishvsbearish.jpg":
+/*!****************************************!*\
+  !*** ./src/images/bulishvsbearish.jpg ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "039a3e8b084deabaff7e21eaaa50b837.jpg");
+
+/***/ }),
+
 /***/ "./src/images/bullish.jpg":
 /*!********************************!*\
   !*** ./src/images/bullish.jpg ***!
@@ -100324,19 +100378,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "cffe7da340dec50ef540f35b647da277.jpg");
-
-/***/ }),
-
-/***/ "./src/images/crypto_chart.jpg":
-/*!*************************************!*\
-  !*** ./src/images/crypto_chart.jpg ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "354392242f2b8eac72e1f33ee0353d00.jpg");
 
 /***/ }),
 
@@ -100362,7 +100403,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "9e9a68df896b23a4d78b4e1ba8e4271c.jpg");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "7bb93d227ca966b7621d3b04f9fe84d4.jpg");
 
 /***/ }),
 
@@ -100655,7 +100696,6 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
     selectQuantity: {
       color: "#fff"
     },
-    selectPeriod: {},
     tr: {
       color: "#fff"
     },
@@ -100701,6 +100741,21 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
         borderLeft: "5px solid transparent",
         borderRight: "5px solid transparent",
         borderBottom: "10px solid green"
+      }
+    },
+    decreasing: {
+      color: "red",
+      textAlign: "center",
+      verticalAlign: "middle",
+      "&:before": {
+        position: "relative",
+        content: '""',
+        display: "inline-block",
+        width: "0",
+        height: "0",
+        borderLeft: "5px solid transparent",
+        borderRight: "5px solid transparent",
+        borderTop: "10px solid #f00"
       }
     },
     root: {
@@ -101002,7 +101057,7 @@ var gagnants = function gagnants() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _images_crypto_chart_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/crypto_chart.jpg */ "./src/images/crypto_chart.jpg");
+/* harmony import */ var _images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/bulishvsbearish.jpg */ "./src/images/bulishvsbearish.jpg");
 /* harmony import */ var _material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Card */ "./node_modules/@material-ui/core/esm/Card/index.js");
 /* harmony import */ var _material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/CardActionArea */ "./node_modules/@material-ui/core/esm/CardActionArea/index.js");
 /* harmony import */ var _material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/CardActions */ "./node_modules/@material-ui/core/esm/CardActions/index.js");
@@ -101045,7 +101100,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["makeStyl
       height: "100vh",
       margin: "0",
       padding: "0",
-      backgroundImage: "url(".concat(_images_crypto_chart_jpg__WEBPACK_IMPORTED_MODULE_1__["default"], ")"),
+      backgroundImage: "url(".concat(_images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1__["default"], ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
@@ -101131,7 +101186,7 @@ var gagnants_et_perdants = function gagnants_et_perdants() {
     color: "textSecondary",
     component: "p",
     className: classes.description
-  }, "Retrouvez les 10 hausses les plus importantes sur une p\xE9riode de 24h, 7j, 1m"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 hausses les plus importantes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "P\xE9riode au choix : 24 heures, 7 jours ou 30 jours")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
     size: "small",
     color: "primary",
     className: classes.action,
@@ -101155,7 +101210,7 @@ var gagnants_et_perdants = function gagnants_et_perdants() {
     color: "textSecondary",
     component: "p",
     className: classes.description
-  }, "Retrouvez les 10 baisses les plus importantes sur une p\xE9riode de 24h, 7j, 1m"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 baisses les plus importantes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "P\xE9riode au choix : 24heures, 7 jours ou 30 jours")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
     size: "small",
     color: "primary",
     className: classes.action,
@@ -101273,7 +101328,8 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       width: "300px",
       height: "50px",
       lineHeight: "50px",
-      background: "rgba(0, 99, 204, 0.5)",
+      background: "rgba(255, 0, 0, 0.8)",
+      boxShadow: "2px 2px 10px 2px red",
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
@@ -101320,7 +101376,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       width: "100%",
       background: "rgba(255,255,255,0.5)",
       borderSpacing: "0px",
-      boxShadow: " 5px 8px 24px 5px #0063cc",
+      boxShadow: " 2px 2px 10px 2px red",
       border: "1px solid #fff"
     },
     thead: {
@@ -101367,14 +101423,17 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
     growing: {
       color: "green",
       textAlign: "center",
-      verticalAlign: "middle"
-    },
-    triangleUp: {
-      width: "0",
-      height: "0",
-      borderLeft: "9px solid transparent",
-      borderRight: "9px solid transparent",
-      borderBottom: "15px solid green"
+      verticalAlign: "middle",
+      "&:before": {
+        position: "relative",
+        content: '""',
+        display: "inline-block",
+        width: "0",
+        height: "0",
+        borderLeft: "5px solid transparent",
+        borderRight: "5px solid transparent",
+        borderBottom: "10px solid green"
+      }
     },
     decreasing: {
       color: "red",
@@ -101719,7 +101778,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
     },
     page: {
       height: "100vh",
-      overflow: "hidden"
+      overflow: "hidden",
+      backgroundColor: "#191970"
     },
     NavBar: {
       height: "10vh"
@@ -101729,7 +101789,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
     },
     Cards: _defineProperty({
       display: "block",
-      margin: " 0% 2%"
+      margin: " 0% 2%",
+      height: "500px"
     }, theme.breakpoints.up("md"), {
       display: "flex",
       flexDirection: "column",
@@ -101737,7 +101798,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
       alignItems: "space-between",
       flexGrow: 1,
       width: "100%",
-      height: "80vh"
+      height: "72vh",
+      margin: "3vh 2vh 1vh 2vh"
     }),
     paperTrendings: _defineProperty({
       textAlign: "center",
@@ -101878,10 +101940,10 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["makeStyl
     card: {
       padding: "20px",
       margin: "0",
-      width: "100%"
+      width: "100%",
+      backgroundColor: "#191970"
     },
     index: _defineProperty({
-      background: "#fff",
       borderRadius: "50%",
       border: "2px solid gold",
       width: "30px",
@@ -102043,9 +102105,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- ///////////// styles
-/////////
 
+///////////// styles
 var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["makeStyles"])(function (theme) {
   return Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["createStyles"])({
     breakpoints: {
@@ -102060,7 +102121,8 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["makeStyle
     CardContainer: {
       width: "100%",
       margin: "0",
-      height: "90vh"
+      height: "90vh",
+      backgroundColor: "#191970"
     },
     NavBar: {
       height: "10vh"
@@ -102207,7 +102269,7 @@ var myFavorites = function myFavorites() {
     }, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: index,
       className: classes.root
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, fav.image["0"].image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, fav != undefined && fav.image["0"].image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
       component: "img",
       alt: fav.image["0"].name,
       height: "80",
