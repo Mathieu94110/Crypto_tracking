@@ -23,23 +23,28 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     topSevenTrendingCard: {
-      height: "100%", //   height: "528px",
+      height: "400px",
       border: "2px solid #000",
-
-      background: "#4E5052",
-
-      fontSize: "1em",
+      backgroundColor: "rgba(25,25,112,0.9)",
+      fontSize: "0.8rem",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-evenly",
+      justifyContent: "none",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1rem",
+        height: "100%", //   height: "528px",
+        justifyContent: "space-evenly",
+      },
     },
     title: {
-      height: "70px",
-      lineHeight: "70px",
+      height: "45px",
+      lineHeight: "45px",
       fontSize: "1.2em",
       color: "#fff",
       [theme.breakpoints.up("md")]: {
         fontSize: "1.7em",
+        height: "70px",
+        lineHeight: "70px",
       },
     },
     grid: {
@@ -47,12 +52,13 @@ const useStyles = makeStyles((theme: Theme) =>
       gridTemplateColumns: "repeat(5, 1fr)",
     },
     gridFirstSpan: {
-      padding: "8px 4px 36px 4px",
+      padding: "8px 4px 8px 4px",
       fontSize: "0.9em",
       fontWeight: 600,
       color: "gold",
       [theme.breakpoints.up("md")]: {
         fontSize: "1.2em",
+        padding: "8px 4px 36px 4px",
       },
     },
     gridLastChilds: {
@@ -80,8 +86,16 @@ interface ISevenTrends {
   score: 0;
   symbol: string;
   thumb: string;
+  item?: IItems;
 }
-
+interface IItems {
+  item: {
+    large: string;
+    name: string;
+    symbol: string;
+    market_cap_rank: number;
+  };
+}
 export default function TopSevenTrending() {
   const [trendDatas, setsevenTrendDatas] = useState<ISevenTrends[]>([]);
 
@@ -109,7 +123,7 @@ export default function TopSevenTrending() {
         <span className={classes.gridFirstSpan}>Symbole</span>
         <span className={classes.gridFirstSpan}>Classement</span>
 
-        {trendDatas.map((trend: ISevenTrends, index) => {
+        {trendDatas.map((trend, index) => {
           return (
             <>
               <span className={classes.gridLastChilds}>{(index += 1)}</span>

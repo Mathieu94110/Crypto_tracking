@@ -27,27 +27,56 @@ const useStyles = makeStyles((theme: Theme) =>
     textScrolled: {
       display: "flex",
       justifyContent: "space-evenly",
-      fontSize: "1em",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "1.3em",
-      },
+      height: "100%",
     },
     onColumn: {
+      height: "100%",
       display: "flex",
       flexDirection: "column",
       textAlign: "center",
+      fontSize: "0.5rem",
+      padding: "2px",
+      minWidth: "50px",
+      border: "1px solid gold",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.1rem",
+        padding: "5px",
+      },
     },
     whitesDatas: {
       color: "#fff",
+      textDecoration: "underline #fff",
+      paddingBottom: "5px",
+      [theme.breakpoints.up("md")]: {},
     },
     colored_datas: {
       color: "gold",
+      [theme.breakpoints.up("md")]: {},
     },
   })
 );
+
+interface textScrollerDatas {
+  updated_at: number;
+  active_cryptocurrencies: number;
+  market_cap_change_percentage_24h_usd: number;
+  market_cap_percentage: any;
+  markets: number;
+  ongoing_icos: number;
+  upcoming_icos: number;
+}
+
 const TextScroller = () => {
   const [key, setKey] = useState(1);
-  const [data, setData] = useState("");
+  const [data, setData] = useState<textScrollerDatas>({
+    updated_at: 0,
+    active_cryptocurrencies: 0,
+    market_cap_change_percentage_24h_usd: 0,
+    market_cap_percentage: 0,
+    markets: 0,
+    ongoing_icos: 0,
+    upcoming_icos: 0,
+  });
   const classes = useStyles();
 
   useEffect(() => {
@@ -61,9 +90,9 @@ const TextScroller = () => {
 
   //scrolling
   const scrolling = useSpring({
-    from: { transform: "translate(5%,0)" },
-    to: { transform: "translate(95%,0)" },
-    config: { duration: 20000 },
+    from: { transform: "translate(-5%,0)" },
+    to: { transform: "translate(25%,0)" },
+    config: { duration: 10000 },
     reset: true,
     //reverse: key % 2 == 0,
     onRest: () => {
@@ -78,44 +107,77 @@ const TextScroller = () => {
         {
           <div className={classes.textScrolled}>
             <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Mise à jour à </span>
+              {data.updated_at && (
+                <span className={classes.colored_datas}>
+                  {data.updated_at.toString().slice(0, 2) +
+                    "h" +
+                    data.updated_at.toString().slice(2, 4) +
+                    "m"}
+                </span>
+              )}
+            </div>
+
+            <div className={classes.onColumn}>
               <span className={classes.whitesDatas}>
-                Crypto-monnaie existantes :
+                Crypto-monnaie existantes
               </span>
               <span className={classes.colored_datas}>
                 {data.active_cryptocurrencies}{" "}
               </span>
             </div>
             <div className={classes.onColumn}>
-              <span className={classes.whitesDatas}>
-                Évolution sur 24h (%) :
-              </span>
+              <span className={classes.whitesDatas}>Évolution sur 24h (%)</span>
               <span className={classes.colored_datas}>
-                {data.market_cap_change_percentage_24h_usd}
+                {data.market_cap_change_percentage_24h_usd !== undefined
+                  ? data.market_cap_change_percentage_24h_usd.toFixed(2)
+                  : null}
               </span>
             </div>
-            <div className={classes.onColumn}>
-              <span className={classes.whitesDatas}>Marchés : </span>
-              <span className={classes.colored_datas}>{data.markets}</span>
-            </div>
-            <div className={classes.onColumn}>
-              <span className={classes.whitesDatas}>Icos en cours :</span>
-              <span className={classes.colored_datas}>{data.ongoing_icos}</span>
-            </div>
-            <div className={classes.onColumn}>
-              <span className={classes.whitesDatas}>Icos à venir :</span>
-              <span className={classes.colored_datas}>
-                {data.upcoming_icos}
-              </span>
-            </div>
+
             <div className={classes.onColumn}>
               <span className={classes.whitesDatas}>
-                Capitalisation globale Btc :
+                Capitalisation globale BTC
               </span>
               {data.market_cap_percentage && (
                 <span className={classes.colored_datas}>
-                  {data.market_cap_percentage.btc}
+                  {data.market_cap_percentage.btc.toFixed(2)} %
                 </span>
               )}
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>
+                Capitalisation globale ETH
+              </span>
+              {data.market_cap_percentage && (
+                <span className={classes.colored_datas}>
+                  {data.market_cap_percentage.eth.toFixed(2)} %
+                </span>
+              )}
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>
+                Capitalisation globale ETH
+              </span>
+              {data.market_cap_percentage && (
+                <span className={classes.colored_datas}>
+                  {data.market_cap_percentage.usdt.toFixed(2)} %
+                </span>
+              )}
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Marchés </span>
+              <span className={classes.colored_datas}>{data.markets}</span>
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Icos en cours </span>
+              <span className={classes.colored_datas}>{data.ongoing_icos}</span>
+            </div>
+            <div className={classes.onColumn}>
+              <span className={classes.whitesDatas}>Icos à venir </span>
+              <span className={classes.colored_datas}>
+                {data.upcoming_icos}
+              </span>
             </div>
           </div>
         }

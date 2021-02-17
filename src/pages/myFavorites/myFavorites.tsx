@@ -15,7 +15,10 @@ import { deleteFavoriteAction } from "../../redux/Actions/AddAndDeleteActions";
 import { FavoritesCryptoState } from "../../redux/Types/searchCryptoTypes";
 import LeftNav from "../../components/Nav/LeftNav";
 
-interface favDatas {}
+interface favDatas {
+  index: number;
+  datas: (string | number)[] | null;
+}
 
 ///////////// styles
 
@@ -129,9 +132,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const myFavorites: FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [selectedFav, setselectedFav]: FavoritesCryptoState = React.useState(
-    null
-  );
+  const [selectedFav, setselectedFav]: favDatas = React.useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   // Récupération du redux storage
@@ -177,15 +178,27 @@ const myFavorites: FC = () => {
                   <p className={classes.index}>{index}</p>
                   <Card key={index} className={classes.root}>
                     <CardActionArea>
-                      {fav != undefined && fav.image["0"].image && (
-                        <CardMedia
-                          component="img"
-                          alt={fav.image["0"].name}
-                          height="80"
-                          image={fav.image["0"].image}
-                          title={fav.image["0"].name}
-                        />
-                      )}
+                      {/*i will search for a better solution !
+                      fav != undefined &&
+                        fav.image &&
+                        fav.image !== undefined &&
+                        fav.image["0"] &&
+                        fav.image["0"] !== undefined &&
+                        fav.image["0"].image &&
+                        fav.image["0"].image !==
+                          undefined
+                      
+                      */}
+                      {fav != undefined &&
+                        fav.image["0"].image(
+                          <CardMedia
+                            component="img"
+                            alt={fav.image["0"].name}
+                            height="80"
+                            image={fav.image["0"].image}
+                            title={fav.image["0"].name}
+                          />
+                        )}
 
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">

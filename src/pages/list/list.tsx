@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "#191970",
     },
     index: {
+      background: "gold",
       borderRadius: "50%",
       border: "2px solid gold",
       width: "30px",
@@ -55,10 +56,9 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: "30px",
       textAlign: "center",
       fontWeight: 600,
-      margin: " 0 auto 10px auto",
+      margin: " 0 auto  10px",
       [theme.breakpoints.up("md")]: {
         margin: 0,
-        background: "gold",
         borderRadius: "50%",
         borderColor: "none",
         marginBottom: "0px",
@@ -133,15 +133,7 @@ export default function list() {
         <Grid container spacing={10} className={classes.card}>
           {datas.map((data: IAllCoins, index) => {
             return (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                xl={2}
-                className={classes.cardContainer}
-              >
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} container>
                 <>
                   <p className={classes.index}>{(index += 1)}</p>
                   <Card key={index} className={classes.root}>

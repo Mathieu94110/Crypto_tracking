@@ -18,47 +18,55 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     page: {
-      height: "100vh",
+      height: "100%",
       overflow: "hidden",
       backgroundColor: "#191970",
+      width: "100%",
+      [theme.breakpoints.up("md")]: {
+        height: "100vh",
+      },
     },
     NavBar: {
       height: "10vh",
     },
     TextScroller: {
-      height: "10vh",
+      height: "50px",
+      margin: "5px 0",
+
+      [theme.breakpoints.up("md")]: {
+        height: "10vh",
+      },
     },
     Cards: {
       display: "block",
       margin: " 0% 2%",
-      height: "500px",
       [theme.breakpoints.up("md")]: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
 
-        alignItems: "space-between",
+        alignItems: "center",
         flexGrow: 1,
         width: "100%",
         height: "72vh",
-        margin: "3vh 2vh 1vh 2vh",
+        margin: "3vh auto 1vh auto",
       },
     },
     paperTrendings: {
       textAlign: "center",
       display: "block",
       width: "96%",
-      marginBottom: "20px",
+      marginBottom: "4px",
 
       [theme.breakpoints.up("md")]: {
-        marginBottom: "0px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         width: "47%",
         alignItems: "space-between",
         flexGrow: 1,
-        height: "80vh",
+        height: "70vh",
+        margin: "5vh 0",
       },
     },
     paperBitcoin: {
@@ -72,7 +80,8 @@ const useStyles = makeStyles((theme: Theme) =>
         width: "47%",
         alignItems: "space-between",
         flexGrow: 1,
-        height: "80vh",
+        height: "70vh",
+        margin: "5vh 0",
       },
     },
 

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     bitcoinCard: {
-      height: "100%", //  height: "528px",
+      height: "400px",
       border: "2px solid #000",
       verticalAlign: "middle",
       color: "#fff",
@@ -30,6 +30,11 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-evenly",
+      marginBottom: "15px",
+      [theme.breakpoints.up("md")]: {
+        height: "100%",
+        margin: "0",
+      },
     },
     bitcoinCardContent: {
       display: "flex",
@@ -44,8 +49,10 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "center",
       alignItems: "center",
       margin: "0 auto",
-      width: "200px",
-      height: "100px",
+      height: "60px",
+      [theme.breakpoints.up("md")]: {
+        height: "100px",
+      },
     },
     bitcoinH2: {
       marginBottom: "7px",
@@ -54,13 +61,24 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: "1.7em",
       },
     },
+    bitcoinImage: {
+      width: "25px",
+      height: "25px",
+
+      [theme.breakpoints.up("md")]: {
+        width: "45px",
+        height: "45px",
+      },
+    },
     table: {
       border: "1px solid #fff none",
       borderStyle: "groove",
+
+      [theme.breakpoints.up("md")]: {},
     },
     categoriesTitle: {
       color: "gold",
-      fontSize: "0.7em",
+      fontSize: "0.5em",
       [theme.breakpoints.up("md")]: {
         fontSize: "1em",
       },
@@ -86,13 +104,6 @@ interface dataTypes {
   high_24h: number;
 }
 
-interface ScoreObject {
-  score: number;
-  usersId: number[];
-  winner: string;
-  date: Date;
-}
-
 const CoinsDatas: FC = () => {
   const [allCoinsDatas, setallCoinsDatas] = useState<dataTypes>({
     name: "",
@@ -103,13 +114,6 @@ const CoinsDatas: FC = () => {
     total_volume: 0,
     low_24h: 0,
     high_24h: 0,
-  });
-
-  const [myScore, setMyScore] = useState<ScoreObject>({
-    score: 0,
-    usersId: [1, 2, 3, 4],
-    winner: "The boss",
-    date: new Date(),
   });
 
   useEffect(() => {
@@ -125,9 +129,25 @@ const CoinsDatas: FC = () => {
       setallCoinsDatas(data);
     };
 
-    fetchData(allCoinsDatas);
+    fetchData();
   }, []);
   const classes = useStyles();
+
+  const convert = (value: any) => {
+    if (value >= 1000000000) {
+      value =
+        (value / 1000000000).toString().substring(0, value.length - 10) + " G";
+    } else if (1000000000 > value && value >= 1000000) {
+      value =
+        (value / 1000000).toString().substring(0, value.length - 7) + " M";
+    } else if (1000000 > value && value >= 1000) {
+      value = (value / 1000).toString().substring(0, value.length - 4) + " K";
+    } else {
+      return value;
+    }
+    return value;
+  };
+
   return (
     <div className={classes.bitcoinCard}>
       <div className={classes.bitcoinCardContent}>
@@ -135,6 +155,7 @@ const CoinsDatas: FC = () => {
           <h2 className={classes.bitcoinH2}>{allCoinsDatas.name} </h2>
           <img
             src={allCoinsDatas.image}
+            className={classes.bitcoinImage}
             width="45px"
             height="45px"
             alt="bitcoin"
@@ -154,11 +175,11 @@ const CoinsDatas: FC = () => {
           </thead>
           <tbody>
             <tr className={classes.categoriesDatas}>
-              <td>{allCoinsDatas.market_cap.toLocaleString()}</td>
-              <td>{allCoinsDatas.total_supply.toLocaleString()}</td>
-              <td>{allCoinsDatas.total_volume.toLocaleString()}</td>
-              <td>{allCoinsDatas.high_24h.toLocaleString()}</td>
-              <td>{allCoinsDatas.low_24h.toLocaleString()}</td>
+              <td>{convert(allCoinsDatas.market_cap.toFixed(2))} $</td>
+              <td>{convert(allCoinsDatas.total_supply.toFixed(2))}</td>
+              <td>{convert(allCoinsDatas.total_volume.toFixed(2))} $</td>
+              <td>{convert(allCoinsDatas.high_24h.toFixed(2))} $</td>
+              <td>{convert(allCoinsDatas.low_24h.toFixed(2))} $</td>
               <td>{allCoinsDatas.circulating_supply.toLocaleString()}</td>
             </tr>
           </tbody>
