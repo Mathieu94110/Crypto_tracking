@@ -57588,7 +57588,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "/*reset css for all navigators*/\r\n\r\nhtml,\r\nbody,\r\ndiv,\r\nspan,\r\napplet,\r\nobject,\r\niframe,\r\nh1,\r\nh2,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np,\r\nblockquote,\r\npre,\r\na,\r\nabbr,\r\nacronym,\r\naddress,\r\nbig,\r\ncite,\r\ncode,\r\ndel,\r\ndfn,\r\nem,\r\nimg,\r\nins,\r\nkbd,\r\nq,\r\ns,\r\nsamp,\r\nsmall,\r\nstrike,\r\nstrong,\r\nsub,\r\nsup,\r\ntt,\r\nvar,\r\nb,\r\nu,\r\ni,\r\ncenter,\r\ndl,\r\ndt,\r\ndd,\r\nol,\r\nul,\r\nli,\r\nfieldset,\r\nform,\r\nlabel,\r\nlegend,\r\ntable,\r\ncaption,\r\ntbody,\r\ntfoot,\r\nthead,\r\ntr,\r\nth,\r\ntd,\r\narticle,\r\naside,\r\ncanvas,\r\ndetails,\r\nembed,\r\nfigure,\r\nfigcaption,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\noutput,\r\nruby,\r\nsection,\r\nsummary,\r\ntime,\r\nmark,\r\naudio,\r\nvideo {\r\n  margin: 0;\r\n  padding: 0;\r\n  border: 0;\r\n  font-size: 100%;\r\n  font: inherit;\r\n  vertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\nsection {\r\n  display: block;\r\n}\r\nbody {\r\n  line-height: 1;\r\n}\r\nol,\r\nul {\r\n  list-style: none;\r\n}\r\nblockquote,\r\nq {\r\n  quotes: none;\r\n}\r\nblockquote:before,\r\nblockquote:after,\r\nq:before,\r\nq:after {\r\n  content: \"\";\r\n  content: none;\r\n}\r\ntable {\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAiFE,SAAS;EACT,UAAU;EACV,SAAS;EACT,eAAe;EACf,aAAa;EACb,wBAAwB;AAC1B;AACA,gDAAgD;AAChD;;;;;;;;;;;EAWE,cAAc;AAChB;AACA;EACE,cAAc;AAChB;AACA;;EAEE,gBAAgB;AAClB;AACA;;EAEE,YAAY;AACd;AACA;;;;EAIE,WAAW;EACX,aAAa;AACf;AACA;EACE,yBAAyB;EACzB,iBAAiB;AACnB","sourcesContent":["/*reset css for all navigators*/\r\n\r\nhtml,\r\nbody,\r\ndiv,\r\nspan,\r\napplet,\r\nobject,\r\niframe,\r\nh1,\r\nh2,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np,\r\nblockquote,\r\npre,\r\na,\r\nabbr,\r\nacronym,\r\naddress,\r\nbig,\r\ncite,\r\ncode,\r\ndel,\r\ndfn,\r\nem,\r\nimg,\r\nins,\r\nkbd,\r\nq,\r\ns,\r\nsamp,\r\nsmall,\r\nstrike,\r\nstrong,\r\nsub,\r\nsup,\r\ntt,\r\nvar,\r\nb,\r\nu,\r\ni,\r\ncenter,\r\ndl,\r\ndt,\r\ndd,\r\nol,\r\nul,\r\nli,\r\nfieldset,\r\nform,\r\nlabel,\r\nlegend,\r\ntable,\r\ncaption,\r\ntbody,\r\ntfoot,\r\nthead,\r\ntr,\r\nth,\r\ntd,\r\narticle,\r\naside,\r\ncanvas,\r\ndetails,\r\nembed,\r\nfigure,\r\nfigcaption,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\noutput,\r\nruby,\r\nsection,\r\nsummary,\r\ntime,\r\nmark,\r\naudio,\r\nvideo {\r\n  margin: 0;\r\n  padding: 0;\r\n  border: 0;\r\n  font-size: 100%;\r\n  font: inherit;\r\n  vertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\nsection {\r\n  display: block;\r\n}\r\nbody {\r\n  line-height: 1;\r\n}\r\nol,\r\nul {\r\n  list-style: none;\r\n}\r\nblockquote,\r\nq {\r\n  quotes: none;\r\n}\r\nblockquote:before,\r\nblockquote:after,\r\nq:before,\r\nq:after {\r\n  content: \"\";\r\n  content: none;\r\n}\r\ntable {\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "/*reset css for all navigators*/\r\n\r\nhtml,\r\nbody,\r\ndiv,\r\nspan,\r\napplet,\r\nobject,\r\niframe,\r\nh1,\r\nh2,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np,\r\nblockquote,\r\npre,\r\na,\r\nabbr,\r\nacronym,\r\naddress,\r\nbig,\r\ncite,\r\ncode,\r\ndel,\r\ndfn,\r\nem,\r\nimg,\r\nins,\r\nkbd,\r\nq,\r\ns,\r\nsamp,\r\nsmall,\r\nstrike,\r\nstrong,\r\nsub,\r\nsup,\r\ntt,\r\nvar,\r\nb,\r\nu,\r\ni,\r\ncenter,\r\ndl,\r\ndt,\r\ndd,\r\nol,\r\nul,\r\nli,\r\nfieldset,\r\nform,\r\nlabel,\r\nlegend,\r\ntable,\r\ncaption,\r\ntbody,\r\ntfoot,\r\nthead,\r\ntr,\r\nth,\r\ntd,\r\narticle,\r\naside,\r\ncanvas,\r\ndetails,\r\nembed,\r\nfigure,\r\nfigcaption,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\noutput,\r\nruby,\r\nsection,\r\nsummary,\r\ntime,\r\nmark,\r\naudio,\r\nvideo {\r\n  margin: 0;\r\n  padding: 0;\r\n  border: 0;\r\n  font-size: 100%;\r\n  font: inherit;\r\n  vertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\nsection {\r\n  display: block;\r\n}\r\nhtml {\r\n  font-size: 16px;\r\n}\r\nbody {\r\n  line-height: 1;\r\n}\r\nol,\r\nul {\r\n  list-style: none;\r\n}\r\nblockquote,\r\nq {\r\n  quotes: none;\r\n}\r\nblockquote:before,\r\nblockquote:after,\r\nq:before,\r\nq:after {\r\n  content: \"\";\r\n  content: none;\r\n}\r\ntable {\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA,+BAA+B;;AAE/B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAiFE,SAAS;EACT,UAAU;EACV,SAAS;EACT,eAAe;EACf,aAAa;EACb,wBAAwB;AAC1B;AACA,gDAAgD;AAChD;;;;;;;;;;;EAWE,cAAc;AAChB;AACA;EACE,eAAe;AACjB;AACA;EACE,cAAc;AAChB;AACA;;EAEE,gBAAgB;AAClB;AACA;;EAEE,YAAY;AACd;AACA;;;;EAIE,WAAW;EACX,aAAa;AACf;AACA;EACE,yBAAyB;EACzB,iBAAiB;AACnB","sourcesContent":["/*reset css for all navigators*/\r\n\r\nhtml,\r\nbody,\r\ndiv,\r\nspan,\r\napplet,\r\nobject,\r\niframe,\r\nh1,\r\nh2,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np,\r\nblockquote,\r\npre,\r\na,\r\nabbr,\r\nacronym,\r\naddress,\r\nbig,\r\ncite,\r\ncode,\r\ndel,\r\ndfn,\r\nem,\r\nimg,\r\nins,\r\nkbd,\r\nq,\r\ns,\r\nsamp,\r\nsmall,\r\nstrike,\r\nstrong,\r\nsub,\r\nsup,\r\ntt,\r\nvar,\r\nb,\r\nu,\r\ni,\r\ncenter,\r\ndl,\r\ndt,\r\ndd,\r\nol,\r\nul,\r\nli,\r\nfieldset,\r\nform,\r\nlabel,\r\nlegend,\r\ntable,\r\ncaption,\r\ntbody,\r\ntfoot,\r\nthead,\r\ntr,\r\nth,\r\ntd,\r\narticle,\r\naside,\r\ncanvas,\r\ndetails,\r\nembed,\r\nfigure,\r\nfigcaption,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\noutput,\r\nruby,\r\nsection,\r\nsummary,\r\ntime,\r\nmark,\r\naudio,\r\nvideo {\r\n  margin: 0;\r\n  padding: 0;\r\n  border: 0;\r\n  font-size: 100%;\r\n  font: inherit;\r\n  vertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\nsection {\r\n  display: block;\r\n}\r\nhtml {\r\n  font-size: 16px;\r\n}\r\nbody {\r\n  line-height: 1;\r\n}\r\nol,\r\nul {\r\n  list-style: none;\r\n}\r\nblockquote,\r\nq {\r\n  quotes: none;\r\n}\r\nblockquote:before,\r\nblockquote:after,\r\nq:before,\r\nq:after {\r\n  content: \"\";\r\n  content: none;\r\n}\r\ntable {\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -98761,9 +98761,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ma
         xl: 1920
       }
     },
-    bitcoinCard: {
-      height: "100%",
-      //  height: "528px",
+    bitcoinCard: _defineProperty({
+      height: "400px",
       border: "2px solid #000",
       verticalAlign: "middle",
       color: "#fff",
@@ -98774,8 +98773,12 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ma
       backgroundRepeat: "no-repeat",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-evenly"
-    },
+      justifyContent: "space-evenly",
+      marginBottom: "15px"
+    }, theme.breakpoints.up("md"), {
+      height: "100%",
+      margin: "0"
+    }),
     bitcoinCardContent: {
       display: "flex",
       flexDirection: "column",
@@ -98783,28 +98786,36 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ma
       textAlign: "center",
       fontSize: "1em"
     },
-    bitcoinTitle: {
+    bitcoinTitle: _defineProperty({
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       margin: "0 auto",
-      width: "200px",
+      height: "60px"
+    }, theme.breakpoints.up("md"), {
       height: "100px"
-    },
+    }),
     bitcoinH2: _defineProperty({
       marginBottom: "7px",
       fontSize: "1.2em"
     }, theme.breakpoints.up("md"), {
       fontSize: "1.7em"
     }),
-    table: {
+    bitcoinImage: _defineProperty({
+      width: "25px",
+      height: "25px"
+    }, theme.breakpoints.up("md"), {
+      width: "45px",
+      height: "45px"
+    }),
+    table: _defineProperty({
       border: "1px solid #fff none",
       borderStyle: "groove"
-    },
+    }, theme.breakpoints.up("md"), {}),
     categoriesTitle: _defineProperty({
       color: "gold",
-      fontSize: "0.7em"
+      fontSize: "0.5em"
     }, theme.breakpoints.up("md"), {
       fontSize: "1em"
     }),
@@ -98830,16 +98841,6 @@ var CoinsDatas = function CoinsDatas() {
       _useState2 = _slicedToArray(_useState, 2),
       allCoinsDatas = _useState2[0],
       setallCoinsDatas = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    score: 0,
-    usersId: [1, 2, 3, 4],
-    winner: "The boss",
-    date: new Date()
-  }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      myScore = _useState4[0],
-      setMyScore = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var fetchData = /*#__PURE__*/function () {
@@ -98876,9 +98877,24 @@ var CoinsDatas = function CoinsDatas() {
       };
     }();
 
-    fetchData(allCoinsDatas);
+    fetchData();
   }, []);
   var classes = useStyles();
+
+  var convert = function convert(value) {
+    if (value >= 1000000000) {
+      value = (value / 1000000000).toString().substring(0, value.length - 10) + " G";
+    } else if (1000000000 > value && value >= 1000000) {
+      value = (value / 1000000).toString().substring(0, value.length - 7) + " M";
+    } else if (1000000 > value && value >= 1000) {
+      value = (value / 1000).toString().substring(0, value.length - 4) + " K";
+    } else {
+      return value;
+    }
+
+    return value;
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.bitcoinCard
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -98889,6 +98905,7 @@ var CoinsDatas = function CoinsDatas() {
     className: classes.bitcoinH2
   }, allCoinsDatas.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: allCoinsDatas.image,
+    className: classes.bitcoinImage,
     width: "45px",
     height: "45px",
     alt: "bitcoin"
@@ -98898,7 +98915,7 @@ var CoinsDatas = function CoinsDatas() {
     className: classes.categoriesTitle
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Capitalisation :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Jeton :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Volume(24H)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Max 24h :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " Min 24h :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "En circulation :"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
     className: classes.categoriesDatas
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.market_cap.toLocaleString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.total_supply.toLocaleString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.total_volume.toLocaleString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.high_24h.toLocaleString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.low_24h.toLocaleString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.circulating_supply.toLocaleString()))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BitcoinDetailPage__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, convert(allCoinsDatas.market_cap.toFixed(2)), " $"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, convert(allCoinsDatas.total_supply.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, convert(allCoinsDatas.total_volume.toFixed(2)), " $"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, convert(allCoinsDatas.high_24h.toFixed(2)), " $"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, convert(allCoinsDatas.low_24h.toFixed(2)), " $"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, allCoinsDatas.circulating_supply.toLocaleString()))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BitcoinDetailPage__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CoinsDatas);
@@ -99057,6 +99074,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _chartConfigs_chartConfigs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../chartConfigs/chartConfigs */ "./src/components/chartConfigs/chartConfigs.tsx");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -99077,6 +99095,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  //props transmise par Bitcoindetails
 
 var HistoryChart = function HistoryChart(_ref) {
@@ -99090,6 +99109,40 @@ var HistoryChart = function HistoryChart(_ref) {
       _useState2 = _slicedToArray(_useState, 2),
       timeFormat = _useState2[0],
       setTimeFormat = _useState2[1];
+
+  var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["makeStyles"])(function (theme) {
+    return Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["createStyles"])({
+      breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 960,
+          lg: 1280,
+          xl: 1920
+        }
+      },
+      buttons_container: _defineProperty({
+        textAlign: "center",
+        display: "flex",
+        justifyContent: "space-evenly"
+      }, theme.breakpoints.up("md"), {
+        justifyContent: "center"
+      }),
+      buttons: _defineProperty({
+        width: "50px",
+        height: "25px",
+        textAlign: "center",
+        verticalAlign: "middle",
+        background: "black",
+        color: "white",
+        textDecoration: "none",
+        borderRadius: "5%",
+        margin: "15px"
+      }, theme.breakpoints.up("md"), {
+        margin: "8px"
+      })
+    });
+  });
 
   var determineTimeFormat = function determineTimeFormat() {
     switch (timeFormat) {
@@ -99125,6 +99178,7 @@ var HistoryChart = function HistoryChart(_ref) {
       options: _objectSpread({}, _chartConfigs_chartConfigs__WEBPACK_IMPORTED_MODULE_2__["historyOptions"])
     });
   });
+  var classes = useStyles();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       margin: " 0 20px"
@@ -99134,20 +99188,9 @@ var HistoryChart = function HistoryChart(_ref) {
     width: 250,
     height: 250
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      textAlign: "center"
-    }
+    className: classes.buttons_container
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: {
-      width: "50px",
-      height: "25px",
-      textAlign: "center",
-      verticalAlign: "middle",
-      background: "black",
-      color: "white",
-      textDecoration: "none",
-      borderRadius: "5%"
-    },
+    className: classes.buttons,
     onClick: function onClick() {
       return setTimeFormat("24h");
     }
@@ -99155,31 +99198,12 @@ var HistoryChart = function HistoryChart(_ref) {
     onClick: function onClick() {
       return setTimeFormat("7d");
     },
-    style: {
-      width: "50px",
-      height: "25px",
-      textAlign: "center",
-      verticalAlign: "middle",
-      background: "black",
-      color: "white",
-      textDecoration: "none",
-      margin: "25px 25px  25px",
-      borderRadius: "5%"
-    }
+    className: classes.buttons
   }, "7d"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return setTimeFormat("1y");
     },
-    style: {
-      width: "50px",
-      height: "25px",
-      textAlign: "center",
-      verticalAlign: "middle",
-      background: "black",
-      color: "white",
-      textDecoration: "none",
-      borderRadius: "5%"
-    }
+    className: classes.buttons
   }, "1y")));
 };
 
@@ -100016,24 +100040,32 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["ma
       fontWeight: 600,
       backgroundColor: "#191970"
     },
-    textScrolled: _defineProperty({
+    textScrolled: {
       display: "flex",
       justifyContent: "space-evenly",
-      fontSize: "1em"
-    }, theme.breakpoints.up("md"), {
-      fontSize: "1.3em"
-    }),
-    onColumn: {
+      height: "100%"
+    },
+    onColumn: _defineProperty({
+      height: "100%",
       display: "flex",
       flexDirection: "column",
-      textAlign: "center"
-    },
-    whitesDatas: {
-      color: "#fff"
-    },
-    colored_datas: {
+      textAlign: "center",
+      fontSize: "0.5rem",
+      padding: "2px",
+      minWidth: "50px",
+      border: "1px solid gold"
+    }, theme.breakpoints.up("md"), {
+      fontSize: "1.1rem",
+      padding: "5px"
+    }),
+    whitesDatas: _defineProperty({
+      color: "#fff",
+      textDecoration: "underline #fff",
+      paddingBottom: "5px"
+    }, theme.breakpoints.up("md"), {}),
+    colored_datas: _defineProperty({
       color: "gold"
-    }
+    }, theme.breakpoints.up("md"), {})
   });
 });
 
@@ -100043,7 +100075,15 @@ var TextScroller = function TextScroller() {
       key = _useState2[0],
       setKey = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    updated_at: 0,
+    active_cryptocurrencies: 0,
+    market_cap_change_percentage_24h_usd: 0,
+    market_cap_percentage: 0,
+    markets: 0,
+    ongoing_icos: 0,
+    upcoming_icos: 0
+  }),
       _useState4 = _slicedToArray(_useState3, 2),
       data = _useState4[0],
       setData = _useState4[1];
@@ -100076,13 +100116,13 @@ var TextScroller = function TextScroller() {
 
   var scrolling = Object(react_spring__WEBPACK_IMPORTED_MODULE_1__["useSpring"])({
     from: {
-      transform: "translate(5%,0)"
+      transform: "translate(-5%,0)"
     },
     to: {
-      transform: "translate(95%,0)"
+      transform: "translate(25%,0)"
     },
     config: {
-      duration: 20000
+      duration: 10000
     },
     reset: true,
     //reverse: key % 2 == 0,
@@ -100102,39 +100142,57 @@ var TextScroller = function TextScroller() {
     className: classes.onColumn
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.whitesDatas
-  }, "Crypto-monnaie existantes :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Mise \xE0 jour \xE0 "), data.updated_at && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.colored_datas
+  }, data.updated_at.toString().slice(0, 2) + "h" + data.updated_at.toString().slice(2, 4) + "m")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.onColumn
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Crypto-monnaie existantes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.active_cryptocurrencies, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.whitesDatas
-  }, "\xC9volution sur 24h (%) :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "\xC9volution sur 24h (%)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
-  }, data.market_cap_change_percentage_24h_usd)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, data.market_cap_change_percentage_24h_usd !== undefined ? data.market_cap_change_percentage_24h_usd.toFixed(2) : null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.whitesDatas
-  }, "March\xE9s : "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Capitalisation globale BTC"), data.market_cap_percentage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.colored_datas
+  }, data.market_cap_percentage.btc.toFixed(2), " %")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.onColumn
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Capitalisation globale ETH"), data.market_cap_percentage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.colored_datas
+  }, data.market_cap_percentage.eth.toFixed(2), " %")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.onColumn
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "Capitalisation globale ETH"), data.market_cap_percentage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.colored_datas
+  }, data.market_cap_percentage.usdt.toFixed(2), " %")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.onColumn
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.whitesDatas
+  }, "March\xE9s "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.markets)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.whitesDatas
-  }, "Icos en cours :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Icos en cours "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
   }, data.ongoing_icos)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.onColumn
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.whitesDatas
-  }, "Icos \xE0 venir :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Icos \xE0 venir "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.colored_datas
-  }, data.upcoming_icos)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: classes.onColumn
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.whitesDatas
-  }, "Capitalisation globale Btc :"), data.market_cap_percentage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.colored_datas
-  }, data.market_cap_percentage.btc)))));
+  }, data.upcoming_icos)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TextScroller);
@@ -100228,35 +100286,42 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
         xl: 1920
       }
     },
-    topSevenTrendingCard: {
-      height: "100%",
-      //   height: "528px",
+    topSevenTrendingCard: _defineProperty({
+      height: "400px",
       border: "2px solid #000",
-      background: "#4E5052",
-      fontSize: "1em",
+      backgroundColor: "rgba(25,25,112,0.9)",
+      fontSize: "0.8rem",
       display: "flex",
       flexDirection: "column",
+      justifyContent: "none"
+    }, theme.breakpoints.up("md"), {
+      fontSize: "1rem",
+      height: "100%",
+      //   height: "528px",
       justifyContent: "space-evenly"
-    },
+    }),
     title: _defineProperty({
-      height: "70px",
-      lineHeight: "70px",
+      height: "45px",
+      lineHeight: "45px",
       fontSize: "1.2em",
       color: "#fff"
     }, theme.breakpoints.up("md"), {
-      fontSize: "1.7em"
+      fontSize: "1.7em",
+      height: "70px",
+      lineHeight: "70px"
     }),
     grid: {
       display: "grid",
       gridTemplateColumns: "repeat(5, 1fr)"
     },
     gridFirstSpan: _defineProperty({
-      padding: "8px 4px 36px 4px",
+      padding: "8px 4px 8px 4px",
       fontSize: "0.9em",
       fontWeight: 600,
       color: "gold"
     }, theme.breakpoints.up("md"), {
-      fontSize: "1.2em"
+      fontSize: "1.2em",
+      padding: "8px 4px 36px 4px"
     }),
     gridLastChilds: _defineProperty({
       height: "45px",
@@ -101776,45 +101841,50 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
         xl: 1920
       }
     },
-    page: {
-      height: "100vh",
+    page: _defineProperty({
+      height: "100%",
       overflow: "hidden",
-      backgroundColor: "#191970"
-    },
+      backgroundColor: "#191970",
+      width: "100%"
+    }, theme.breakpoints.up("md"), {
+      height: "100vh"
+    }),
     NavBar: {
       height: "10vh"
     },
-    TextScroller: {
+    TextScroller: _defineProperty({
+      height: "50px",
+      margin: "5px 0"
+    }, theme.breakpoints.up("md"), {
       height: "10vh"
-    },
+    }),
     Cards: _defineProperty({
       display: "block",
-      margin: " 0% 2%",
-      height: "500px"
+      margin: " 0% 2%"
     }, theme.breakpoints.up("md"), {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      alignItems: "space-between",
+      alignItems: "center",
       flexGrow: 1,
       width: "100%",
       height: "72vh",
-      margin: "3vh 2vh 1vh 2vh"
+      margin: "3vh auto 1vh auto"
     }),
     paperTrendings: _defineProperty({
       textAlign: "center",
       display: "block",
       width: "96%",
-      marginBottom: "20px"
+      marginBottom: "4px"
     }, theme.breakpoints.up("md"), {
-      marginBottom: "0px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       width: "47%",
       alignItems: "space-between",
       flexGrow: 1,
-      height: "80vh"
+      height: "70vh",
+      margin: "5vh 0"
     }),
     paperBitcoin: _defineProperty({
       display: "block",
@@ -101826,7 +101896,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
       width: "47%",
       alignItems: "space-between",
       flexGrow: 1,
-      height: "80vh"
+      height: "70vh",
+      margin: "5vh 0"
     }),
     grid: {
       width: "100px",
@@ -101944,6 +102015,7 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["makeStyl
       backgroundColor: "#191970"
     },
     index: _defineProperty({
+      background: "gold",
       borderRadius: "50%",
       border: "2px solid gold",
       width: "30px",
@@ -101951,10 +102023,9 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["makeStyl
       lineHeight: "30px",
       textAlign: "center",
       fontWeight: 600,
-      margin: " 0 auto 10px auto"
+      margin: " 0 auto  10px"
     }, theme.breakpoints.up("md"), {
       margin: 0,
-      background: "gold",
       borderRadius: "50%",
       borderColor: "none",
       marginBottom: "0px"
@@ -102017,7 +102088,7 @@ function list() {
         md: 4,
         lg: 3,
         xl: 2,
-        className: classes.cardContainer
+        container: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: classes.index
       }, index += 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -102269,13 +102340,13 @@ var myFavorites = function myFavorites() {
     }, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: index,
       className: classes.root
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, fav != undefined && fav.image["0"].image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, fav != undefined && fav.image["0"].image( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
       component: "img",
       alt: fav.image["0"].name,
       height: "80",
       image: fav.image["0"].image,
       title: fav.image["0"].name
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
       gutterBottom: true,
       variant: "h5",
       component: "h2"
