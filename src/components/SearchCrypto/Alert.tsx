@@ -54,7 +54,7 @@ const AlertError: FC<AlertProps> = ({ message, onClose }) => {
   return (
     <div onClick={onClose}>
       <Alert severity="warning" className={classes.alert} onClick={onClose}>
-        <AlertTitle className={classes.title}>Attention !</AlertTitle>
+        <AlertTitle className={classes.title}>Erreur !</AlertTitle>
         <strong>{message}</strong>
       </Alert>
     </div>

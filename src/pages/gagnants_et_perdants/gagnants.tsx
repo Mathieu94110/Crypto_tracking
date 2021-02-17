@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
       justifyContent: "center",
       height: "550px",
-      width: "300px",
+      width: "96%",
+      margin: "0 auto",
       fontSize: "0.8em",
       [theme.breakpoints.up("md")]: {
         height: "700px",
@@ -59,7 +60,8 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     periodContainer: {
-      width: "300px",
+      width: "100%",
+      margin: "0 auto",
       height: "50px",
       lineHeight: "50px",
       background: "rgba(0, 99, 204, 0.5)",
@@ -69,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       color: "#fff",
       fontWeight: 600,
-      margin: "5px 5px 0",
+
       [theme.breakpoints.up("md")]: {
         width: "600px",
         fontSize: "1em",
@@ -96,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     tableContainer: {
       width: "100%",
-      margin: "0px 5px 5px 5px ",
+      margin: "0px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-evenly",

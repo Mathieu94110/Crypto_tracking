@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     alerts: {
-      height: "100px",
       width: "100%",
       [theme.breakpoints.up("md")]: {
         height: "10vh",
@@ -30,6 +29,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     alert: {
       justifyContent: "center",
+      height: "65px",
+      padding: "5px 2px",
     },
 
     emptyAlert: {

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center", //center the form at the beginning on the page
-      margin: "auto",
+      margin: "0 auto 10px auto",
 
       [theme.breakpoints.up("md")]: {
         width: "50vw",
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
     formContent: {
       borderRadius: "50%",
       width: "250px",
-      height: "250px",
+      height: "100%",
       border: "2px solid #fff",
       display: "flex",
       flexDirection: "column",

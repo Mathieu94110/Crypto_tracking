@@ -23,29 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
         xl: 1920,
       },
     },
-    NavBar: {
-      height: "10vh",
-    },
-
-    alerts: {
-      height: "100px",
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        height: "10vh",
-      },
-    },
-    alert: {
-      justifyContent: "center",
-    },
-
-    emptyAlert: {
-      width: "100%",
-      height: "100%",
-
-      [theme.breakpoints.up("md")]: {
-        height: "10vh",
-      },
-    },
     page: {
       textAlign: "center",
       display: "column",
@@ -56,11 +33,21 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
     },
-
-    title: {
-      fontWeight: 700,
-      [theme.breakpoints.up("md")]: {},
+    NavBar: {
+      height: "10vh",
     },
+    alerts: {
+      width: "100%",
+      height: "40px",
+      [theme.breakpoints.up("md")]: {
+        height: "10vh",
+      },
+    },
+    emptyAlert: {
+      width: "100%",
+      height: "10vh",
+    },
+
     formAndResult: {
       display: "block",
       justifyContent: "space-evenly",
