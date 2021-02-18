@@ -99507,7 +99507,7 @@ var AlertError = function AlertError(_ref) {
     onClick: onClose
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_lab__WEBPACK_IMPORTED_MODULE_2__["AlertTitle"], {
     className: classes.title
-  }, "Attention !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, message)));
+  }, "Erreur !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, message)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AlertError);
@@ -99581,7 +99581,7 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
       justifyContent: "center",
       alignItems: "center",
       //center the form at the beginning on the page
-      margin: "auto"
+      margin: "0 auto 10px auto"
     }, theme.breakpoints.up("md"), {
       width: "50vw",
       height: "100%"
@@ -99589,7 +99589,7 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
     formContent: _defineProperty({
       borderRadius: "50%",
       width: "250px",
-      height: "250px",
+      height: "100%",
       border: "2px solid #fff",
       display: "flex",
       flexDirection: "column",
@@ -99736,45 +99736,9 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_10__["m
         xl: 1920
       }
     },
-    card: _defineProperty({
-      width: 200,
-      //
-      height: 220
-    }, theme.breakpoints.up("md"), {
-      width: 250,
-      height: 304
-    }),
-    card_content: _defineProperty({
-      height: 80
-    }, theme.breakpoints.up("md"), {
-      height: 120,
-      padding: 10
-    }),
-    card_media: _defineProperty({
-      height: 70
-    }, theme.breakpoints.up("md"), {
-      height: 120
-    }),
-    textButton: _defineProperty({
-      margin: "auto",
-      //
-      height: 30,
-      //
-      fontWeight: 600
-    }, theme.breakpoints.up("md"), {
-      height: "auto"
-    }),
-    textContent: {
-      color: "#000",
-      margin: "auto",
-      width: "60%",
-      display: "flex",
-      justifyContent: "space-between",
-      fontWeight: 600
-    },
     page: _defineProperty({
       width: "100vw",
-      height: "300px",
+      height: "200px",
       textAlign: "center"
     }, theme.breakpoints.up("md"), {
       width: "50vw",
@@ -99793,6 +99757,68 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_10__["m
       alignItems: "center"
     }, theme.breakpoints.up("md"), {
       width: "50vw"
+    }),
+    card: _defineProperty({
+      width: 160,
+      height: 180
+    }, theme.breakpoints.up("md"), {
+      width: 250,
+      height: 304
+    }),
+    card_content: _defineProperty({
+      height: 90,
+      padding: 5,
+      fontSize: "0.4em",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center"
+    }, theme.breakpoints.up("md"), {
+      height: 120,
+      padding: 10,
+      fontSize: "0.875em"
+    }),
+    CardTitle: _defineProperty({
+      height: 20,
+      marginBottom: "0.35em",
+      fontSize: "3.5em"
+    }, theme.breakpoints.up("md"), {
+      marginBottom: "5px",
+      fontSize: "1.5rem",
+      height: 40
+    }),
+    card_media: _defineProperty({
+      width: "100%",
+      height: 50
+    }, theme.breakpoints.up("md"), {
+      height: 120
+    }),
+    textButtonContainer: _defineProperty({
+      padding: "0px"
+    }, theme.breakpoints.up("md"), {
+      padding: "8px"
+    }),
+    textButton: _defineProperty({
+      width: "100%",
+      margin: "auto",
+      fontSize: "0.7em",
+      //
+      height: 30,
+      fontWeight: 600,
+      padding: "0px"
+    }, theme.breakpoints.up("md"), {
+      height: "auto",
+      padding: "8px",
+      fontSize: "0.9em"
+    }),
+    textContent: _defineProperty({
+      color: "#000",
+      margin: "auto",
+      width: "90%",
+      display: "flex",
+      justifyContent: "space-between",
+      fontWeight: 600
+    }, theme.breakpoints.up("md"), {
+      width: "70%"
     })
   });
 });
@@ -99820,7 +99846,8 @@ var searchedCrypto = function searchedCrypto(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     gutterBottom: true,
     variant: "h5",
-    component: "h2"
+    component: "h2",
+    className: classes.CardTitle
   }, Object.values(data)[0].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body2",
     color: "textSecondary",
@@ -99831,7 +99858,9 @@ var searchedCrypto = function searchedCrypto(_ref) {
     className: classes.textContent
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Symbole :"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object.values(data)[0].symbol.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: classes.textContent
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Prix :"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object.values(data)[0].current_price, " \u20AC"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Prix :"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object.values(data)[0].current_price, " \u20AC"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    className: classes.textButtonContainer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     size: "small",
     color: "primary",
     className: classes.textButton,
@@ -99892,13 +99921,14 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
       }
     },
     alerts: _defineProperty({
-      height: "100px",
       width: "100%"
     }, theme.breakpoints.up("md"), {
       height: "10vh"
     }),
     alert: {
-      justifyContent: "center"
+      justifyContent: "center",
+      height: "65px",
+      padding: "5px 2px"
     },
     emptyAlert: _defineProperty({
       width: "100%",
@@ -100693,7 +100723,8 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       flexDirection: "column",
       justifyContent: "center",
       height: "550px",
-      width: "300px",
+      width: "96%",
+      margin: "0 auto",
       fontSize: "0.8em"
     }, theme.breakpoints.up("md"), {
       height: "700px",
@@ -100701,7 +100732,8 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       fontSize: "1em"
     }),
     periodContainer: _defineProperty({
-      width: "300px",
+      width: "100%",
+      margin: "0 auto",
       height: "50px",
       lineHeight: "50px",
       background: "rgba(0, 99, 204, 0.5)",
@@ -100710,8 +100742,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       justifyContent: "center",
       alignItems: "center",
       color: "#fff",
-      fontWeight: 600,
-      margin: "5px 5px 0"
+      fontWeight: 600
     }, theme.breakpoints.up("md"), {
       width: "600px",
       fontSize: "1em",
@@ -100737,7 +100768,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
     },
     tableContainer: _defineProperty({
       width: "100%",
-      margin: "0px 5px 5px 5px ",
+      margin: "0px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-evenly",
@@ -101382,7 +101413,8 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       flexDirection: "column",
       justifyContent: "center",
       height: "550px",
-      width: "300px",
+      width: "96%",
+      margin: "0 auto",
       fontSize: "0.8em"
     }, theme.breakpoints.up("md"), {
       height: "700px",
@@ -101390,7 +101422,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       fontSize: "1em"
     }),
     periodContainer: _defineProperty({
-      width: "300px",
+      width: "100%",
       height: "50px",
       lineHeight: "50px",
       background: "rgba(255, 0, 0, 0.8)",
@@ -101401,7 +101433,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
       alignItems: "center",
       color: "#fff",
       fontWeight: 600,
-      margin: "5px 5px 0"
+      margin: "0px"
     }, theme.breakpoints.up("md"), {
       width: "600px",
       fontSize: "1em",
@@ -101427,7 +101459,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
     },
     tableContainer: _defineProperty({
       width: "100%",
-      margin: "0px 5px 5px 5px ",
+      margin: "0px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-evenly",
@@ -102143,7 +102175,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/CardMedia */ "./node_modules/@material-ui/core/esm/CardMedia/index.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
 /* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/index.js");
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js");
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_11__);
@@ -102176,10 +102208,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+ ///////////// styles
+/////////
 
-///////////// styles
-var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["makeStyles"])(function (theme) {
-  return Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["createStyles"])({
+var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_9__["makeStyles"])(function (theme) {
+  return Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_9__["createStyles"])({
     breakpoints: {
       values: {
         xs: 0,
@@ -102189,46 +102222,43 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["makeStyle
         xl: 1920
       }
     },
+    modalParent: {},
+    page: _defineProperty({
+      height: "100%",
+      width: "100%"
+    }, theme.breakpoints.up("md"), {
+      height: "100vh"
+    }),
     CardContainer: {
       width: "100%",
       margin: "0",
       height: "90vh",
-      backgroundColor: "#191970"
+      marginTop: "10vh"
     },
-    NavBar: {
-      height: "10vh"
-    },
-    modal: _defineProperty({
+    modal: {
       width: "100%",
-      marginTop: "10vh",
       height: "100%",
       display: "flex",
       flexDirection: "column",
+      justifyContent: "center"
+    },
+    modalContent: _defineProperty({
+      width: "270px",
+      height: "600px",
+      margin: "auto",
+      border: "none",
+      display: "flex",
+      flexDirection: "column",
       justifyContent: "center",
-      alignItems: "center",
       fontSize: "0.8em"
     }, theme.breakpoints.up("md"), {
+      width: "600px",
       fontSize: "1em"
-    }),
-    modalContent: _defineProperty({
-      margin: "7.5vh auto auto auto"
-    }, theme.breakpoints.up("md"), {
-      width: "600px"
     }),
     root: {
       maxWidth: 200,
       margin: "auto",
       alignItems: "center"
-    },
-    header: {
-      width: "100%",
-      height: "10vh",
-      lineHeight: "10vh",
-      backgroundColor: "#0063cc",
-      color: "#fff",
-      textAlign: "center",
-      fontWeight: 800,
-      fontSize: "1.8em"
     },
     index: _defineProperty({
       width: "30px",
@@ -102315,15 +102345,13 @@ var myFavorites = function myFavorites() {
   var index = 1; //formatedDate
 
   var ChangeFormateDate = function ChangeFormateDate(date) {
-    return date.substring(0, 10).toString().split("-").reverse().join("/") + " à " + date.substring(11, 16).replace(":"[0], "h");
+    return date.substring(0, 10).toString().split("-").reverse().join("-") + " à " + date.substring(11, 16).replace(":"[0], "h");
   }; //
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Paper"], {
-    className: classes.NavBar
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_13__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Paper"], {
-    elevation: 0
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.page
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_13__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__["default"], {
     container: true,
     spacing: 10,
     className: classes.CardContainer
@@ -102340,13 +102368,13 @@ var myFavorites = function myFavorites() {
     }, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: index,
       className: classes.root
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, fav != undefined && fav.image["0"].image( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, fav !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, fav.image["0"].image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
       component: "img",
       alt: fav.image["0"].name,
       height: "80",
       image: fav.image["0"].image,
       title: fav.image["0"].name
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
       gutterBottom: true,
       variant: "h5",
       component: "h2"
@@ -102373,7 +102401,7 @@ var myFavorites = function myFavorites() {
         return dispatch(Object(_redux_Actions_AddAndDeleteActions__WEBPACK_IMPORTED_MODULE_12__["deleteFavoriteAction"])(fav.id));
       }
     }, " ", "Retirer")))));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_11___default.a, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_11___default.a, {
     isOpen: modalIsOpen,
     onRequestClose: closeModal,
     className: classes.modal,
@@ -102479,7 +102507,7 @@ var myFavorites = function myFavorites() {
     className: classes.datasKeys
   }, "En circulation :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.detailsDatas
-  }, " ", selectedFav.image["0"].circulating_supply, " tokens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, " ", Math.floor(selectedFav.image["0"].circulating_supply), " ", "tokens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: classes.dataLine
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.datasKeys
@@ -102541,7 +102569,7 @@ var myFavorites = function myFavorites() {
     className: classes.datasKeys
   }, "Roi :"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classes.detailsDatas
-  }, " ", selectedFav.image["0"].roi ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, fav.image["0"].market_cap_rank) : "Pas de données")))))));
+  }, selectedFav.image["0"].roi ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, selectedFav.image["0"].market_cap_rank) : "Pas de données"))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (myFavorites);
@@ -102592,24 +102620,6 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["makeStyl
         xl: 1920
       }
     },
-    NavBar: {
-      height: "10vh"
-    },
-    alerts: _defineProperty({
-      height: "100px",
-      width: "100%"
-    }, theme.breakpoints.up("md"), {
-      height: "10vh"
-    }),
-    alert: {
-      justifyContent: "center"
-    },
-    emptyAlert: _defineProperty({
-      width: "100%",
-      height: "100%"
-    }, theme.breakpoints.up("md"), {
-      height: "10vh"
-    }),
     page: {
       textAlign: "center",
       display: "column",
@@ -102620,9 +102630,19 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["makeStyl
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat"
     },
-    title: _defineProperty({
-      fontWeight: 700
-    }, theme.breakpoints.up("md"), {}),
+    NavBar: {
+      height: "10vh"
+    },
+    alerts: _defineProperty({
+      width: "100%",
+      height: "40px"
+    }, theme.breakpoints.up("md"), {
+      height: "10vh"
+    }),
+    emptyAlert: {
+      width: "100%",
+      height: "10vh"
+    },
     formAndResult: _defineProperty({
       display: "block",
       justifyContent: "space-evenly"
