@@ -97,7 +97,7 @@ interface IItems {
   };
 }
 export default function TopSevenTrending() {
-  const [trendDatas, setsevenTrendDatas] = useState<ISevenTrends[]>([]);
+  const [seventrendDatas, setsevenTrendDatas] = useState<ISevenTrends[]>([]);
 
   let sevenTrendUrl = "https://api.coingecko.com/api/v3/search/trending";
 
@@ -106,46 +106,25 @@ export default function TopSevenTrending() {
       .then((res) => res.json())
       .then((res) => {
         let trends = res.coins;
-        console.log(trends);
+
         setsevenTrendDatas(trends);
       });
   }, []);
+  console.log(seventrendDatas);
+  const headingColumns = ["Nom", "Symbole", "Classement"];
 
-  let index = 1;
-  const classes = useStyles();
-  return (
-    <div className={classes.topSevenTrendingCard}>
-      <h2 className={classes.title}>Top 7 des tendances cryptos </h2>
-      <div className={classes.grid}>
-        <span className={classes.gridFirstSpan}>Position</span>
-        <span className={classes.gridFirstSpan}>Logo</span>
-        <span className={classes.gridFirstSpan}>Nom</span>
-        <span className={classes.gridFirstSpan}>Symbole</span>
-        <span className={classes.gridFirstSpan}>Classement</span>
+  const data = seventrendDatas.map((row, index) => {
+    let rowData: { key: string; val: string | number }[] = [];
 
-        {trendDatas.map((trend, index) => {
-          return (
-            <>
-              <span className={classes.gridLastChilds}>{(index += 1)}</span>
-              <span className={classes.gridLastChilds}>
-                <img
-                  src={trend.item.large}
-                  alt="logo"
-                  width="40px"
-                  height="40px"
-                />
-              </span>
-              <span className={classes.gridLastChilds}>{trend.item.name}</span>{" "}
-              <span className={classes.gridLastChilds}>
-                {trend.item.symbol}
-              </span>
-              <span className={classes.gridLastChilds}>
-                {trend.item.market_cap_rank}
-              </span>
-            </>
-          );
-        })}
-      </div>
-    </div>
-  );
+    Object.entries(row).forEach((data, i) => {
+      rowData.push({
+        key: headingColumns[i],
+        val: data[1],
+      });
+    });
+
+    return <div>hello</div>;
+  });
+
+  return <div>hello</div>;
 }

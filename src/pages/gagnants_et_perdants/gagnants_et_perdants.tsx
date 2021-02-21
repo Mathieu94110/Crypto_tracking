@@ -12,6 +12,8 @@ import Bearish from "../../images/bearish.jpg";
 import { makeStyles, createStyles, Theme, Paper } from "@material-ui/core";
 import LeftNav from "../../components/Nav/LeftNav";
 
+import { useHistory } from "react-router-dom";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     breakpoints: {
@@ -98,6 +100,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const gagnants_et_perdants: FC = () => {
+  let history = useHistory();
+
   const classes = useStyles();
 
   return (
@@ -138,7 +142,7 @@ const gagnants_et_perdants: FC = () => {
               size="small"
               color="primary"
               className={classes.action}
-              onClick={() => (window.location = "/gagnants")}
+              onClick={() => history.push("/gagnants")}
             >
               En savoir plus
             </Button>
@@ -178,7 +182,7 @@ const gagnants_et_perdants: FC = () => {
               size="small"
               color="primary"
               className={classes.action}
-              onClick={() => (window.location = "/perdants")}
+              onClick={() => history.push("/perdants")}
             >
               En savoir plus
             </Button>
