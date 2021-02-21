@@ -100371,7 +100371,7 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
 function TopSevenTrending() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
-      trendDatas = _useState2[0],
+      seventrendDatas = _useState2[0],
       setsevenTrendDatas = _useState2[1];
 
   var sevenTrendUrl = "https://api.coingecko.com/api/v3/search/trending";
@@ -100380,46 +100380,22 @@ function TopSevenTrending() {
       return res.json();
     }).then(function (res) {
       var trends = res.coins;
-      console.log(trends);
       setsevenTrendDatas(trends);
     });
   }, []);
-  var index = 1;
-  var classes = useStyles();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: classes.topSevenTrendingCard
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    className: classes.title
-  }, "Top 7 des tendances cryptos "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: classes.grid
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.gridFirstSpan
-  }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.gridFirstSpan
-  }, "Logo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.gridFirstSpan
-  }, "Nom"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.gridFirstSpan
-  }, "Symbole"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.gridFirstSpan
-  }, "Classement"), trendDatas.map(function (trend, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: classes.gridLastChilds
-    }, index += 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: classes.gridLastChilds
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: trend.item.large,
-      alt: "logo",
-      width: "40px",
-      height: "40px"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: classes.gridLastChilds
-    }, trend.item.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: classes.gridLastChilds
-    }, trend.item.symbol), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: classes.gridLastChilds
-    }, trend.item.market_cap_rank));
-  })));
+  console.log(seventrendDatas);
+  var headingColumns = ["Nom", "Symbole", "Classement"];
+  var data = seventrendDatas.map(function (row, index) {
+    var rowData = [];
+    Object.entries(row).forEach(function (data, i) {
+      rowData.push({
+        key: headingColumns[i],
+        val: data[1]
+      });
+    });
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello");
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello");
 }
 
 /***/ }),
@@ -101165,7 +101141,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_bearish_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../images/bearish.jpg */ "./src/images/bearish.jpg");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
 /* harmony import */ var _components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Nav/LeftNav */ "./src/components/Nav/LeftNav.tsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -101259,6 +101237,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["makeStyl
 });
 
 var gagnants_et_perdants = function gagnants_et_perdants() {
+  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["useHistory"])();
   var classes = useStyles();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.page
@@ -101287,7 +101266,7 @@ var gagnants_et_perdants = function gagnants_et_perdants() {
     color: "primary",
     className: classes.action,
     onClick: function onClick() {
-      return window.location = "/gagnants";
+      return history.push("/gagnants");
     }
   }, "En savoir plus"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: classes.root
@@ -101311,7 +101290,7 @@ var gagnants_et_perdants = function gagnants_et_perdants() {
     color: "primary",
     className: classes.action,
     onClick: function onClick() {
-      return window.location = "/perdants";
+      return history.push("/perdants");
     }
   }, "En savoir plus")))));
 };
