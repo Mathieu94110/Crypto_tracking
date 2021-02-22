@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react"; //
+import React, { FC, useState, useEffect } from "react";
 import {
   withStyles,
   Theme,
   createStyles,
   makeStyles,
 } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-
-import { Grid, Paper } from "@material-ui/core";
-
-//styles//
+import TopSevenTrendingTable from "./topSevenTrendingTable";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,81 +19,30 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     topSevenTrendingCard: {
-      height: "400px",
+      height: "100%",
       border: "2px solid #000",
       backgroundColor: "rgba(25,25,112,0.9)",
       fontSize: "0.8rem",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "none",
+      justifyContent: "space-between",
       [theme.breakpoints.up("md")]: {
         fontSize: "1rem",
         height: "100%", //   height: "528px",
-        justifyContent: "space-evenly",
-      },
-    },
-    title: {
-      height: "45px",
-      lineHeight: "45px",
-      fontSize: "1.2em",
-      color: "#fff",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "1.7em",
-        height: "70px",
-        lineHeight: "70px",
-      },
-    },
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(5, 1fr)",
-    },
-    gridFirstSpan: {
-      padding: "8px 4px 8px 4px",
-      fontSize: "0.9em",
-      fontWeight: 600,
-      color: "gold",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "1.2em",
-        padding: "8px 4px 36px 4px",
-      },
-    },
-    gridLastChilds: {
-      height: "45px",
-      fontWeight: 600,
-      fontSize: "0.8em",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "#fff",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "1em",
       },
     },
   })
 );
 
-/////////
-interface ISevenTrends {
-  id: string;
-  large: string;
-  market_cap_rank: number;
+export interface IItems {
   name: string;
-  score: 0;
+  large: string;
   symbol: string;
-  thumb: string;
-  item?: IItems;
+  market_cap_rank: number;
 }
-interface IItems {
-  item: {
-    large: string;
-    name: string;
-    symbol: string;
-    market_cap_rank: number;
-  };
-}
-export default function TopSevenTrending() {
-  const [seventrendDatas, setsevenTrendDatas] = useState<ISevenTrends[]>([]);
+
+const topSevenTrending: FC = () => {
+  const [sevenTrends, setSevenTrends] = useState<IItems[]>([]);
 
   let sevenTrendUrl = "https://api.coingecko.com/api/v3/search/trending";
 
@@ -105,26 +50,26 @@ export default function TopSevenTrending() {
     fetch(sevenTrendUrl)
       .then((res) => res.json())
       .then((res) => {
-        let trends = res.coins;
+        let trends = res.coins.map((category: any) => category.item);
+        //keeping only the four datas i need !
+        const newTrends: IItems = trends.map(
+          ({ id, score, thumb, ...trends }) => trends
+        );
 
-        setsevenTrendDatas(trends);
+        setSevenTrends(newTrends);
       });
   }, []);
-  console.log(seventrendDatas);
-  const headingColumns = ["Nom", "Symbole", "Classement"];
 
-  const data = seventrendDatas.map((row, index) => {
-    let rowData: { key: string; val: string | number }[] = [];
+  const classes = useStyles();
+  return (
+    <div className={classes.topSevenTrendingCard}>
+      <TopSevenTrendingTable
+        tableData={sevenTrends}
+        headingColumns={["Nom", "Symbole", "Classement", "Image"]}
+        title="Top 7 des tendances sur 24h"
+      />
+    </div>
+  );
+};
 
-    Object.entries(row).forEach((data, i) => {
-      rowData.push({
-        key: headingColumns[i],
-        val: data[1],
-      });
-    });
-
-    return <div>hello</div>;
-  });
-
-  return <div>hello</div>;
-}
+export default topSevenTrending;
