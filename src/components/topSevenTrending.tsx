@@ -35,13 +35,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export interface IItems {
+  id: string;
+  score: number;
+  thumb: string;
   name: string;
   large: string;
   symbol: string;
   market_cap_rank: number;
 }
 
-const topSevenTrending: FC = () => {
+export const topSevenTrending: FC = () => {
   const [sevenTrends, setSevenTrends] = useState<IItems[]>([]);
 
   let sevenTrendUrl = "https://api.coingecko.com/api/v3/search/trending";
@@ -50,13 +53,15 @@ const topSevenTrending: FC = () => {
     fetch(sevenTrendUrl)
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         let trends = res.coins.map((category: any) => category.item);
         //keeping only the four datas i need !
-        const newTrends: IItems = trends.map(
+        const newTrends: IItems[] = trends.map(
           ({ id, score, thumb, ...trends }) => trends
         );
 
         setSevenTrends(newTrends);
+        console.log(sevenTrends);
       });
   }, []);
 

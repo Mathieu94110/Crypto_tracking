@@ -100278,15 +100278,20 @@ var historyOptions = {
 /*!*********************************************!*\
   !*** ./src/components/topSevenTrending.tsx ***!
   \*********************************************/
-/*! exports provided: default */
+/*! exports provided: topSevenTrending, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TopSevenTrending; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "topSevenTrending", function() { return topSevenTrending; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _topSevenTrendingTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./topSevenTrendingTable */ "./src/components/topSevenTrendingTable.tsx");
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -100301,10 +100306,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
- //
 
 
-//styles//
+
 var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
   return Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["createStyles"])({
     breakpoints: {
@@ -100317,19 +100321,92 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
       }
     },
     topSevenTrendingCard: _defineProperty({
-      height: "400px",
+      height: "100%",
       border: "2px solid #000",
       backgroundColor: "rgba(25,25,112,0.9)",
       fontSize: "0.8rem",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "none"
+      justifyContent: "space-between"
     }, theme.breakpoints.up("md"), {
       fontSize: "1rem",
+      height: "100%" //   height: "528px",
+
+    })
+  });
+});
+var topSevenTrending = function topSevenTrending() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      sevenTrends = _useState2[0],
+      setSevenTrends = _useState2[1];
+
+  var sevenTrendUrl = "https://api.coingecko.com/api/v3/search/trending";
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetch(sevenTrendUrl).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      console.log(res);
+      var trends = res.coins.map(function (category) {
+        return category.item;
+      }); //keeping only the four datas i need !
+
+      var newTrends = trends.map(function (_ref) {
+        var id = _ref.id,
+            score = _ref.score,
+            thumb = _ref.thumb,
+            trends = _objectWithoutProperties(_ref, ["id", "score", "thumb"]);
+
+        return trends;
+      });
+      setSevenTrends(newTrends);
+      console.log(sevenTrends);
+    });
+  }, []);
+  var classes = useStyles();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.topSevenTrendingCard
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topSevenTrendingTable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tableData: sevenTrends,
+    headingColumns: ["Nom", "Symbole", "Classement", "Image"],
+    title: "Top 7 des tendances sur 24h"
+  }));
+};
+/* harmony default export */ __webpack_exports__["default"] = (topSevenTrending);
+
+/***/ }),
+
+/***/ "./src/components/topSevenTrendingTable.tsx":
+/*!**************************************************!*\
+  !*** ./src/components/topSevenTrendingTable.tsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
+  return Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["createStyles"])({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920
+      }
+    },
+    tableAndTitle: {
       height: "100%",
-      //   height: "528px",
-      justifyContent: "space-evenly"
-    }),
+      width: "100%"
+    },
     title: _defineProperty({
       height: "45px",
       lineHeight: "45px",
@@ -100337,55 +100414,36 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
       color: "#fff"
     }, theme.breakpoints.up("md"), {
       fontSize: "1.7em",
-      height: "70px",
-      lineHeight: "70px"
-    }),
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(5, 1fr)"
-    },
-    gridFirstSpan: _defineProperty({
-      padding: "8px 4px 8px 4px",
-      fontSize: "0.9em",
-      fontWeight: 600,
-      color: "gold"
-    }, theme.breakpoints.up("md"), {
-      fontSize: "1.2em",
-      padding: "8px 4px 36px 4px"
-    }),
-    gridLastChilds: _defineProperty({
-      height: "45px",
-      fontWeight: 600,
-      fontSize: "0.8em",
+      height: "15%",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "#fff"
+      justifyContent: "center"
+    }),
+    table: _defineProperty({
+      fontWeight: 600,
+      height: "100%",
+      width: "100%"
     }, theme.breakpoints.up("md"), {
-      fontSize: "1em"
-    })
+      height: "80%"
+    }),
+    column: {
+      color: "gold",
+      paddingBottom: "10px"
+    },
+    //look at this probleme for image vertical padding
+    "@global": {
+      "table tbody tr td:last-child ": _defineProperty({}, theme.breakpoints.up("md"), {
+        padding: 0
+      })
+    }
   });
-}); /////////
+});
 
-function TopSevenTrending() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      seventrendDatas = _useState2[0],
-      setsevenTrendDatas = _useState2[1];
-
-  var sevenTrendUrl = "https://api.coingecko.com/api/v3/search/trending";
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch(sevenTrendUrl).then(function (res) {
-      return res.json();
-    }).then(function (res) {
-      var trends = res.coins;
-      setsevenTrendDatas(trends);
-    });
-  }, []);
-  console.log(seventrendDatas);
-  var headingColumns = ["Nom", "Symbole", "Classement"];
-  var data = seventrendDatas.map(function (row, index) {
+var TopSevenTrendingTable = function TopSevenTrendingTable(_ref) {
+  var title = _ref.title,
+      tableData = _ref.tableData,
+      headingColumns = _ref.headingColumns;
+  var data = tableData.map(function (row, index) {
     var rowData = [];
     Object.entries(row).forEach(function (data, i) {
       rowData.push({
@@ -100393,10 +100451,35 @@ function TopSevenTrending() {
         val: data[1]
       });
     });
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello");
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: index
+    }, rowData.map(function (data, index) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        key: index,
+        "data-heading": data.key
+      }, data.key == "Image" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: data.val,
+        width: "30",
+        height: "30"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, data.val));
+    }));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello");
-}
+  var classes = useStyles();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.tableAndTitle
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: classes.title
+  }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: classes.table
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, headingColumns.map(function (col, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      key: index,
+      className: classes.column
+    }, col);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, data)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TopSevenTrendingTable);
 
 /***/ }),
 
@@ -102573,8 +102656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SearchCrypto_SearchForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/SearchCrypto/SearchForm */ "./src/components/SearchCrypto/SearchForm.tsx");
 /* harmony import */ var _redux_Actions_alertActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/Actions/alertActions */ "./src/redux/Actions/alertActions.ts");
 /* harmony import */ var _components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Nav/LeftNav */ "./src/components/Nav/LeftNav.tsx");
-/* harmony import */ var _images_crypto_search_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../images/crypto_search.jpg */ "./src/images/crypto_search.jpg");
-/* harmony import */ var _material_ui_core___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/ */ "./node_modules/@material-ui/core/esm/index.js");
+/* harmony import */ var _material_ui_core___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/ */ "./node_modules/@material-ui/core/esm/index.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -102585,11 +102667,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- //styles
+
+var search_crypto = __webpack_require__(/*! ../../images/crypto_search.jpg */ "./src/images/crypto_search.jpg"); //styles
 
 
-var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["makeStyles"])(function (theme) {
-  return Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["createStyles"])({
+
+var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["makeStyles"])(function (theme) {
+  return Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["createStyles"])({
     breakpoints: {
       values: {
         xs: 0,
@@ -102604,7 +102688,7 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["makeStyl
       display: "column",
       width: "100%",
       height: "100vh",
-      backgroundImage: "url(".concat(_images_crypto_search_jpg__WEBPACK_IMPORTED_MODULE_8__["default"], ")"),
+      backgroundImage: "url(".concat(search_crypto, ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat"
@@ -102657,7 +102741,7 @@ var Search = function Search() {
   var classes = useStyles();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.page
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["Paper"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["Paper"], {
     className: classes.NavBar
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.alerts
