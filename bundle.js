@@ -98723,7 +98723,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _images_bitcoin_background_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/bitcoin_background.jpg */ "./src/images/bitcoin_background.jpg");
-/* harmony import */ var _images_bitcoin_background_jpg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_bitcoin_background_jpg__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Api_coinGecko__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Api/coinGecko */ "./src/Api/coinGecko.tsx");
 /* harmony import */ var _BitcoinDetailPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BitcoinDetailPage */ "./src/components/Bitcoin/BitcoinDetailPage.tsx");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
@@ -98768,7 +98767,7 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["ma
       verticalAlign: "middle",
       color: "#fff",
       backgroundColor: "#191970",
-      backgroundImage: "url(".concat(_images_bitcoin_background_jpg__WEBPACK_IMPORTED_MODULE_1___default.a, ")"),
+      backgroundImage: "url(".concat(_images_bitcoin_background_jpg__WEBPACK_IMPORTED_MODULE_1__["default"], ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
@@ -100488,10 +100487,12 @@ var TopSevenTrendingTable = function TopSevenTrendingTable(_ref) {
 /*!********************************!*\
   !*** ./src/images/bearish.jpg ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/bearish.700d0108900c330ced122f627a09b15f.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "bearish.700d0108900c330ced122f627a09b15f.jpg");
 
 /***/ }),
 
@@ -100499,10 +100500,12 @@ module.exports = "images/bearish.700d0108900c330ced122f627a09b15f.jpg";
 /*!*******************************************!*\
   !*** ./src/images/bitcoin_background.jpg ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/bitcoin_background.536dd5e2c9f76b9d8b699a1601fd8ca6.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "bitcoin_background.536dd5e2c9f76b9d8b699a1601fd8ca6.jpg");
 
 /***/ }),
 
@@ -100510,10 +100513,12 @@ module.exports = "images/bitcoin_background.536dd5e2c9f76b9d8b699a1601fd8ca6.jpg
 /*!****************************************!*\
   !*** ./src/images/bulishvsbearish.jpg ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/bulishvsbearish.039a3e8b084deabaff7e21eaaa50b837.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "bulishvsbearish.039a3e8b084deabaff7e21eaaa50b837.jpg");
 
 /***/ }),
 
@@ -100521,10 +100526,12 @@ module.exports = "images/bulishvsbearish.039a3e8b084deabaff7e21eaaa50b837.jpg";
 /*!********************************!*\
   !*** ./src/images/bullish.jpg ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/bullish.cffe7da340dec50ef540f35b647da277.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "bullish.cffe7da340dec50ef540f35b647da277.jpg");
 
 /***/ }),
 
@@ -100532,10 +100539,12 @@ module.exports = "images/bullish.cffe7da340dec50ef540f35b647da277.jpg";
 /*!**************************************!*\
   !*** ./src/images/crypto_search.jpg ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/crypto_search.1137fbedefdc2dfa2b1f019ac3ebe589.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "crypto_search.1137fbedefdc2dfa2b1f019ac3ebe589.jpg");
 
 /***/ }),
 
@@ -100543,10 +100552,12 @@ module.exports = "images/crypto_search.1137fbedefdc2dfa2b1f019ac3ebe589.jpg";
 /*!**************************************!*\
   !*** ./src/images/go_to_the_sea.jpg ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/go_to_the_sea.7bb93d227ca966b7621d3b04f9fe84d4.jpg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "go_to_the_sea.7bb93d227ca966b7621d3b04f9fe84d4.jpg");
 
 /***/ }),
 
@@ -100554,10 +100565,12 @@ module.exports = "images/go_to_the_sea.7bb93d227ca966b7621d3b04f9fe84d4.jpg";
 /*!*************************************!*\
   !*** ./src/images/to_the_moon.jpeg ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "images/to_the_moon.ad4ec71ef755345de2e29e2eb170f0be.jpeg";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "to_the_moon.ad4ec71ef755345de2e29e2eb170f0be.jpeg");
 
 /***/ }),
 
@@ -100689,7 +100702,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Api_coinGecko__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Api/coinGecko */ "./src/Api/coinGecko.tsx");
 /* harmony import */ var _images_to_the_moon_jpeg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/to_the_moon.jpeg */ "./src/images/to_the_moon.jpeg");
-/* harmony import */ var _images_to_the_moon_jpeg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_images_to_the_moon_jpeg__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/CircularProgress */ "./node_modules/@material-ui/core/esm/CircularProgress/index.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
 /* harmony import */ var _material_ui_core_InputLabel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/InputLabel */ "./node_modules/@material-ui/core/esm/InputLabel/index.js");
@@ -100747,7 +100759,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
     page: _defineProperty({
       width: "100%",
       height: "100vh",
-      backgroundImage: "url(".concat(_images_to_the_moon_jpeg__WEBPACK_IMPORTED_MODULE_2___default.a, ")"),
+      backgroundImage: "url(".concat(_images_to_the_moon_jpeg__WEBPACK_IMPORTED_MODULE_2__["default"], ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat"
@@ -101201,7 +101213,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/bulishvsbearish.jpg */ "./src/images/bulishvsbearish.jpg");
-/* harmony import */ var _images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Card */ "./node_modules/@material-ui/core/esm/Card/index.js");
 /* harmony import */ var _material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/CardActionArea */ "./node_modules/@material-ui/core/esm/CardActionArea/index.js");
 /* harmony import */ var _material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/CardActions */ "./node_modules/@material-ui/core/esm/CardActions/index.js");
@@ -101210,9 +101221,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
 /* harmony import */ var _images_bullish_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../images/bullish.jpg */ "./src/images/bullish.jpg");
-/* harmony import */ var _images_bullish_jpg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_images_bullish_jpg__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _images_bearish_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../images/bearish.jpg */ "./src/images/bearish.jpg");
-/* harmony import */ var _images_bearish_jpg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_images_bearish_jpg__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
 /* harmony import */ var _components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Nav/LeftNav */ "./src/components/Nav/LeftNav.tsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -101248,7 +101257,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["makeStyl
       height: "100vh",
       margin: "0",
       padding: "0",
-      backgroundImage: "url(".concat(_images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1___default.a, ")"),
+      backgroundImage: "url(".concat(_images_bulishvsbearish_jpg__WEBPACK_IMPORTED_MODULE_1__["default"], ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
@@ -101323,7 +101332,7 @@ var gagnants_et_perdants = function gagnants_et_perdants() {
     className: classes.root
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
     className: classes.media,
-    image: _images_bullish_jpg__WEBPACK_IMPORTED_MODULE_9___default.a,
+    image: _images_bullish_jpg__WEBPACK_IMPORTED_MODULE_9__["default"],
     title: "Bullish market "
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
     gutterBottom: true,
@@ -101346,7 +101355,7 @@ var gagnants_et_perdants = function gagnants_et_perdants() {
     className: classes.root
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
     className: classes.media,
-    image: _images_bearish_jpg__WEBPACK_IMPORTED_MODULE_10___default.a,
+    image: _images_bearish_jpg__WEBPACK_IMPORTED_MODULE_10__["default"],
     title: "Bearish market "
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
     gutterBottom: true,
@@ -101386,7 +101395,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Api_coinGecko__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Api/coinGecko */ "./src/Api/coinGecko.tsx");
 /* harmony import */ var _images_go_to_the_sea_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/go_to_the_sea.jpg */ "./src/images/go_to_the_sea.jpg");
-/* harmony import */ var _images_go_to_the_sea_jpg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_images_go_to_the_sea_jpg__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/CircularProgress */ "./node_modules/@material-ui/core/esm/CircularProgress/index.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
 /* harmony import */ var _material_ui_core_InputLabel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/InputLabel */ "./node_modules/@material-ui/core/esm/InputLabel/index.js");
@@ -101444,7 +101452,7 @@ var useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["makeStyle
     page: _defineProperty({
       width: "100%",
       height: "100vh",
-      backgroundImage: "url(".concat(_images_go_to_the_sea_jpg__WEBPACK_IMPORTED_MODULE_2___default.a, ")"),
+      backgroundImage: "url(".concat(_images_go_to_the_sea_jpg__WEBPACK_IMPORTED_MODULE_2__["default"], ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat"
