@@ -102656,8 +102656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SearchCrypto_SearchForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/SearchCrypto/SearchForm */ "./src/components/SearchCrypto/SearchForm.tsx");
 /* harmony import */ var _redux_Actions_alertActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/Actions/alertActions */ "./src/redux/Actions/alertActions.ts");
 /* harmony import */ var _components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Nav/LeftNav */ "./src/components/Nav/LeftNav.tsx");
-/* harmony import */ var _images_crypto_search_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../images/crypto_search.jpg */ "./src/images/crypto_search.jpg");
-/* harmony import */ var _material_ui_core___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/ */ "./node_modules/@material-ui/core/esm/index.js");
+/* harmony import */ var _material_ui_core___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/ */ "./node_modules/@material-ui/core/esm/index.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -102668,11 +102667,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- //styles
+
+var search_crypto = __webpack_require__(/*! ../../images/crypto_search.jpg */ "./src/images/crypto_search.jpg"); //styles
 
 
-var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["makeStyles"])(function (theme) {
-  return Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["createStyles"])({
+
+var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["makeStyles"])(function (theme) {
+  return Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["createStyles"])({
     breakpoints: {
       values: {
         xs: 0,
@@ -102687,7 +102688,7 @@ var useStyles = Object(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["makeStyl
       display: "column",
       width: "100%",
       height: "100vh",
-      backgroundImage: "url(".concat(_images_crypto_search_jpg__WEBPACK_IMPORTED_MODULE_8__["default"], ")"),
+      backgroundImage: "url(".concat(search_crypto, ")"),
       backgroundSize: "cover",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat"
@@ -102740,7 +102741,7 @@ var Search = function Search() {
   var classes = useStyles();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.page
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core___WEBPACK_IMPORTED_MODULE_9__["Paper"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core___WEBPACK_IMPORTED_MODULE_8__["Paper"], {
     className: classes.NavBar
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Nav_LeftNav__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.alerts
