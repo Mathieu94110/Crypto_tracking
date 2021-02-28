@@ -100491,7 +100491,7 @@ var TopSevenTrendingTable = function TopSevenTrendingTable(_ref) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/bearish.700d01.ext";
+module.exports = "images/bearish.700d0108900c330ced122f627a09b15f.jpg";
 
 /***/ }),
 
@@ -100502,7 +100502,7 @@ module.exports = "images/bearish.700d01.ext";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/bitcoin_background.536dd5.ext";
+module.exports = "images/bitcoin_background.536dd5e2c9f76b9d8b699a1601fd8ca6.jpg";
 
 /***/ }),
 
@@ -100513,7 +100513,7 @@ module.exports = "images/bitcoin_background.536dd5.ext";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/bulishvsbearish.039a3e.ext";
+module.exports = "images/bulishvsbearish.039a3e8b084deabaff7e21eaaa50b837.jpg";
 
 /***/ }),
 
@@ -100524,7 +100524,7 @@ module.exports = "images/bulishvsbearish.039a3e.ext";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/bullish.cffe7d.ext";
+module.exports = "images/bullish.cffe7da340dec50ef540f35b647da277.jpg";
 
 /***/ }),
 
@@ -100535,7 +100535,7 @@ module.exports = "images/bullish.cffe7d.ext";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/crypto_search.1137fb.ext";
+module.exports = "images/crypto_search.1137fbedefdc2dfa2b1f019ac3ebe589.jpg";
 
 /***/ }),
 
@@ -100546,7 +100546,7 @@ module.exports = "images/crypto_search.1137fb.ext";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/go_to_the_sea.7bb93d.ext";
+module.exports = "images/go_to_the_sea.7bb93d227ca966b7621d3b04f9fe84d4.jpg";
 
 /***/ }),
 
@@ -100557,7 +100557,7 @@ module.exports = "images/go_to_the_sea.7bb93d.ext";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "images/to_the_moon.ad4ec7.ext";
+module.exports = "images/to_the_moon.ad4ec71ef755345de2e29e2eb170f0be.jpeg";
 
 /***/ }),
 
