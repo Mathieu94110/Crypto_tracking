@@ -1,14 +1,21 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Output Management",
+    }),
+    new CleanWebpackPlugin(),
+  ],
   output: {
-    path: path.join(__dirname, "build"),
-    filename: "bundle.js",
+    filename: "[name]-[hash:8].js",
+    path: path.resolve(__dirname, "build"),
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
@@ -30,8 +37,13 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.(gif|svg|jpg|jpeg|png)$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
+
         loader: "file-loader",
+
+        options: {
+          name: "[name].[contenthash].[ext]",
+        },
       },
     ],
   },

@@ -25,10 +25,10 @@ ReactDOM.render(
             <Route path="/Les_cryptos_que_je_suis" component={MyFavorites} />
             <Route
               path="/Gagnants_et_perdants"
-              component={GagnantsEtPerdants} />
-                          <Route path="/gagnants" component={Gagnants} />
+              component={GagnantsEtPerdants}
+            />
+            <Route path="/gagnants" component={Gagnants} />
             <Route path="/perdants" component={Perdants} />
-            
 
             <Route path="/" component={Home} />
           </Switch>

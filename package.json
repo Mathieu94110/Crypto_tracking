@@ -5,10 +5,9 @@
   "description": "",
   "main": "src/index.tsx",
   "scripts": {
-  
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
-      "predeploy": "npm run build",
-  "deploy": "gh-pages -d build", 
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "author": "Mathieu Enault",
@@ -50,11 +49,13 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.2",
     "gh-pages": "^3.1.0",
     "html-loader": "^1.3.2",
     "html-webpack-plugin": "^4.5.0",
+    "image-webpack-loader": "^7.0.1",
     "mini-css-extract-plugin": "^1.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",

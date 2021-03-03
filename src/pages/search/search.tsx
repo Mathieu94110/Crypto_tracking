@@ -7,7 +7,7 @@ import SearchedCrypto from "../../components/SearchCrypto/SearchedCrypto";
 import SearchForm from "../../components/SearchCrypto/SearchForm";
 import { setAlert, setAlertSuccess } from "../../redux/Actions/alertActions";
 import LeftNav from "../../components/Nav/LeftNav";
-import search_crypto from "../../images/crypto_search.jpg";
+const search_crypto = require("../../images/crypto_search.jpg");
 
 //styles
 
